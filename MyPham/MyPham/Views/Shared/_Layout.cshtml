@@ -407,7 +407,7 @@
                         <!-- Logo -->
                         <div id="logo" class="flex-col logo">
                             <!-- Header logo -->
-                            <a href="index.html" title="Mỹ phẩm chính hãng Hàn Quốc &#8211; LamdepZ.com" rel="home">
+                            <a href="@Url.Action("Index","Home")" title="Mỹ phẩm chính hãng Hàn Quốc &#8211; LamdepZ.com" rel="home">
                                 <img width="200" height="100" src="~/wwwroot/images/2021/03/logo-full-1.png" class="header_logo header-logo" alt="Mỹ phẩm chính hãng Hàn Quốc &#8211; LamdepZ.com" /><img width="200" height="100" src="images/2021/03/logo-full-1.png"
                                                                                                                                                                                                           class="header-logo-dark" alt="Mỹ phẩm chính hãng Hàn Quốc &#8211; LamdepZ.com" />
                             </a>
@@ -489,20 +489,23 @@
 
 
 
-                                                    <div class="icon-box featured-box icon-box-left text-left">
-                                                        <div class="icon-box-img" style="width: 42px">
-                                                            <div class="icon">
-                                                                <div class="icon-inner">
-                                                                    <img width="42" height="40" src="~/wwwroot/images/icon_03.png" class="attachment-medium size-medium" alt="" loading="lazy" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="icon-box-text last-reset">
-
-
-                                                            <p style="text-align: left;"><span style="font-size: 85%; color: #326e51;">Hỗ trợ</span><br /><span style="font-size: 85%; color: #326e51;">khách hàng</span></p>
-
-                                                        </div>
+                                                    <div class="flex-col hide-for-medium flex-left">
+                                                        <ul class="header-nav header-nav-main nav nav-left  nav-uppercase">
+                                                            <li class="cart-item has-icon has-dropdown">
+                                                                <a href="thong-tin-tai-khoan.html" title="Giỏ hàng" class="header-cart-link is-small">
+                                                                    <span class="header-cart-title">Nam Đoàn</span>
+                                                                    <span class="image-icon header-cart-icon" data-icon-label="0">
+                                                                        <img class="cart-img-icon" alt="Đăng nhập" src="~/wwwroot/images/img/user.png" />
+                                                                    </span>
+                                                                </a>
+                                                                <ul class="nav-dropdown nav-dropdown-default">
+                                                                    <div class="widget_shopping_cart_content">
+                                                                        <div><a href="thong-tin-tai-khoan.html" class="dropdown-item" title="Thông tin tài khoản">Thông tin tài khoản</a><br></div>
+                                                                        <div><a href="dang-nhap.html" class="dropdown-item" title="Đăng xuất">Đăng xuất</a></div>
+                                                                    </div>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
                                                     </div>
 
 
@@ -519,9 +522,9 @@
                         </div>
 
                         <!-- Right Elements -->
-                        <div class="flex-col hide-for-medium flex-right">
+                        <div class="flex-col hide-for-medium flex-right" style="padding: 0 15px 25px;">
                             <ul class="header-nav header-nav-main nav nav-right  nav-uppercase">
-                                <li class="cart-item has-icon has-dropdown">
+                                <li class="cart-item has-icon">
 
                                     <a href="gio-hang.html" title="Giỏ hàng" class="header-cart-link is-small">
 
@@ -534,18 +537,6 @@
                                             <img class="cart-img-icon" alt="Giỏ hàng" src="~/wwwroot/images/icon_01.png" />
                                         </span>
                                     </a>
-
-                                    <ul class="nav-dropdown nav-dropdown-default">
-                                        <li class="html widget_shopping_cart">
-                                            <div class="widget_shopping_cart_content">
-
-
-                                                <p class="woocommerce-mini-cart__empty-message">Chưa có sản phẩm trong giỏ hàng.</p>
-
-
-                                            </div>
-                                        </li>
-                                    </ul>
 
                                 </li>
                             </ul>
@@ -613,7 +604,6 @@
                             <ul class="nav header-nav header-bottom-nav nav-center  nav-uppercase">
                                 <li id="menu-item-12688" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-12652 current_page_item menu-item-12688 active menu-item-design-default"><a href="@Url.Action("Index","Home")" aria-current="page" class="nav-top-link">Trang chủ</a></li>
                                 <li id="menu-item-12689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12689 menu-item-design-default"><a href="gio-hang.html" class="nav-top-link">Thanh toán</a></li>
-                                <li id="menu-item-12689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12689 menu-item-design-default"><a href="dang-nhap.html" class="nav-top-link">Đăng nhập</a></li>
 
                             </ul>
                         </div>
