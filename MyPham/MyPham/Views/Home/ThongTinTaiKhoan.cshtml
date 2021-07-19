@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "ThongTinTaiKhoan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main id="main" class="">
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="content-wrapper d-flex align-items-center auth px-0">
+                <div class="row w-100 mx-0">
+                    <div class="col-lg-7 mx-auto">
+                        <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                            <h2>Thông tin tài khoản</h2>
+                            <form class="pt-3">
+                                <div class="form-group row">
+                                    <div class="col-md-2" ">Ảnh</div>
+                                    <div class="col-md-6 ">
+                                        <br />
+                                        <img width="180" height="120" class="cart-img-icon" alt="Đăng nhập" src="~/wwwroot/images/img/user.png" />
+                                        <p>Chọn file ảnh</p>
+                                        @*<p><input name="ImageFile " type="file " id="ufile " style="" onchange="loadFile(event) " /></p>*@
+        <script>
+                    var loadFile = function (event) {
+                        var image = document.getElementById('output');
+                        image.src = URL.createObjectURL(event.target.files[0]);
+                    };
+        </script>
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <div class="col-md-2 ">Họ tên</div>
+                                    <div class="col-md-6"><input type="text" class="form-control form-control-lg " id="exampleInputEmail1 " placeholder="Đoàn Duy Nam "></div>
+                                </div>
+                                <div class="form-group row ">
+                                    <div class="col-md-2">Email</div>
+                                    <div class="col-md-6"><input type="email" class="form-control form-control-lg " id="exampleInputEmail1 " placeholder="namdoan@gmail.com "></div>
+                                </div>
+                                <div class="form-group row ">
+                                    <div class="col-md-2 ">Mật khẩu</div>
+                                    <div class="col-md-6 "><input type="password" class="form-control form-control-lg " id="exampleInputPassword1 " placeholder="******** "></div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-2">Địa chỉ</div>
+                                    <div class="col-md-6"><input type="text" class="form-control form-control-lg"></div>
+                                </div>
+                                <div class="mt-1">
+                                    <button type="submit" class="btn btn-primary">Lưu</button>
+                                    <button type="submit" class="btn btn-primary">Thoát</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>

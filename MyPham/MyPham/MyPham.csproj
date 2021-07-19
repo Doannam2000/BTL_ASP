@@ -285,6 +285,10 @@
     <Content Include="wwwroot\css\icons\fl-icons.woff2" />
     <Content Include="wwwroot\fonts\dashicons7d4b.eot" />
     <Content Include="wwwroot\fonts\dashicons7d4b.ttf" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\DangKy.cshtml" />
+    <Content Include="Views\Home\QuenMatKhau.cshtml" />
+    <Content Include="Views\Home\ThongTinTaiKhoan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
