@@ -26,7 +26,7 @@ namespace MyPham.Controllers
         }
         public ActionResult Login()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Trang đăng nhập.";
             return View();
         }
         public ActionResult DangKy()
