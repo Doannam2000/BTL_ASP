@@ -41,6 +41,23 @@ namespace MyPham.Controllers
         }
         public ActionResult ThongTinTaiKhoan()
         {
+            /*try
+            {
+                var f = dk.ImageFile;
+                if (f != null && f.ContentLength > 0)
+                {
+                    string FileName = System.IO.Path.GetFileName(f.FileName);
+                    var UploadPath = Server.MapPath("~/UserImage/" + FileName);
+                    dk.ImagePath = "~/UserImage/" + FileName;
+                    f.SaveAs(UploadPath);
+
+                }
+                return RedirectToAction("Details", dk);
+            }
+            catch
+            {
+                return View();
+            }*/
             ViewBag.Message = "Your application description page.";
             return View();
         }
