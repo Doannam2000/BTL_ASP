@@ -74,5 +74,19 @@ namespace MyPham.Controllers
 
             return View();
         }
+
+        public ActionResult XemSanPhamTheoDanhMuc( string id )
+        {
+            List<SanPham> sanpham = new List<SanPham>();
+            if(id == null)
+            {
+               
+            } else
+            {
+                sanpham = db.SanPhams.Where(s => s.MaDM.ToString().Equals(id)).Select(s => s).ToList();
+
+            }
+            return View(sanpham);
+        }
     }
 }
