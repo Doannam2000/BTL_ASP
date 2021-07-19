@@ -24,7 +24,26 @@ namespace MyPham.Controllers
 
             return View();
         }
-
+        public ActionResult Login()
+        {
+            ViewBag.Message = "Your application description page.";
+            return View();
+        }
+        public ActionResult DangKy()
+        {
+            ViewBag.Message = "Your application description page.";
+            return View();
+        }
+        public ActionResult QuenMatKhau()
+        {
+            ViewBag.Message = "Your application description page.";
+            return View();
+        }
+        public ActionResult ThongTinTaiKhoan()
+        {
+            ViewBag.Message = "Your application description page.";
+            return View();
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
