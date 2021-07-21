@@ -68,5 +68,9 @@ namespace MyPham.Areas.Admin.Controllers
         {
             return View();
         }
+        public ActionResult DangNhap()
+        {
+            return View();
+        }
     }
 }
