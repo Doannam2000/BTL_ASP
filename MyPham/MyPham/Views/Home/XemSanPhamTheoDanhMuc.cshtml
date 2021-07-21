@@ -48,7 +48,7 @@
                                     <div class="product-small box ">
                                         <div class="box-image">
                                             <div class="image-zoom">
-                                                <a href="chi-tiet-san-pham.html">
+                                                <a href="@Url.Action("SanPham","Home", new { id = item.MaSP })">
                                                     <img width="247" height="247" src="@Url.Content(ImagePath)"
                                                          class="lazy-load attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy"
                                                          sizes="(max-width: 247px) 100vw, 247px" />
@@ -64,7 +64,7 @@
 
                                         <div class="box-text box-text-products text-center grid-style-2">
                                             <div class="title-wrapper">
-                                                <p class="name product-title woocommerce-loop-product__title"><a href="chi-tiet-san-pham.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">@item.TenSP</a></p>
+                                                <p class="name product-title woocommerce-loop-product__title"><a href="@Url.Action("SanPham","Home", new { id = item.MaSP })" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">@item.TenSP</a></p>
                                             </div>
                                             <div class="price-wrapper">
                                                 <span class="price">
