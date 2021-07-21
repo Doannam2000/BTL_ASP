@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -61,18 +62,26 @@ namespace MyPham.Controllers
             ViewBag.Message = "Your application description page.";
             return View();
         }
-        public ActionResult About()
+        public ActionResult SanPham(string id)
         {
-            ViewBag.Message = "Your application description page.";
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SanPham sp = db.SanPhams.Find(int.Parse(id));
+            if (sp == null)
+            {
+                return HttpNotFound();
+            }
+            int madm = db.SanPhams.Find(int.Parse(id)).MaDM;
 
-            return View();
-        }
+            List<SanPham> Sp = new List<SanPham>();
+            Sp = db.SanPhams.Where(h => h.MaDM == madm).OrderByDescending(h => h.GiamGia).Take(8).ToList();
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.TenDM = db.DanhMucSPs.Where(s => s.MaDM == madm);
 
-            return View();
+            ViewBag.sp = Sp;
+            return View(sp);
         }
 
         public ActionResult XemSanPhamTheoDanhMuc( string id )
@@ -87,6 +96,11 @@ namespace MyPham.Controllers
 
             }
             return View(sanpham);
+        }
+
+        public ActionResult GioHang()
+        {
+            return View();
         }
     }
 }

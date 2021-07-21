@@ -398,6 +398,8 @@
     <Content Include="Views\Home\QuenMatKhau.cshtml" />
     <Content Include="Views\Home\ThongTinTaiKhoan.cshtml" />
     <Content Include="Views\Home\XemSanPhamTheoDanhMuc.cshtml" />
+    <Content Include="Views\Home\SanPham.cshtml" />
+    <Content Include="Views\Home\GioHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
