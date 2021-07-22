@@ -364,6 +364,7 @@
     <Content Include="Areas\Admin\Views\Home\CapNhatTaiKhoan.cshtml" />
     <Content Include="Areas\Admin\Views\Home\ThemPhanQuyen.cshtml" />
     <Content Include="Areas\Admin\Views\Home\CauHinhQuyen.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\DangNhap.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

@@ -74,13 +74,17 @@ namespace MyPham.Controllers
                 return HttpNotFound();
             }
             int madm = db.SanPhams.Find(int.Parse(id)).MaDM;
+            ViewBag.ma = madm;
 
             List<SanPham> Sp = new List<SanPham>();
-            Sp = db.SanPhams.Where(h => h.MaDM == madm).OrderByDescending(h => h.GiamGia).Take(8).ToList();
-
-            ViewBag.TenDM = db.DanhMucSPs.Where(s => s.MaDM == madm);
-
+            Sp = db.SanPhams.Where(h => h.MaDM.Equals(madm)).OrderByDescending(h => h.GiamGia).Take(8).ToList();
             ViewBag.sp = Sp;
+
+
+            List<DanhMucSP> s = new List<DanhMucSP>();
+            s = db.DanhMucSPs.Where(h => h.MaDM == madm).ToList();
+            ViewBag.TenDM = s[0].TenDM;
+
             return View(sp);
         }
 
