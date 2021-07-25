@@ -8,7 +8,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{651CC48C-7CE8-48EF-BA1E-3FEE072F2B81}</ProjectGuid>
+    <ProjectGuid>{43F55090-52D2-4D2E-98C2-B5B98129C258}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -18,7 +18,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44306</IISExpressSSLPort>
+    <IISExpressSSLPort>44381</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -138,8 +138,8 @@
     <Compile Include="Models\DanhMucSP.cs" />
     <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\HoaDon.cs" />
-    <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\MyPhamDB.cs" />
+    <Compile Include="Models\PhanQuyen.cs" />
     <Compile Include="Models\SanPham.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -282,8 +282,6 @@
     <Content Include="wwwroot\js\zxcvbn-async.min5152.js" />
     <Content Include="wwwroot\vendor\superfish\hoverIntent9632.js" />
     <Content Include="wwwroot\vendor\superfish\superfish.min9632.js" />
-    <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\assets\css\maps\style.css.map" />
     <Content Include="Areas\Admin\assets\fonts\.DS_Store" />
     <Content Include="Areas\Admin\assets\fonts\Roboto\.DS_Store" />
@@ -349,22 +347,24 @@
     <Content Include="Areas\Admin\assets\vendors\mdi\fonts\materialdesignicons-webfont.ttf" />
     <Content Include="Areas\Admin\assets\vendors\mdi\fonts\materialdesignicons-webfont.woff" />
     <Content Include="Areas\Admin\assets\vendors\mdi\fonts\materialdesignicons-webfont.woff2" />
+    <Content Include="Areas\Admin\Views\Home\CapNhatDanhMuc.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\CapNhatSanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\CapNhatTaiKhoan.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\CauHinhQuyen.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\ChiTietSanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\DangNhap.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\QuanLySanPham.cshtml" />
     <Content Include="Areas\Admin\Views\Home\QuanLyDanhMuc.cshtml" />
     <Content Include="Areas\Admin\Views\Home\QuanLyHoaDon.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\QuanLyTaiKhoan.cshtml" />
     <Content Include="Areas\Admin\Views\Home\QuanLyPhanQuyen.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\CapNhatSanPham.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\ThemSanPham.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\ChiTietSanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\QuanLySanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\QuanLyTaiKhoan.cshtml" />
     <Content Include="Areas\Admin\Views\Home\ThemDanhMuc.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\CapNhatDanhMuc.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\ThemTaiKhoan.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\CapNhatTaiKhoan.cshtml" />
     <Content Include="Areas\Admin\Views\Home\ThemPhanQuyen.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\CauHinhQuyen.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\DangNhap.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\ThemSanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\ThemTaiKhoan.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -383,28 +383,28 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\DangKy.cshtml" />
+    <Content Include="Views\Home\DangNhap.cshtml" />
+    <Content Include="Views\Home\GioHang.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\QuenMatKhau.cshtml" />
+    <Content Include="Views\Home\SanPham.cshtml" />
+    <Content Include="Views\Home\ThongTinTaiKhoan.cshtml" />
+    <Content Include="Views\Home\XemSanPhamTheoDanhMuc.cshtml" />
+    <Content Include="Views\Home\_Nav.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="wwwroot\css\icons\fl-icons.eot" />
     <Content Include="wwwroot\css\icons\fl-icons.ttf" />
     <Content Include="wwwroot\css\icons\fl-icons.woff" />
     <Content Include="wwwroot\css\icons\fl-icons.woff2" />
     <Content Include="wwwroot\fonts\dashicons7d4b.eot" />
     <Content Include="wwwroot\fonts\dashicons7d4b.ttf" />
-    <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\DangKy.cshtml" />
-    <Content Include="Views\Home\QuenMatKhau.cshtml" />
-    <Content Include="Views\Home\ThongTinTaiKhoan.cshtml" />
-    <Content Include="Views\Home\XemSanPhamTheoDanhMuc.cshtml" />
-    <Content Include="Views\Home\SanPham.cshtml" />
-    <Content Include="Views\Home\GioHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -435,9 +435,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>59366</DevelopmentServerPort>
+          <DevelopmentServerPort>51333</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44306/</IISUrl>
+          <IISUrl>https://localhost:44381/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

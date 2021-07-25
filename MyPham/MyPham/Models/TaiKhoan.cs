@@ -12,7 +12,7 @@ namespace MyPham.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TaiKhoan()
         {
-            KhachHangs = new HashSet<KhachHang>();
+            GioHang = new HashSet<GioHang>();
         }
 
         [Key]
@@ -28,9 +28,28 @@ namespace MyPham.Models
 
         [Required]
         [StringLength(50)]
-        public string ChucNang { get; set; }
+        public string LoaiTaiKhoan { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string HoTen { get; set; }
+
+        [Column(TypeName = "ntext")]
+        public string DiaChi { get; set; }
+
+        [StringLength(10)]
+        public string SoDienThoai { get; set; }
+
+        [StringLength(50)]
+        public string Anh { get; set; }
+
+        public bool TinhTrang { get; set; }
+
+        public int MaQuyen { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KhachHang> KhachHangs { get; set; }
+        public virtual ICollection<GioHang> GioHang { get; set; }
+
+        public virtual PhanQuyen PhanQuyen { get; set; }
     }
 }

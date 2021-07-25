@@ -791,7 +791,14 @@ a.devvn_buy_now_style {
 	width: 30px;
 	height: 50px
 }
-
+.flickity-prev-next-button.next svg {
+	border-radius: 5px;
+	background: gray;
+	fill: #fff;
+	color: #fff;
+	width: 30px;
+	height: 50px
+}
 .cham-soc-da-mat .tieu-de-row h2 a {
 	color: #f93!important
 }
