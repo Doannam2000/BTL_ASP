@@ -19,22 +19,21 @@ namespace MyPham.Controllers
             SpDuongDa = db.SanPhams.Where(h => h.MaDM == 1).OrderByDescending(h => h.GiamGia).Take(8).ToList();
             List<SanPham> SpTrangDiem = new List<SanPham>();
             SpTrangDiem = db.SanPhams.Where(h => h.MaDM == 2).OrderByDescending(h => h.GiamGia).Take(8).ToList();
+            List<DanhMucSP> danhmucsp = new List<DanhMucSP>();
+            danhmucsp = db.DanhMucSPs.ToList();
+            ViewBag.danhmuc = danhmucsp;
             ViewBag.TrangDiem = SpTrangDiem;
             ViewBag.Son = SpSon;
             ViewBag.DuongDa = SpDuongDa;
 
             return View();
         }
-        public ActionResult Login()
+        public PartialViewResult _Nav()
         {
-            ViewBag.Message = "Trang đăng nhập.";
-            return View();
+            var danhmuc = db.DanhMucSPs.Select(d => d);
+            return PartialView(danhmuc);
         }
-        public ActionResult DangKy()
-        {
-            ViewBag.Message = "Your application description page.";
-            return View();
-        }
+        
         public ActionResult QuenMatKhau()
         {
             ViewBag.Message = "Your application description page.";
@@ -99,12 +98,67 @@ namespace MyPham.Controllers
                 sanpham = db.SanPhams.Where(s => s.MaDM.ToString().Equals(id)).Select(s => s).ToList();
 
             }
+            int madm = int.Parse(id);
+            List<DanhMucSP> s1 = new List<DanhMucSP>();
+            s1 = db.DanhMucSPs.Where(h => h.MaDM == madm).ToList();
+            ViewBag.TenDM = s1[0].TenDM;
+
             return View(sanpham);
         }
 
         public ActionResult GioHang()
         {
             return View();
+        }
+        
+        public ActionResult DangNhap()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DangNhap(string email, string matkhau)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = db.TaiKhoans.Where(u => u.Email.Equals(email) && u.MatKhau.Equals(matkhau)).ToList();
+                if (user.Count() > 0)
+                {
+                    //add session
+                    Session["Email"] = user.FirstOrDefault().Email;
+                    Session["idUser"] = user.FirstOrDefault().MaTK;
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.error = "Đăng nhập không thành công!";
+                }
+            }
+            return View();
+        }
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("DangNhap");
+        }
+
+        [HttpGet]
+        public ActionResult DangKy()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DangKy([Bind(Include = "MaTK,Email,MatKhau,ChucNang")] TaiKhoan taikhoan)
+        {
+            if (ModelState.IsValid)
+            {
+                db.TaiKhoans.Add(taikhoan);
+                db.SaveChanges();
+                return RedirectToAction("DangNhap");
+            }
+            return View(taikhoan);
         }
     }
 }

@@ -491,22 +491,42 @@
 
 
                                                     <div class="flex-col hide-for-medium flex-left">
-                                                        <ul class="header-nav header-nav-main nav nav-left  nav-uppercase">
-                                                            <li class="cart-item has-icon has-dropdown">
-                                                                <a href="@Url.Action("ThongTinTaiKhoan","Home")" title="Giỏ hàng" class="header-cart-link is-small">
-                                                                    <span class="header-cart-title">Nam Đoàn</span>
-                                                                    <span class="image-icon header-cart-icon" data-icon-label="0">
-                                                                        <img class="cart-img-icon" alt="Đăng nhập" src="~/wwwroot/images/img/user.png" />
-                                                                    </span>
-                                                                </a>
-                                                                <ul class="nav-dropdown nav-dropdown-default">
-                                                                    <div class="widget_shopping_cart_content">
-                                                                        <div><a href="@Url.Action("ThongTinTaiKhoan","Home")" class="dropdown-item" title="Thông tin tài khoản">Thông tin tài khoản</a><br></div>
-                                                                        <div><a href="@Url.Action("Login","Home")" class="dropdown-item" title="Đăng xuất">Đăng xuất</a></div>
-                                                                    </div>
-                                                                </ul>
-                                                            </li>
-                                                        </ul>
+                                                        @if (Session["Email"] != null)
+                                                        {
+                                                            <ul class="header-nav header-nav-main nav nav-left  nav-uppercase">
+                                                                <li class="cart-item has-icon has-dropdown">
+                                                                    <a href="@Url.Action("ThongTinTaiKhoan","Home")" title="Giỏ hàng" class="header-cart-link is-small">
+                                                                        <span class="header-cart-title">@Session["Email"]</span>
+                                                                        <span class="image-icon header-cart-icon" data-icon-label="0">
+                                                                            <img class="cart-img-icon" alt="Đăng nhập" src="~/wwwroot/images/img/user.png" />
+                                                                        </span>
+                                                                    </a>
+                                                                    <ul class="nav-dropdown nav-dropdown-default">
+                                                                        <div class="widget_shopping_cart_content">
+                                                                            <div><a href="@Url.Action("ThongTinTaiKhoan","Home")" class="dropdown-item" title="Thông tin tài khoản">Thông tin tài khoản</a><br></div>
+                                                                            <div><a href="@Url.Action("Logout","Home")" class="dropdown-item" title="Đăng xuất">Đăng xuất</a>
+                                                                                @*@Html.ActionLink("Logout", "Logout", "Home", htmlAttributes: new { @style = "font-size:small;color:black" })*@
+                                                                            </div>
+                                                                        </div>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                        }
+                                                        else
+                                                        {
+                                                            <ul class="nav navbar-nav navbar-right">
+                                                                <li class="nav-item">
+                                                                    <a class="navbar-link" href="@Url.Action("DangKy","Home")">
+                                                                        <span class="glyphicon glyphicon-user"></span> Đăng ký
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="navbar-link" href="@Url.Action("DangNhap","Home")">
+                                                                        <span class="glyphicon glyphicon-log-in"></span> Đăng nhập
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        }
                                                     </div>
 
 
@@ -584,23 +604,7 @@
                 <div id="wide-nav" class="header-bottom wide-nav flex-has-center hide-for-medium">
                     <div class="flex-row container">
 
-                        <div class="flex-col hide-for-medium flex-left">
-                            <ul class="nav header-nav header-bottom-nav nav-left  nav-uppercase">
-                                <div id="mega-menu-wrap" class="ot-vm-click">
-                                    <div id="mega-menu-title">
-                                        <i class="icon-menu"></i> Danh mục sản phẩm
-                                    </div>
-                                    <ul id="mega_menu" class="sf-menu sf-vertical">
-
-                                        <li id="menu-item-12690" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-12690"><a href="@Url.Action("XemSanPhamTheoDanhMuc", "Home", new{ id = 1})">Mỹ phẩm dưỡng da</a></li>
-                                        <li id="menu-item-12691" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-12691"><a href="@Url.Action("XemSanPhamTheoDanhMuc", "Home", new{ id = 1})">Mỹ phẩm trang điểm</a></li>
-                                        <li id="menu-item-12692" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-12692"><a href="@Url.Action("XemSanPhamTheoDanhMuc", "Home", new{ id = 1})">Mỹ phẩm làm sạch</a></li>
-                                        <li id="menu-item-12693" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-12693"><a href="@Url.Action("XemSanPhamTheoDanhMuc", "Home", new{ id = 1})">Mỹ phẩm son môi</a></li>
-                                        <li id="menu-item-12695" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-12695"><a href="@Url.Action("XemSanPhamTheoDanhMuc", "Home", new{ id = 1})">Mỹ phẩm tóc</a></li>
-                                    </ul>
-                                </div>
-                            </ul>
-                        </div>
+                        @{ Html.RenderAction("_Nav", "Home"); }
 
                         <div class="flex-col hide-for-medium flex-center">
                             <ul class="nav header-nav header-bottom-nav nav-center  nav-uppercase">

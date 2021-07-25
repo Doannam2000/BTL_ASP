@@ -24,6 +24,7 @@ namespace MyPham.Models
 
         [Required]
         [StringLength(50)]
+        [DataType(DataType.Password)]
         public string MatKhau { get; set; }
 
         [Required]

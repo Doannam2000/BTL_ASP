@@ -163,7 +163,6 @@ D:\HocKy6.5\BTL\BTL\BTL_ASP\MyPham\MyPham\bin\roslyn\vbc.exe.config
 D:\HocKy6.5\BTL\BTL\BTL_ASP\MyPham\MyPham\bin\roslyn\vbc.rsp
 D:\HocKy6.5\BTL\BTL\BTL_ASP\MyPham\MyPham\bin\roslyn\VBCSCompiler.exe
 D:\HocKy6.5\BTL\BTL\BTL_ASP\MyPham\MyPham\bin\roslyn\VBCSCompiler.exe.config
-D:\HocKy6.5\BTL\BTL\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csprojAssemblyReference.cache
 E:\BTL_ASP\BTL_ASP\MyPham\MyPham\bin\MyPham.dll.config
 E:\BTL_ASP\BTL_ASP\MyPham\MyPham\bin\MyPham.dll
 E:\BTL_ASP\BTL_ASP\MyPham\MyPham\bin\MyPham.pdb
