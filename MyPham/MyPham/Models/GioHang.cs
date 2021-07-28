@@ -13,20 +13,20 @@ namespace MyPham.Models
         public GioHang()
         {
             Chi_Tiet_Gio_Hang = new HashSet<Chi_Tiet_Gio_Hang>();
-            HoaDons = new HashSet<HoaDon>();
+            HoaDon = new HashSet<HoaDon>();
         }
 
         [Key]
         public int MaGioHang { get; set; }
 
-        public int MaKH { get; set; }
+        public int MaTK { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Chi_Tiet_Gio_Hang> Chi_Tiet_Gio_Hang { get; set; }
 
-        public virtual KhachHang KhachHang { get; set; }
+        public virtual TaiKhoan TaiKhoan { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HoaDon> HoaDons { get; set; }
+        public virtual ICollection<HoaDon> HoaDon { get; set; }
     }
 }

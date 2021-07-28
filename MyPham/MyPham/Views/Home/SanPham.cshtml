@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "SanPham";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
     List<MyPham.Models.SanPham> abc = ViewBag.sp;
 
 }
@@ -11,7 +10,7 @@
     <div class="page-title-inner flex-row medium-flex-wrap container">
         <div class="flex-col flex-grow medium-text-center">
             <div class="is-small">
-                <nav class="woocommerce-breadcrumb breadcrumbs uppercase"><a href="@Url.Action("Index","Home")">Trang chủ</a> <span class="divider">&#47;</span> <a href="@Url.Action("XemSanPhamTheoDanhMuc", "Home", new{ id = 1})"></a></nav>
+                <nav class="woocommerce-breadcrumb breadcrumbs uppercase"><a href="@Url.Action("Index","Home")">Trang chủ</a> <span class="divider">&#47;</span> <a href="@Url.Action("XemSanPhamTheoDanhMuc", "Home", new{ id = ViewBag.ma })">@ViewBag.TenDM</a></nav>
             </div>
         </div>
 
@@ -150,7 +149,7 @@
                             <span class="sku_wrapper">Mã: <span class="sku">@Html.DisplayFor(Model => Model.MaSP)</span></span>
 
 
-                            <span class="posted_in">Danh mục: <a href="@Url.Action("XemSanPhamTheoDanhMuc", "Home", new{ id = 1})" rel="tag">Mỹ phẩm dưỡng da</a></span>
+                            <span class="posted_in">Danh mục: <a href="@Url.Action("XemSanPhamTheoDanhMuc", "Home", new{ id = ViewBag.ma})" rel="tag">@ViewBag.TenDM</a></span>
 
 
                         </div>
@@ -198,7 +197,7 @@
 
             <div class="product-footer">
                 <div class="row">
-                    <div class="large-9">
+                    <div class="large-12">
                         <div class="container">
                             <div class="product-page-accordian">
                                 <div class="san-pham-tab">
@@ -250,71 +249,76 @@
 
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
 
                             <div class="related related-products-wrapper product-section">
 
-                                <h3 class="product-section-title container-width product-section-title-related pt-half pb-half uppercase">
+                                <h3 class="product-section-title product-section-title-related pt-half pb-half uppercase">
                                     Sản phẩm tương tự
                                 </h3>
 
 
 
 
-                                <div class="row equalize-box large-columns-4 medium-columns-3 small-columns-2 row-small slider row-slider slider-nav-reveal slider-nav-push" data-flickity-options='{"imagesLoaded": true, "groupCells": "100%", "dragThreshold" : 5, "cellAlign": "left","wrapAround": true,"prevNextButtons": true,"percentPosition": true,"pageDots": false, "rightToLeft": false, "autoPlay" : false}'>
+                                <div style="margin-left:0 !important" class="row equalize-box large-columns-4 medium-columns-3 small-columns-2 row-small slider row-slider slider-nav-reveal slider-nav-push" data-flickity-options='{"imagesLoaded": true, "groupCells": "100%", "dragThreshold" : 5, "cellAlign": "left","wrapAround": true,"prevNextButtons": true,"percentPosition": true,"pageDots": false, "rightToLeft": false, "autoPlay" : false}'>
 
 
 
 
-                                    <div class="product-small col has-hover product type-product post-1441 status-publish instock product_cat-bo-my-pham-tri-nam-va-tan-nhang has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
-                                        @*@foreach (var item in abc)
+                                    @foreach (var item in abc)
                                     {
+
 
                                         string ImagePath1 = "~/wwwroot/images/SanPham/" + item.AnhSP;
                                         double giagiam1 = (Convert.ToDouble(@item.Gia) - Convert.ToDouble(@item.Gia) * (@item.GiamGia.HasValue ? @item.GiamGia.Value : 0.0));
                                         double giam1 = (item.GiamGia.HasValue ? item.GiamGia.Value : 0) * 100;
-                                        <div class="col">
-                                            <div class="col-inner">
+                                        <div class="product-small col has-hover product type-product post-1441 status-publish instock product_cat-bo-my-pham-tri-nam-va-tan-nhang has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
 
-                                                <div class="badge-container absolute left top z-1">
-                                                    <div class="callout badge badge-circle">
-                                                        <div class="badge-inner secondary on-sale"><span class="onsale">- @giam1 %</span></div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-small box has-hover box-normal box-text-bottom">
-                                                    <div class="box-image">
-                                                        <div class="">
-                                                            <a href="chi-tiet-san-pham.html">
-                                                                <img width="247" height="247" src="@Url.Content(ImagePath1)" class="lazy-load attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="" sizes="(max-width: 247px) 100vw, 247px" />
-                                                            </a>
-                                                        </div>
-                                                        <div class="image-tools top right show-on-hover">
-                                                        </div>
-                                                        <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
+                                            <div class="col">
+                                                <div class="col-inner">
+
+                                                    <div class="badge-container absolute left top z-1">
+                                                        <div class="callout badge badge-circle">
+                                                            <div class="badge-inner secondary on-sale"><span class="onsale">- @giam1 %</span></div>
                                                         </div>
                                                     </div>
-
-                                                    <div class="box-text text-left">
-                                                        <div class="title-wrapper">
-                                                            <p class="name product-title woocommerce-loop-product__title"><a href="chi-tiet-san-pham.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">@item.TenSP</a></p>
+                                                    <div class="product-small box has-hover box-normal box-text-bottom">
+                                                        <div class="box-image">
+                                                            <div class="">
+                                                                <a href="chi-tiet-san-pham.html">
+                                                                    <img width="247" height="247" src="@Url.Content(ImagePath1)" class="lazy-load attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="" sizes="(max-width: 247px) 100vw, 247px" />
+                                                                </a>
+                                                            </div>
+                                                            <div class="image-tools top right show-on-hover">
+                                                            </div>
+                                                            <div class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
+                                                            </div>
                                                         </div>
-                                                        <div class="price-wrapper">
-                                                            <span class="price">
-                                                                <del>
-                                                                    <span class="woocommerce-Price-amount amount">
-                                                                        <bdi>@item.Gia<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi>
-                                                                    </span>
-                                                                </del> <ins><span class="woocommerce-Price-amount amount"><bdi>@giagiam1<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></ins>
-                                                            </span>
+
+                                                        <div class="box-text text-left">
+                                                            <div class="title-wrapper">
+                                                                <p class="name product-title woocommerce-loop-product__title"><a href="chi-tiet-san-pham.html" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">@item.TenSP</a></p>
+                                                            </div>
+                                                            <div class="price-wrapper">
+                                                                <span class="price">
+                                                                    <del>
+                                                                        <span class="woocommerce-Price-amount amount">
+                                                                            <bdi>@item.Gia<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi>
+                                                                        </span>
+                                                                    </del> <ins><span class="woocommerce-Price-amount amount"><bdi>@giagiam1<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></ins>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
-                                    }*@
-                                    </div>
+
+
+                                    }
 
 
 

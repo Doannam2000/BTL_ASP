@@ -21906,4 +21906,14 @@ dl li {
   outline: 1px solid slategrey;
 }
 
+.form-control {
+  border: 1px solid #000 !important;
+  color: #000 !important;
+}
+
+.input-search {
+  border: none !important;
+  
+}
+
 /*# sourceMappingURL=maps/style.css.map */
