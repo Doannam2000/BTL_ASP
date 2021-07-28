@@ -13,17 +13,17 @@ namespace MyPham.Models
         }
 
         public virtual DbSet<Chi_Tiet_Gio_Hang> Chi_Tiet_Gio_Hang { get; set; }
-        public virtual DbSet<DanhMucSP> DanhMucSPs { get; set; }
-        public virtual DbSet<GioHang> GioHangs { get; set; }
-        public virtual DbSet<HoaDon> HoaDons { get; set; }
-        public virtual DbSet<KhachHang> KhachHangs { get; set; }
-        public virtual DbSet<SanPham> SanPhams { get; set; }
-        public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
+        public virtual DbSet<DanhMucSP> DanhMucSP { get; set; }
+        public virtual DbSet<GioHang> GioHang { get; set; }
+        public virtual DbSet<HoaDon> HoaDon { get; set; }
+        public virtual DbSet<PhanQuyen> PhanQuyen { get; set; }
+        public virtual DbSet<SanPham> SanPham { get; set; }
+        public virtual DbSet<TaiKhoan> TaiKhoan { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<DanhMucSP>()
-                .HasMany(e => e.SanPhams)
+                .HasMany(e => e.SanPham)
                 .WithRequired(e => e.DanhMucSP)
                 .WillCascadeOnDelete(false);
 
@@ -33,7 +33,7 @@ namespace MyPham.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<GioHang>()
-                .HasMany(e => e.HoaDons)
+                .HasMany(e => e.HoaDon)
                 .WithRequired(e => e.GioHang)
                 .WillCascadeOnDelete(false);
 
@@ -41,13 +41,9 @@ namespace MyPham.Models
                 .Property(e => e.TongTien)
                 .HasPrecision(19, 4);
 
-            modelBuilder.Entity<KhachHang>()
-                .Property(e => e.SoDienThoai)
-                .HasPrecision(10, 0);
-
-            modelBuilder.Entity<KhachHang>()
-                .HasMany(e => e.GioHangs)
-                .WithRequired(e => e.KhachHang)
+            modelBuilder.Entity<PhanQuyen>()
+                .HasMany(e => e.TaiKhoan)
+                .WithRequired(e => e.PhanQuyen)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SanPham>()
@@ -60,7 +56,11 @@ namespace MyPham.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TaiKhoan>()
-                .HasMany(e => e.KhachHangs)
+                .Property(e => e.SoDienThoai)
+                .IsFixedLength();
+
+            modelBuilder.Entity<TaiKhoan>()
+                .HasMany(e => e.GioHang)
                 .WithRequired(e => e.TaiKhoan)
                 .WillCascadeOnDelete(false);
         }

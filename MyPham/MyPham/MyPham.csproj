@@ -8,7 +8,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{651CC48C-7CE8-48EF-BA1E-3FEE072F2B81}</ProjectGuid>
+    <ProjectGuid>{43F55090-52D2-4D2E-98C2-B5B98129C258}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -18,7 +18,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44306</IISExpressSSLPort>
+    <IISExpressSSLPort>44381</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -45,15 +45,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BotDetect, Version=4.4.2.0, Culture=neutral, PublicKeyToken=74616036388b765f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Captcha.4.4.2\lib\net35\BotDetect.dll</HintPath>
+    </Reference>
+    <Reference Include="BotDetect.Web.Mvc, Version=4.4.2.0, Culture=neutral, PublicKeyToken=74616036388b765f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Captcha.4.4.2\lib\net35\BotDetect.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -131,6 +140,8 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TaiKhoanController.cs" />
+    <Compile Include="Controllers\tkController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -138,8 +149,8 @@
     <Compile Include="Models\DanhMucSP.cs" />
     <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\HoaDon.cs" />
-    <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\MyPhamDB.cs" />
+    <Compile Include="Models\PhanQuyen.cs" />
     <Compile Include="Models\SanPham.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -282,8 +293,6 @@
     <Content Include="wwwroot\js\zxcvbn-async.min5152.js" />
     <Content Include="wwwroot\vendor\superfish\hoverIntent9632.js" />
     <Content Include="wwwroot\vendor\superfish\superfish.min9632.js" />
-    <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\assets\css\maps\style.css.map" />
     <Content Include="Areas\Admin\assets\fonts\.DS_Store" />
     <Content Include="Areas\Admin\assets\fonts\Roboto\.DS_Store" />
@@ -349,21 +358,24 @@
     <Content Include="Areas\Admin\assets\vendors\mdi\fonts\materialdesignicons-webfont.ttf" />
     <Content Include="Areas\Admin\assets\vendors\mdi\fonts\materialdesignicons-webfont.woff" />
     <Content Include="Areas\Admin\assets\vendors\mdi\fonts\materialdesignicons-webfont.woff2" />
+    <Content Include="Areas\Admin\Views\Home\CapNhatDanhMuc.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\CapNhatSanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\CapNhatTaiKhoan.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\CauHinhQuyen.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\ChiTietSanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\DangNhap.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\QuanLySanPham.cshtml" />
     <Content Include="Areas\Admin\Views\Home\QuanLyDanhMuc.cshtml" />
     <Content Include="Areas\Admin\Views\Home\QuanLyHoaDon.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\QuanLyTaiKhoan.cshtml" />
     <Content Include="Areas\Admin\Views\Home\QuanLyPhanQuyen.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\CapNhatSanPham.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\ThemSanPham.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\ChiTietSanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\QuanLySanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\QuanLyTaiKhoan.cshtml" />
     <Content Include="Areas\Admin\Views\Home\ThemDanhMuc.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\CapNhatDanhMuc.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\ThemTaiKhoan.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\CapNhatTaiKhoan.cshtml" />
     <Content Include="Areas\Admin\Views\Home\ThemPhanQuyen.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\CauHinhQuyen.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\ThemSanPham.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\ThemTaiKhoan.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\web.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -382,28 +394,32 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\TaiKhoan\DangNhap.cshtml" />
+    <Content Include="Views\Home\GioHang.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\SanPham.cshtml" />
+    <Content Include="Views\TaiKhoan\ThongTinTaiKhoan.cshtml" />
+    <Content Include="Views\Home\XemSanPhamTheoDanhMuc.cshtml" />
+    <Content Include="Views\Home\_Nav.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="wwwroot\css\icons\fl-icons.eot" />
     <Content Include="wwwroot\css\icons\fl-icons.ttf" />
     <Content Include="wwwroot\css\icons\fl-icons.woff" />
     <Content Include="wwwroot\css\icons\fl-icons.woff2" />
     <Content Include="wwwroot\fonts\dashicons7d4b.eot" />
     <Content Include="wwwroot\fonts\dashicons7d4b.ttf" />
-    <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\DangKy.cshtml" />
-    <Content Include="Views\Home\QuenMatKhau.cshtml" />
-    <Content Include="Views\Home\ThongTinTaiKhoan.cshtml" />
-    <Content Include="Views\Home\XemSanPhamTheoDanhMuc.cshtml" />
-    <Content Include="Views\Home\SanPham.cshtml" />
-    <Content Include="Views\Home\GioHang.cshtml" />
+    <Content Include="Views\TaiKhoan\DangKy.cshtml" />
+    <Content Include="Views\tk\Create.cshtml" />
+    <Content Include="Views\tk\Delete.cshtml" />
+    <Content Include="Views\tk\Details.cshtml" />
+    <Content Include="Views\tk\Edit.cshtml" />
+    <Content Include="Views\tk\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -434,9 +450,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>59366</DevelopmentServerPort>
+          <DevelopmentServerPort>51333</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44306/</IISUrl>
+          <IISUrl>https://localhost:44381/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -451,7 +467,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
