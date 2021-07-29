@@ -119,21 +119,21 @@ namespace MyPham.Controllers
             return View(taiKhoan);
         }
 
-        // POST: tk/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SuaTaiKhoan([Bind(Include = "MaTK,Email,MatKhau,LoaiTaiKhoan,HoTen,DiaChi,SoDienThoai,TinhTrang,MaQuyen")] TaiKhoan taiKhoan , HttpPostedFileBase Anh)
+        public ActionResult SuaTaiKhoan([Bind(Include = "MaTK,Email,MatKhau,LoaiTaiKhoan,HoTen,DiaChi,SoDienThoai,Anh,TinhTrang,MaQuyen")] TaiKhoan taiKhoan )
         {
-            if(Anh != null && Anh.ContentLength > 0)
-            {
-                //taiKhoan.Anh = new (byte[Anh.ContentLength]);
-                //string fileName = 
-            } 
             if (ModelState.IsValid)
             {
-                
+                taiKhoan.Anh = "";
+                var f = Request.Files["ImageFile"];
+                if (f != null && f.ContentLength > 0)
+                {
+                    string FileName = System.IO.Path.GetFileName(f.FileName);
+                    string UploadPath = Server.MapPath("~/wwwroot/images/user/" + FileName);
+                    f.SaveAs(UploadPath);
+                    taiKhoan.Anh = FileName;
+                }
                 db.Entry(taiKhoan).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("ThongTinTaiKhoan","TaiKhoan",new { id= taiKhoan.MaTK });

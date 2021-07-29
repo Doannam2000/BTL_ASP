@@ -171,6 +171,7 @@ D:\HocKy6.5\BTL\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csproj.CoreCompileInputs.
 D:\HocKy6.5\BTL\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csproj.CopyComplete
 D:\HocKy6.5\BTL\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.dll
 D:\HocKy6.5\BTL\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.pdb
+<<<<<<< HEAD
 E:\ASP.NET\Bài tập lớn\BTL_ASP\MyPham\MyPham\bin\MyPham.dll.config
 E:\ASP.NET\Bài tập lớn\BTL_ASP\MyPham\MyPham\bin\MyPham.dll
 E:\ASP.NET\Bài tập lớn\BTL_ASP\MyPham\MyPham\bin\MyPham.pdb
@@ -258,3 +259,6 @@ E:\ASP.NET\Bài tập lớn\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csproj.CoreCo
 E:\ASP.NET\Bài tập lớn\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csproj.CopyComplete
 E:\ASP.NET\Bài tập lớn\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.dll
 E:\ASP.NET\Bài tập lớn\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.pdb
+=======
+D:\HocKy6.5\BTL\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csprojAssemblyReference.cache
+>>>>>>> 37d039996922e577e9aa41237d02c38d4f3ce842
