@@ -171,3 +171,4 @@ D:\HocKy6.5\BTL\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csproj.CoreCompileInputs.
 D:\HocKy6.5\BTL\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csproj.CopyComplete
 D:\HocKy6.5\BTL\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.dll
 D:\HocKy6.5\BTL\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.pdb
+D:\HocKy6.5\BTL\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csprojAssemblyReference.cache

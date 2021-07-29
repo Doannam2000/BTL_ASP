@@ -500,8 +500,9 @@
                                                                         <span class="header-cart-title">@Session["Email"]</span>
                                                                         @if (Session["Anh"] != null)
                                                                         {
+                                                                            string img = "~/wwwroot/images/user/" + @Session["Anh"];
                                                                         <span class="image-icon header-cart-icon" data-icon-label="0">
-                                                                            <img class="cart-img-icon" alt="Đăng nhập" src="~/wwwroot/images/img/" + @Session["Anh"] />
+                                                                            <img class="cart-img-icon" alt="Đăng nhập" src="@Url.Content(img)" />
                                                                         </span>
                                                                             }
                                                                     </a>

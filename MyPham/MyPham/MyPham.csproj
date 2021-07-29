@@ -226,7 +226,7 @@
     <Content Include="wwwroot\images\icon_03.png" />
     <Content Include="wwwroot\images\img\shadow%402x.png" />
     <Content Include="wwwroot\images\img\underline.png" />
-    <Content Include="wwwroot\images\img\user.png" />
+    <Content Include="wwwroot\images\user\user.png" />
     <Content Include="wwwroot\images\SanPham\3-Concept-Eyes-Lip-Color-308-Pink-Jam-3CE1-510x509.jpg" />
     <Content Include="wwwroot\images\SanPham\B-sa-tm-happy-bath-han-quc-6-1.jpg" />
     <Content Include="wwwroot\images\SanPham\Bang-Mau-Mat-SIVANNA-COLORS-Luxury-Velvet-Eyesh-3-510x510.jpg" />
@@ -415,7 +415,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="wwwroot\images\user\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
