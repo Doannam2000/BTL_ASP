@@ -72,7 +72,6 @@ namespace MyPham.Controllers
                     user.Email = dangky.Email;
                     user.MatKhau = dangky.MatKhau;
                     user.HoTen = dangky.HoTen;
-                    user.LoaiTaiKhoan = "KhachHang";
                     user.DiaChi = dangky.DiaChi;
                     user.SoDienThoai = dangky.SoDienThoai;
                     user.TinhTrang = true;
@@ -129,8 +128,8 @@ namespace MyPham.Controllers
         {
             if(Anh != null && Anh.ContentLength > 0)
             {
-                taiKhoan.Anh = new (byte[Anh.ContentLength]);
-                string fileName = 
+                //taiKhoan.Anh = new (byte[Anh.ContentLength]);
+                //string fileName = 
             } 
             if (ModelState.IsValid)
             {

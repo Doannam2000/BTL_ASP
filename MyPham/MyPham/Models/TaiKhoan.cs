@@ -27,8 +27,6 @@
         [DataType(DataType.Password)]
         public string MatKhau { get; set; }
 
-        [StringLength(50)]
-        public string LoaiTaiKhoan { get; set; }
 
         [Required(ErrorMessage = "Bạn chưa nhập Họ tên")]
         [StringLength(50)]
