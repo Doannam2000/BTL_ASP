@@ -141,7 +141,6 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
-    <Compile Include="Controllers\tkController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -412,14 +411,11 @@
     <Content Include="wwwroot\fonts\dashicons7d4b.eot" />
     <Content Include="wwwroot\fonts\dashicons7d4b.ttf" />
     <Content Include="Views\TaiKhoan\DangKy.cshtml" />
-    <Content Include="Views\tk\Create.cshtml" />
-    <Content Include="Views\tk\Delete.cshtml" />
-    <Content Include="Views\tk\Details.cshtml" />
-    <Content Include="Views\tk\Edit.cshtml" />
-    <Content Include="Views\tk\Index.cshtml" />
+    <Content Include="Views\TaiKhoan\SuaTaiKhoan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="wwwroot\images\user\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

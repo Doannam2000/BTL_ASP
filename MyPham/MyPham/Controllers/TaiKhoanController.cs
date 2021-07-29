@@ -32,6 +32,7 @@ namespace MyPham.Controllers
                     //add session
                     Session["Email"] = user.FirstOrDefault().Email;
                     Session["idUser"] = user.FirstOrDefault().MaTK;
+                    Session["Anh"] = user.FirstOrDefault().Anh;
                     return RedirectToAction("Index","Home");
                 }
                 else
@@ -53,18 +54,6 @@ namespace MyPham.Controllers
             return View();
         }
 
-
-        //
-        //public ActionResult DangKy([Bind(Include = "MaTK,Email,MatKhau,LoaiTaiKhoan,HoTen,DiaChi,SoDienThoai,Anh,TinhTrang,MaQuyen")] TaiKhoan taikhoan)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.TaiKhoan.Add(taikhoan);
-        //        db.SaveChanges();
-        //        return RedirectToAction("DangNhap");
-        //    }
-        //    return View(taikhoan);
-        //}
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -108,6 +97,7 @@ namespace MyPham.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             TaiKhoan nguoidung = db.TaiKhoan.Find(id);
+            Session["Anh"] = nguoidung.Anh;
             if (nguoidung == null)
             {
                 return HttpNotFound();
@@ -135,13 +125,19 @@ namespace MyPham.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SuaTaiKhoan([Bind(Include = "MaTK,Email,MatKhau,LoaiTaiKhoan,HoTen,DiaChi,SoDienThoai,Anh,TinhTrang,MaQuyen")] TaiKhoan taiKhoan)
+        public ActionResult SuaTaiKhoan([Bind(Include = "MaTK,Email,MatKhau,LoaiTaiKhoan,HoTen,DiaChi,SoDienThoai,TinhTrang,MaQuyen")] TaiKhoan taiKhoan , HttpPostedFileBase Anh)
         {
+            if(Anh != null && Anh.ContentLength > 0)
+            {
+                taiKhoan.Anh = new (byte[Anh.ContentLength]);
+                string fileName = 
+            } 
             if (ModelState.IsValid)
             {
+                
                 db.Entry(taiKhoan).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ThongTinTaiKhoan","TaiKhoan",new { id= taiKhoan.MaTK });
             }
             ViewBag.MaQuyen = new SelectList(db.PhanQuyen, "MaQuyen", "TenQuyen", taiKhoan.MaQuyen);
             return View(taiKhoan);
