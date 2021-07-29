@@ -87,7 +87,7 @@ namespace MyPham.Controllers
                     user.DiaChi = dangky.DiaChi;
                     user.SoDienThoai = dangky.SoDienThoai;
                     user.TinhTrang = true;
-                    user.MaQuyen = 7;
+                    user.MaQuyen = 3;
                     db.TaiKhoan.Add(user);
                     db.SaveChanges();
                     return RedirectToAction("DangNhap");
