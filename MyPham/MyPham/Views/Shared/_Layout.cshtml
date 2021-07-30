@@ -293,7 +293,7 @@
         }
 
         body {
-            font-weight: 0
+            font-weight: 0;
         }
 
         body {
@@ -497,19 +497,28 @@
                                                             <ul class="header-nav header-nav-main nav nav-left  nav-uppercase">
                                                                 <li class="cart-item has-icon has-dropdown">
                                                                     <a href="@Url.Action("ThongTinTaiKhoan", "TaiKhoan", new { id = Session["idUser"] } )" title="Giỏ hàng" class="header-cart-link is-small">
-                                                                        <span class="header-cart-title">@Session["Email"]</span>
+                                                                        @if (Session["HoTen"] != null)
+                                                                        {
+                                                                            <span class="header-cart-title">@Session["HoTen"]</span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <span class="header-cart-title">@Session["Email"]</span>
+                                                                        }
+
                                                                         @if (Session["Anh"] != null)
                                                                         {
                                                                             string img = "~/wwwroot/images/user/" + @Session["Anh"];
-                                                                        <span class="image-icon header-cart-icon" data-icon-label="0">
-                                                                            <img class="cart-img-icon" alt="Đăng nhập" src="@Url.Content(img)" />
-                                                                        </span>
-                                                                            }
+                                                                            <span class="image-icon header-cart-icon" data-icon-label="0">
+                                                                                <img class="cart-img-icon rounded-pill" alt="Đăng nhập" src="@Url.Content(img)" />
+                                                                            </span>
+                                                                        }
                                                                     </a>
                                                                     <ul class="nav-dropdown nav-dropdown-default">
                                                                         <div class="widget_shopping_cart_content">
                                                                             <div><a href="@Url.Action("ThongTinTaiKhoan","TaiKhoan", new { id = Session["idUser"] } )" class="dropdown-item" title="Thông tin tài khoản">Thông tin tài khoản</a><br></div>
-                                                                            <div><a href="@Url.Action("DangXuat","TaiKhoan")" class="dropdown-item" title="Đăng xuất">Đăng xuất</a>
+                                                                            <div>
+                                                                                <a href="@Url.Action("DangXuat","TaiKhoan")" class="dropdown-item" title="Đăng xuất">Đăng xuất</a>
                                                                                 @*@Html.ActionLink("DangXuat", "DangXuat", "Home", htmlAttributes: new { @style = "font-size:small;color:black" })*@
                                                                             </div>
                                                                         </div>
@@ -550,20 +559,19 @@
                         <!-- Right Elements -->
                         <div class="flex-col hide-for-medium flex-right" style="padding: 0 15px 25px;">
                             <ul class="header-nav header-nav-main nav nav-right  nav-uppercase">
-                                <li class="cart-item has-icon">
+                                <li class="cart-item has-icon has-dropdown">
 
                                     <a href="@Url.Action("GioHang","Home")" title="Giỏ hàng" class="header-cart-link is-small">
-
-
-                                        <span class="header-cart-title">
-                                            Giỏ hàng
-                                        </span>
 
                                         <span class="image-icon header-cart-icon" data-icon-label="0">
                                             <img class="cart-img-icon" alt="Giỏ hàng" src="~/wwwroot/images/icon_01.png" />
                                         </span>
                                     </a>
-
+                                    <ul class="nav-dropdown nav-dropdown-default">
+                                        <div class="widget_shopping_cart_content">
+                                            Giỏ Hàng ở đây
+                                        </div>
+                                    </ul>
                                 </li>
                             </ul>
                         </div>
@@ -614,7 +622,7 @@
                         <div class="flex-col hide-for-medium flex-center">
                             <ul class="nav header-nav header-bottom-nav nav-center  nav-uppercase">
                                 <li id="menu-item-12688" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-12652 current_page_item menu-item-12688 active menu-item-design-default"><a href="@Url.Action("Index","Home")" aria-current="page" class="nav-top-link">Trang chủ</a></li>
-                                <li id="menu-item-12689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12689 menu-item-design-default"><a href="gio-hang.html" class="nav-top-link">Thanh toán</a></li>
+                                <li id="menu-item-12689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12689 menu-item-design-default"><a href="@Url.Action("GioHang","Home")" class="nav-top-link">Thanh toán</a></li>
 
                             </ul>
                         </div>
@@ -637,334 +645,334 @@
         <main id="main" class="">
             @RenderBody()
         </main>
-            <footer id="footer" class="footer-wrapper">
+        <footer id="footer" class="footer-wrapper">
 
-                <section class="section section-footer-icon" id="section_414966629">
-                    <div class="bg section-bg fill bg-fill  bg-loaded">
-
-
-
-
-
-                    </div>
-
-                    <div class="section-content relative">
-
-
-                        <div class="row row-small" id="row-1018405275">
-
-
-                            <div id="col-219708935" class="col div-no-padding medium-3 small-6 large-3">
-                                <div class="col-inner">
+            <section class="section section-footer-icon" id="section_414966629">
+                <div class="bg section-bg fill bg-fill  bg-loaded">
 
 
 
 
-                                    <div class="icon-box featured-box icon-box-left text-left">
-                                        <div class="icon-box-img" style="width: 60px">
-                                            <div class="icon">
-                                                <div class="icon-inner">
-                                                    <img width="96" height="96" src="~/wwwroot/images/icons8-question-mark-96-5.png" class="attachment-medium size-medium" alt="" loading="lazy" />
-                                                </div>
+
+                </div>
+
+                <div class="section-content relative">
+
+
+                    <div class="row row-small" id="row-1018405275">
+
+
+                        <div id="col-219708935" class="col div-no-padding medium-3 small-6 large-3">
+                            <div class="col-inner">
+
+
+
+
+                                <div class="icon-box featured-box icon-box-left text-left">
+                                    <div class="icon-box-img" style="width: 60px">
+                                        <div class="icon">
+                                            <div class="icon-inner">
+                                                <img width="96" height="96" src="~/wwwroot/images/icons8-question-mark-96-5.png" class="attachment-medium size-medium" alt="" loading="lazy" />
                                             </div>
                                         </div>
-                                        <div class="icon-box-text last-reset">
-
-                                            <h3>HỎI ĐÁP</h3>
-                                            Mua Hàng Online
-
-                                        </div>
                                     </div>
+                                    <div class="icon-box-text last-reset">
 
+                                        <h3>HỎI ĐÁP</h3>
+                                        Mua Hàng Online
 
-
-                                </div>
-                            </div>
-
-
-
-                            <div id="col-392860383" class="col div-no-padding medium-3 small-6 large-3">
-                                <div class="col-inner">
-
-
-
-
-                                    <div class="icon-box featured-box icon-box-left text-left">
-                                        <div class="icon-box-img" style="width: 60px">
-                                            <div class="icon">
-                                                <div class="icon-inner">
-                                                    <img width="100" height="100" src="~/wwwroot/images/icons8-synchronize-100.png" class="attachment-medium size-medium" alt="" loading="lazy" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="icon-box-text last-reset">
-
-                                            <h3>ĐỔI TRẢ HÀNG</h3>
-                                            Đổi trả trong 30 ngày
-
-                                        </div>
                                     </div>
-
-
-
                                 </div>
+
+
+
                             </div>
-
-
-
-                            <div id="col-896859309" class="col div-no-padding medium-3 small-6 large-3">
-                                <div class="col-inner">
-
-
-
-
-                                    <div class="icon-box featured-box icon-box-left text-left">
-                                        <div class="icon-box-img" style="width: 60px">
-                                            <div class="icon">
-                                                <div class="icon-inner">
-                                                    <img width="100" height="100" src="~/wwwroot/images/icons8-in-transit-filled-100-1.png" class="attachment-medium size-medium" alt="" loading="lazy" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="icon-box-text last-reset">
-
-                                            <h3>GH NHANH CHÓNG</h3>
-                                            Vận Chuyển Toàn Quốc
-
-                                        </div>
-                                    </div>
-
-
-
-                                </div>
-                            </div>
-
-
-
-                            <div id="col-94110211" class="col div-no-padding medium-3 small-6 large-3">
-                                <div class="col-inner">
-
-
-
-
-                                    <div class="icon-box featured-box icon-box-left text-left">
-                                        <div class="icon-box-img" style="width: 60px">
-                                            <div class="icon">
-                                                <div class="icon-inner">
-                                                    <img width="100" height="100" src="~/wwwroot/images/icons8-handshake-filled-100.png" class="attachment-medium size-medium" alt="" loading="lazy" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="icon-box-text last-reset">
-
-                                            <h3>HỢP TÁC ĐẠI LÝ</h3>
-                                        </div>
-                                    </div>
-
-
-
-                                </div>
-                            </div>
-
-
-
                         </div>
 
-                    </div>
 
 
-                    <style>
-                        #section_414966629 {
-                            padding-top: 30px;
-                            padding-bottom: 30px;
-                            background-color: rgb(247, 247, 247);
-                        }
-                    </style>
-                </section>
-
-                <section class="section footer-section dark" id="section_1941620001">
-                    <div class="bg section-bg fill bg-fill  bg-loaded">
+                        <div id="col-392860383" class="col div-no-padding medium-3 small-6 large-3">
+                            <div class="col-inner">
 
 
 
 
-
-                    </div>
-
-                    <div class="section-content relative">
-
-
-                        <div class="row row1" id="row-1098278413">
-
-
-                            <div id="col-227801162" class="col medium-6 small-12 large-6">
-                                <div class="col-inner">
-
-
-                                    <div class="thong-tin">
-                                        <h4>FANPAGE FACEBOOK</h4>
-                                        <ul>
-                                            <li><strong>Hotline: 0868.944.268</strong></li>
-                                        </ul>
-                                        <ul class="textaddressfooter">
-                                            <li><i class="fa fa-clock-o" aria-hidden="true"></i>Thời gian phục vụ: <span style="font-weight: bold; font-style: italic;">8h-22h</span></li>
-                                            <li><i class="fa fa-home" aria-hidden="true"></i>Địa chỉ HN: Khu đô thị Xa La, Hà Đông, Hà Nội, Việt Nam</li>
-                                            <li><i class="fa fa-home" aria-hidden="true"></i>Website:lamdepz.com</li>
-                                            <li><i class="fa fa-envelope" aria-hidden="true"></i>Email: lamdepz.com@gmail.com</li>
-                                        </ul>
-                                    </div>
-                                    <div id="gap-199007862" class="gap-element clearfix" style="display:block; height:auto;">
-
-                                        <style>
-                                            #gap-199007862 {
-                                                padding-top: 12px;
-                                            }
-                                        </style>
-                                    </div>
-
-
-                                </div>
-                            </div>
-
-
-
-                            <div id="col-1651510870" class="col medium-3 small-12 large-3">
-                                <div class="col-inner">
-
-
-                                    <h4 class="tt_footer text-uppercase">HỖ TRỢ KHÁCH HÀNG</h4>
-                                    <ul>
-                                        <li><a href="#">Giới thiệu về lamdepZ</a></li>
-                                        <li><span style="font-size: 95%;"><a href="#">Hướng dẫn đặt hàng</a></span></li>
-                                        <li><a href="#">Liên hệ</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-
-
-                            <div id="col-970052033" class="col medium-3 small-12 large-3">
-                                <div class="col-inner">
-
-
-                                    <h4 class="tt_footer text-uppercase">CHÍNH SÁCH VÀ QUY ĐỊNH</h4>
-                                    <ul>
-                                        <li><a href="#">Chính sách bảo hành</a></li>
-                                        <li><a href="#">Chính sách đổi trả</a></li>
-                                        <li><a href="#">Chính sách bảo mật</a></li>
-                                        <li><a href="#">Chính sách vận chuyển</a></li>
-                                        <li><a href="#">Chính sách thanh toán</a></li>
-                                    </ul>
-                                    <div class="row row-small" id="row-1103058738">
-
-
-                                        <div id="col-479176919" class="col medium-6 small-12 large-6">
-                                            <div class="col-inner">
-
-
-
-                                                <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_927966336">
-                                                    <div class="img-inner dark">
-
-                                                    </div>
-
-                                                    <style>
-                                                        #image_927966336 {
-                                                            width: 100%;
-                                                        }
-                                                    </style>
-                                                </div>
-
-
+                                <div class="icon-box featured-box icon-box-left text-left">
+                                    <div class="icon-box-img" style="width: 60px">
+                                        <div class="icon">
+                                            <div class="icon-inner">
+                                                <img width="100" height="100" src="~/wwwroot/images/icons8-synchronize-100.png" class="attachment-medium size-medium" alt="" loading="lazy" />
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="icon-box-text last-reset">
 
-
-
-                                        <div id="col-2061438404" class="col medium-6 small-12 large-6">
-                                            <div class="col-inner">
-
-
-
-                                                <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1199211836">
-                                                    <div class="img-inner dark">
-
-                                                    </div>
-
-                                                    <style>
-                                                        #image_1199211836 {
-                                                            width: 100%;
-                                                        }
-                                                    </style>
-                                                </div>
-
-
-                                                <div id="gap-2128210489" class="gap-element clearfix" style="display:block; height:auto;">
-
-                                                    <style>
-                                                        #gap-2128210489 {
-                                                            padding-top: 11px;
-                                                        }
-                                                    </style>
-                                                </div>
-
-
-                                                <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1341376426">
-                                                    <div class="img-inner dark">
-
-                                                    </div>
-
-                                                    <style>
-                                                        #image_1341376426 {
-                                                            width: 100%;
-                                                        }
-                                                    </style>
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-
-
+                                        <h3>ĐỔI TRẢ HÀNG</h3>
+                                        Đổi trả trong 30 ngày
 
                                     </div>
-
                                 </div>
+
+
+
                             </div>
-
-
-
                         </div>
 
+
+
+                        <div id="col-896859309" class="col div-no-padding medium-3 small-6 large-3">
+                            <div class="col-inner">
+
+
+
+
+                                <div class="icon-box featured-box icon-box-left text-left">
+                                    <div class="icon-box-img" style="width: 60px">
+                                        <div class="icon">
+                                            <div class="icon-inner">
+                                                <img width="100" height="100" src="~/wwwroot/images/icons8-in-transit-filled-100-1.png" class="attachment-medium size-medium" alt="" loading="lazy" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="icon-box-text last-reset">
+
+                                        <h3>GH NHANH CHÓNG</h3>
+                                        Vận Chuyển Toàn Quốc
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+
+
+                        <div id="col-94110211" class="col div-no-padding medium-3 small-6 large-3">
+                            <div class="col-inner">
+
+
+
+
+                                <div class="icon-box featured-box icon-box-left text-left">
+                                    <div class="icon-box-img" style="width: 60px">
+                                        <div class="icon">
+                                            <div class="icon-inner">
+                                                <img width="100" height="100" src="~/wwwroot/images/icons8-handshake-filled-100.png" class="attachment-medium size-medium" alt="" loading="lazy" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="icon-box-text last-reset">
+
+                                        <h3>HỢP TÁC ĐẠI LÝ</h3>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+
+
                     </div>
 
-
-                    <style>
-                        #section_1941620001 {
-                            padding-top: 30px;
-                            padding-bottom: 30px;
-                            background-color: rgb(56, 64, 70);
-                        }
-                    </style>
-                </section>
-
-                <div class="absolute-footer dark medium-text-center text-center">
-                    <div class="container clearfix">
+                </div>
 
 
+                <style>
+                    #section_414966629 {
+                        padding-top: 30px;
+                        padding-bottom: 30px;
+                        background-color: rgb(247, 247, 247);
+                    }
+                </style>
+            </section>
 
-                        <div class="footer-primary pull-left">
-                            <div class="copyright-footer">
-                                *Lưu ý: tác dụng của thuốc/ phuơng pháp/ sản phẩm có thể thay đổi tùy theo tình trạng thể chất mỗi nguời.
+            <section class="section footer-section dark" id="section_1941620001">
+                <div class="bg section-bg fill bg-fill  bg-loaded">
+
+
+
+
+
+                </div>
+
+                <div class="section-content relative">
+
+
+                    <div class="row row1" id="row-1098278413">
+
+
+                        <div id="col-227801162" class="col medium-6 small-12 large-6">
+                            <div class="col-inner">
+
+
+                                <div class="thong-tin">
+                                    <h4>FANPAGE FACEBOOK</h4>
+                                    <ul>
+                                        <li><strong>Hotline: 0868.944.268</strong></li>
+                                    </ul>
+                                    <ul class="textaddressfooter">
+                                        <li><i class="fa fa-clock-o" aria-hidden="true"></i>Thời gian phục vụ: <span style="font-weight: bold; font-style: italic;">8h-22h</span></li>
+                                        <li><i class="fa fa-home" aria-hidden="true"></i>Địa chỉ HN: Khu đô thị Xa La, Hà Đông, Hà Nội, Việt Nam</li>
+                                        <li><i class="fa fa-home" aria-hidden="true"></i>Website:lamdepz.com</li>
+                                        <li><i class="fa fa-envelope" aria-hidden="true"></i>Email: lamdepz.com@gmail.com</li>
+                                    </ul>
+                                </div>
+                                <div id="gap-199007862" class="gap-element clearfix" style="display:block; height:auto;">
+
+                                    <style>
+                                        #gap-199007862 {
+                                            padding-top: 12px;
+                                        }
+                                    </style>
+                                </div>
+
+
                             </div>
+                        </div>
+
+
+
+                        <div id="col-1651510870" class="col medium-3 small-12 large-3">
+                            <div class="col-inner">
+
+
+                                <h4 class="tt_footer text-uppercase">HỖ TRỢ KHÁCH HÀNG</h4>
+                                <ul>
+                                    <li><a href="#">Giới thiệu về lamdepZ</a></li>
+                                    <li><span style="font-size: 95%;"><a href="#">Hướng dẫn đặt hàng</a></span></li>
+                                    <li><a href="#">Liên hệ</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+                        <div id="col-970052033" class="col medium-3 small-12 large-3">
+                            <div class="col-inner">
+
+
+                                <h4 class="tt_footer text-uppercase">CHÍNH SÁCH VÀ QUY ĐỊNH</h4>
+                                <ul>
+                                    <li><a href="#">Chính sách bảo hành</a></li>
+                                    <li><a href="#">Chính sách đổi trả</a></li>
+                                    <li><a href="#">Chính sách bảo mật</a></li>
+                                    <li><a href="#">Chính sách vận chuyển</a></li>
+                                    <li><a href="#">Chính sách thanh toán</a></li>
+                                </ul>
+                                <div class="row row-small" id="row-1103058738">
+
+
+                                    <div id="col-479176919" class="col medium-6 small-12 large-6">
+                                        <div class="col-inner">
+
+
+
+                                            <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_927966336">
+                                                <div class="img-inner dark">
+
+                                                </div>
+
+                                                <style>
+                                                    #image_927966336 {
+                                                        width: 100%;
+                                                    }
+                                                </style>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div id="col-2061438404" class="col medium-6 small-12 large-6">
+                                        <div class="col-inner">
+
+
+
+                                            <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1199211836">
+                                                <div class="img-inner dark">
+
+                                                </div>
+
+                                                <style>
+                                                    #image_1199211836 {
+                                                        width: 100%;
+                                                    }
+                                                </style>
+                                            </div>
+
+
+                                            <div id="gap-2128210489" class="gap-element clearfix" style="display:block; height:auto;">
+
+                                                <style>
+                                                    #gap-2128210489 {
+                                                        padding-top: 11px;
+                                                    }
+                                                </style>
+                                            </div>
+
+
+                                            <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_1341376426">
+                                                <div class="img-inner dark">
+
+                                                </div>
+
+                                                <style>
+                                                    #image_1341376426 {
+                                                        width: 100%;
+                                                    }
+                                                </style>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+
+                <style>
+                    #section_1941620001 {
+                        padding-top: 30px;
+                        padding-bottom: 30px;
+                        background-color: rgb(56, 64, 70);
+                    }
+                </style>
+            </section>
+
+            <div class="absolute-footer dark medium-text-center text-center">
+                <div class="container clearfix">
+
+
+
+                    <div class="footer-primary pull-left">
+                        <div class="copyright-footer">
+                            *Lưu ý: tác dụng của thuốc/ phuơng pháp/ sản phẩm có thể thay đổi tùy theo tình trạng thể chất mỗi nguời.
                         </div>
                     </div>
                 </div>
-                <a href="#top" class="back-to-top button icon invert plain fixed bottom z-1 is-outline hide-for-medium circle" id="top-link"><i class="icon-angle-up"></i></a>
+            </div>
+            <a href="#top" class="back-to-top button icon invert plain fixed bottom z-1 is-outline hide-for-medium circle" id="top-link"><i class="icon-angle-up"></i></a>
 
-            </footer>
+        </footer>
 
-</div>
+    </div>
 
     @*    <script type="application/ld+json">{"@context":"https:\/\/schema.org\/","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"name":"Trang ch\u1ee7","@id":"https:\/\/lamdepz.com"}},{"@type":"ListItem","position":2,"item":{"name":"M\u1ef9 ph\u1ea9m d\u01b0\u1ee1ng da","@id":"https:\/\/lamdepz.com\/cat\/my-pham-duong-da\/"}}]}</script>
     *@
