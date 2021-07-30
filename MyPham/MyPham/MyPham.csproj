@@ -138,6 +138,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DangNhapController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaiKhoansController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -363,7 +364,6 @@
     <Content Include="Areas\Admin\Views\Home\CapNhatTaiKhoan.cshtml" />
     <Content Include="Areas\Admin\Views\Home\CauHinhQuyen.cshtml" />
     <Content Include="Areas\Admin\Views\Home\ChiTietSanPham.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\DangNhap.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\QuanLyDanhMuc.cshtml" />
     <Content Include="Areas\Admin\Views\Home\QuanLyHoaDon.cshtml" />
@@ -381,6 +381,7 @@
     <Content Include="Areas\Admin\Views\TaiKhoans\Details.cshtml" />
     <Content Include="Areas\Admin\Views\TaiKhoans\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\TaiKhoans\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DangNhap\DangNhap.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
