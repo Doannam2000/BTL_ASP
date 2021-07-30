@@ -32,6 +32,7 @@ namespace MyPham.Controllers
                     //add session
                     Session["Email"] = user.FirstOrDefault().Email;
                     Session["idUser"] = user.FirstOrDefault().MaTK;
+                    Session["Anh"] = user.FirstOrDefault().Anh;
                     return RedirectToAction("Index","Home");
                 }
                 else
@@ -54,18 +55,6 @@ namespace MyPham.Controllers
         }
 
 
-        //
-        //public ActionResult DangKy([Bind(Include = "MaTK,Email,MatKhau,LoaiTaiKhoan,HoTen,DiaChi,SoDienThoai,Anh,TinhTrang,MaQuyen")] TaiKhoan taikhoan)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.TaiKhoan.Add(taikhoan);
-        //        db.SaveChanges();
-        //        return RedirectToAction("DangNhap");
-        //    }
-        //    return View(taikhoan);
-        //}
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CaptchaValidation("CaptchaCode", "DangKyCaptcha", "Mã xác nhận không đúng !")]
@@ -83,7 +72,6 @@ namespace MyPham.Controllers
                     user.Email = dangky.Email;
                     user.MatKhau = dangky.MatKhau;
                     user.HoTen = dangky.HoTen;
-                    user.LoaiTaiKhoan = "KhachHang";
                     user.DiaChi = dangky.DiaChi;
                     user.SoDienThoai = dangky.SoDienThoai;
                     user.TinhTrang = true;
@@ -108,6 +96,7 @@ namespace MyPham.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             TaiKhoan nguoidung = db.TaiKhoan.Find(id);
+            Session["Anh"] = nguoidung.Anh;
             if (nguoidung == null)
             {
                 return HttpNotFound();
@@ -130,18 +119,24 @@ namespace MyPham.Controllers
             return View(taiKhoan);
         }
 
-        // POST: tk/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SuaTaiKhoan([Bind(Include = "MaTK,Email,MatKhau,LoaiTaiKhoan,HoTen,DiaChi,SoDienThoai,Anh,TinhTrang,MaQuyen")] TaiKhoan taiKhoan)
+        public ActionResult SuaTaiKhoan([Bind(Include = "MaTK,Email,MatKhau,HoTen,DiaChi,SoDienThoai,Anh,TinhTrang,MaQuyen")] TaiKhoan taiKhoan )
         {
             if (ModelState.IsValid)
             {
+                taiKhoan.Anh = "";
+                var f = Request.Files["ImageFile"];
+                if (f != null && f.ContentLength > 0)
+                {
+                    string FileName = System.IO.Path.GetFileName(f.FileName);
+                    string UploadPath = Server.MapPath("~/wwwroot/images/user/" + FileName);
+                    f.SaveAs(UploadPath);
+                    taiKhoan.Anh = FileName;
+                }
                 db.Entry(taiKhoan).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ThongTinTaiKhoan","TaiKhoan",new { id= taiKhoan.MaTK });
             }
             ViewBag.MaQuyen = new SelectList(db.PhanQuyen, "MaQuyen", "TenQuyen", taiKhoan.MaQuyen);
             return View(taiKhoan);

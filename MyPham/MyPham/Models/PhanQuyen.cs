@@ -22,7 +22,6 @@ namespace MyPham.Models
         [StringLength(50)]
         public string TenQuyen { get; set; }
 
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TaiKhoan> TaiKhoan { get; set; }
     }

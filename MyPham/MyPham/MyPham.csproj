@@ -141,7 +141,6 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
-    <Compile Include="Controllers\tkController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -227,7 +226,7 @@
     <Content Include="wwwroot\images\icon_03.png" />
     <Content Include="wwwroot\images\img\shadow%402x.png" />
     <Content Include="wwwroot\images\img\underline.png" />
-    <Content Include="wwwroot\images\img\user.png" />
+    <Content Include="wwwroot\images\user\user.png" />
     <Content Include="wwwroot\images\SanPham\3-Concept-Eyes-Lip-Color-308-Pink-Jam-3CE1-510x509.jpg" />
     <Content Include="wwwroot\images\SanPham\B-sa-tm-happy-bath-han-quc-6-1.jpg" />
     <Content Include="wwwroot\images\SanPham\Bang-Mau-Mat-SIVANNA-COLORS-Luxury-Velvet-Eyesh-3-510x510.jpg" />
@@ -412,11 +411,7 @@
     <Content Include="wwwroot\fonts\dashicons7d4b.eot" />
     <Content Include="wwwroot\fonts\dashicons7d4b.ttf" />
     <Content Include="Views\TaiKhoan\DangKy.cshtml" />
-    <Content Include="Views\tk\Create.cshtml" />
-    <Content Include="Views\tk\Delete.cshtml" />
-    <Content Include="Views\tk\Details.cshtml" />
-    <Content Include="Views\tk\Edit.cshtml" />
-    <Content Include="Views\tk\Index.cshtml" />
+    <Content Include="Views\TaiKhoan\SuaTaiKhoan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

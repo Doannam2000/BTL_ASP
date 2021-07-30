@@ -5,33 +5,35 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@{ Html.BeginForm("ThongTinTaiKhoan", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }); }
 <main id="main" class="row d-flex justify-content-center align-items-center">
     <div class="col-md-6 mt-5">
         <h2>Thông tin tài khoản</h2>
         <form class="pt-3">
             <div class="form-group row">
-                <div class="col-md-4" ">Ảnh</div>
-                <div class="col-md-8 ">
-                    <form action="" method="post" enctype="multipart/form-data">
-                        <img width="180" id="output" height="120" class="cart-img-icon" alt="Đăng nhập" src="~/wwwroot/images/img/user.png" />
-                        <p><label for="ufile" style="cursor: pointer;">Chọn file ảnh</label></p>
-                        <p><input name="ImageFile" type="file" id="ufile" style="display: none;" onchange="loadFile(event)" /></p>
-                    </form>
+                <div class="col-md-4">Ảnh</div>
+                <div class="col-md-8">
+                    @{
+                        string image = "~/wwwroot/images/user/" + Model.Anh;
+                    }
+                    @if(Session["Anh"] != null)
+                    {
+                        <img width="180" id="output" height="120" class="cart-img-icon" alt="Đăng nhập" src="@Url.Content(image)" />
+                    }
+                    else
+                    {
+                        <img width="180" id="output" height="120" class="cart-img-icon" alt="Đăng nhập" src="~/wwwroot/images/user/user.png" />
+                    }
                 </div>
             </div>
             <div class="form-group row ">
-                <div class="col-md-4 " ">Họ tên</div>
-                <div class="col-md-8" ">@Html.DisplayFor(model => model.HoTen)</div>
+                <div class="col-md-4">Họ tên</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.HoTen)</div>
             </div>
             <div class="form-group row ">
-                <div class="col-md-4 " ">Email</div>
-                <div class="col-md-8" ">@Html.DisplayFor(model => model.Email)</div>
+                <div class="col-md-4 ">Email</div>
+                <div class="col-md-8">@Html.DisplayFor(model => model.Email)</div>
             </div>
-            <div class="form-group row ">
-                <div class="col-md-4 ">Mật khẩu</div>
-                <div class="col-md-8 ">@Html.DisplayFor(model => model.MatKhau)</div>
-            </div>
+
             <div class="form-group row ">
                 <div class="col-md-4 ">Số điện thoại</div>
                 <div class="col-md-8 ">@Html.DisplayFor(model => model.SoDienThoai)</div>
@@ -41,8 +43,10 @@
                 <div class="col-md-8 ">@Html.DisplayFor(model => model.DiaChi)</div>
             </div>
             <div class="mt-1 d-flex justify-content-center align-items-center">
-                <button type="submit " class="btn btn-primary ">Sửa Thông Tin</button>
-                <button type="submit " class="btn btn-primary ">Thoát</button>
+                @{
+                    string link = "/TaiKhoan/SuaTaiKhoan/" + Model.MaTK;
+                }
+                <a href="@Url.Content(link)" class="btn btn-primary btn-lg font-weight-medium auth-form-btn">Sửa Tài Khoản</a>
             </div>
 
         </form>
@@ -59,9 +63,4 @@
 <script src="../../js/off-canvas.js"></script>
 <script src="../../js/hoverable-collapse.js"></script>
 <script src="../../js/template.js"></script>
-<script>
-    var loadFile = function (event) {
-        var image = document.getElementById('output');
-        image.src = URL.createObjectURL(event.target.files[0]);
-    };
-</script>
+
