@@ -139,6 +139,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TaiKhoansController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
     <Compile Include="Global.asax.cs">
@@ -375,6 +376,11 @@
     <Content Include="Areas\Admin\Views\Home\ThemTaiKhoan.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\TaiKhoans\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoans\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoans\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoans\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoans\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
