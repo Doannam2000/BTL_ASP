@@ -17,7 +17,7 @@ namespace MyPham.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "DangNhap", controller = "Home", id = UrlParameter.Optional }
+                new { action = "DangNhap", controller = "DangNhap", id = UrlParameter.Optional }
             );
         }
     }
