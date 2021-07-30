@@ -519,3 +519,4 @@ E:\BTL_ASP\BTL_ASP\BTL_ASP\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csproj.CoreCom
 E:\BTL_ASP\BTL_ASP\BTL_ASP\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csproj.CopyComplete
 E:\BTL_ASP\BTL_ASP\BTL_ASP\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.dll
 E:\BTL_ASP\BTL_ASP\BTL_ASP\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.pdb
+E:\BTL_ASP\BTL_ASP\BTL_ASP\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csproj.AssemblyReference.cache
