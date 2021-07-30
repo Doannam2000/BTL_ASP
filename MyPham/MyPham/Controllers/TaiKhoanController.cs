@@ -31,8 +31,9 @@ namespace MyPham.Controllers
                 {
                     //add session
                     Session["Email"] = user.FirstOrDefault().Email;
-                    Session["idUser"] = user.FirstOrDefault().MaTK;
+                    Session["HoTen"] = user.FirstOrDefault().HoTen;
                     Session["Anh"] = user.FirstOrDefault().Anh;
+                    
                     return RedirectToAction("Index","Home");
                 }
                 else
@@ -125,7 +126,6 @@ namespace MyPham.Controllers
         {
             if (ModelState.IsValid)
             {
-                taiKhoan.Anh = "";
                 var f = Request.Files["ImageFile"];
                 if (f != null && f.ContentLength > 0)
                 {
@@ -133,6 +133,10 @@ namespace MyPham.Controllers
                     string UploadPath = Server.MapPath("~/wwwroot/images/user/" + FileName);
                     f.SaveAs(UploadPath);
                     taiKhoan.Anh = FileName;
+                }
+                else
+                {
+                    string UploadPath = Server.MapPath("~/wwwroot/image/" + taiKhoan.Anh);
                 }
                 db.Entry(taiKhoan).State = EntityState.Modified;
                 db.SaveChanges();

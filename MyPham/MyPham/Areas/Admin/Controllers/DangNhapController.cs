@@ -32,7 +32,14 @@ namespace MyPham.Areas.Admin.Controllers
                 {
                     Session["HoTen"] = user.FirstOrDefault().HoTen;
                     Session["Email"] = user.FirstOrDefault().Email;
-                    return RedirectToAction("Index","Home");
+                    Session["Loai"] = user.FirstOrDefault().MaQuyen;
+                    if(user.FirstOrDefault().MaQuyen == 3) {
+                        ModelState.AddModelError("", "Bạn Không Có Quyền Vào ADMIN!!");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 else
                 {
@@ -42,6 +49,11 @@ namespace MyPham.Areas.Admin.Controllers
 
 
             return View();
+        }
+        public ActionResult DangXuat()
+        {
+            Session.Clear();
+            return RedirectToAction("DangNhap");
         }
     }
 }
