@@ -1,0 +1,186 @@
+﻿
+@{
+    ViewBag.Title = "QuanLyHoaDon";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin">
+                <div class="d-flex justify-content-between flex-wrap">
+                    <div class="d-flex align-items-end flex-wrap">
+                        <div class="mr-md-3 mr-xl-5">
+                            <h2>Xin chào, Admin</h2>
+                            <div class="d-flex">
+                                <i class="mdi mdi-home text-muted hover-cursor"></i>
+                                <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Quản lý hóa đơn&nbsp;&nbsp;</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Danh sách hóa đơn</h4>
+                    <div class="table-responsive pt-3">
+                        <table id="recent-purchases-listing" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        Mã hóa đơn
+                                    </th>
+                                    <th>
+                                        Tên hóa đơn
+                                    </th>
+                                    <th>
+                                        Ngày tạo
+                                    </th>
+                                    <th>
+                                        Hình thức vận chuyển
+                                    </th>
+                                    <th>
+                                        Hình thức thanh toán
+                                    </th>
+                                    <th>
+                                        Tên sản phẩm và số lượng
+                                    </th>
+                                    <th>
+                                        Tổng tiền
+                                    </th>
+                                    <th>
+                                        Trạng thái
+                                    </th>
+                                    <th>
+                                        Hành động
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        20252025
+                                    </td>
+                                    <td>
+                                        Hóa đơn 1
+                                    </td>
+                                    <td>
+                                        25/05/2025
+                                    </td>
+                                    <td>
+                                        Chuyển phát nhanh
+                                    </td>
+                                    <td>
+                                        Thanh toán tiền mặt
+                                    </td>
+                                    <td>
+                                        Sản phẩm 1 x 10
+                                    </td>
+                                    <td>
+                                        1.000.000 VNĐ
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-success pl-3 pr-3 pt-2 pb-2">
+                                            Đã giao
+                                        </button>
+                                    </td>
+                                    <td style="display: flex; flex-direction: row;">
+                                        <div class="d-flex justify-content-center">
+                                            <a class="nav-link ">
+                                                <span class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2">Xóa</span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        2
+                                    </td>
+                                    <td>
+                                        20252026
+                                    </td>
+                                    <td>
+                                        Hóa đơn 2
+                                    </td>
+                                    <td>
+                                        25/05/2025
+                                    </td>
+                                    <td>
+                                        Chuyển phát nhanh
+                                    </td>
+                                    <td>
+                                        Thanh toán tiền mặt
+                                    </td>
+                                    <td>
+                                        Sản phẩm 2 x 10
+                                    </td>
+                                    <td>
+                                        1.000.000 VNĐ
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary pl-3 pr-3 pt-2 pb-2">
+                                            Đang giao
+                                        </button>
+                                    </td>
+                                    <td style="display: flex; flex-direction: row;">
+                                        <div class="d-flex justify-content-center">
+                                            <a class="nav-link ">
+                                                <span class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2">Xóa</span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        3
+                                    </td>
+                                    <td>
+                                        20252027
+                                    </td>
+                                    <td>
+                                        Hóa đơn 3
+                                    </td>
+                                    <td>
+                                        25/05/2025
+                                    </td>
+                                    <td>
+                                        Chuyển phát nhanh
+                                    </td>
+                                    <td>
+                                        Thanh toán tiền mặt
+                                    </td>
+                                    <td>
+                                        Sản phẩm 2 x 10
+                                    </td>
+                                    <td>
+                                        1.000.000 VNĐ
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-warning pl-3 pr-3 pt-2 pb-2">
+                                            Khách không nhận
+                                        </button>
+                                    </td>
+                                    <td style="display: flex; flex-direction: row;">
+                                        <div class="d-flex justify-content-center">
+                                            <a class="nav-link ">
+                                                <span class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2">Xóa</span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
