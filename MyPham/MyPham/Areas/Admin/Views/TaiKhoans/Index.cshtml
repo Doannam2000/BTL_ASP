@@ -33,9 +33,6 @@
                         <thead>
                             <tr>
                                 <th>
-                                    #
-                                </th>
-                                <th>
                                     @Html.DisplayNameFor(model => model.MaTK)
                                 </th>
                                 <th>
@@ -68,12 +65,14 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td></td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.MaTK)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Anh)
+                                        @{
+                                            string ImagePath = "~/wwwroot/images/TaiKhoan/" + item.Anh;
+                                        }
+                                        <img src="@Url.Content(ImagePath)" width=" 100" height="auto" />
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.HoTen)

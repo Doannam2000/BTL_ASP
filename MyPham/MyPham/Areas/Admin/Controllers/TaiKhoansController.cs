@@ -50,15 +50,31 @@ namespace MyPham.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaTK,Email,MatKhau,HoTen,DiaChi,SoDienThoai,Anh,TinhTrang,MaQuyen")] TaiKhoan taiKhoan)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.TaiKhoan.Add(taiKhoan);
-                db.SaveChanges();
+                if (ModelState.IsValid)
+                {
+                    taiKhoan.Anh = "";
+                    var f = Request.Files["ImageFile"];
+                    if (f != null && f.ContentLength > 0)
+                    {
+                        string FileName = System.IO.Path.GetFileName(f.FileName);
+                        string UploadPath = Server.MapPath("~/wwwroot/images/TaiKhoan/" + FileName);
+                        f.SaveAs(UploadPath);
+                        taiKhoan.Anh = FileName;
+                    }
+                    db.TaiKhoan.Add(taiKhoan);
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Lỗi nhập dữ liệu! " + ex.Message;
+                ViewBag.MaQuyen = new SelectList(db.PhanQuyen, "MaQuyen", "TenQuyen", taiKhoan.MaQuyen);
+                return View(taiKhoan);
+            }
 
-            ViewBag.MaQuyen = new SelectList(db.PhanQuyen, "MaQuyen", "TenQuyen", taiKhoan.MaQuyen);
-            return View(taiKhoan);
         }
 
         // GET: Admin/TaiKhoans/Edit/5
@@ -84,14 +100,33 @@ namespace MyPham.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MaTK,Email,MatKhau,HoTen,DiaChi,SoDienThoai,Anh,TinhTrang,MaQuyen")] TaiKhoan taiKhoan)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(taiKhoan).State = EntityState.Modified;
-                db.SaveChanges();
+                if (ModelState.IsValid)
+                {
+                    var f = Request.Files["ImageFile"];
+                    if (f != null && f.ContentLength > 0)
+                    {
+                        string FileName = System.IO.Path.GetFileName(f.FileName);
+                        string UploadPath = Server.MapPath("~/wwwroot/images/TaiKhoan/" + FileName);
+                        f.SaveAs(UploadPath);
+                        taiKhoan.Anh = FileName;
+                    }
+                    else
+                    {
+                        string UploadPath = Server.MapPath("~/wwwroot/image/" + taiKhoan.Anh);
+                    }
+                    db.Entry(taiKhoan).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
+            } catch (Exception ex)
+            {
+                ViewBag.Error = "Lỗi nhập dữ liệu! " + ex.Message;
+                ViewBag.MaQuyen = new SelectList(db.PhanQuyen, "MaQuyen", "TenQuyen", taiKhoan.MaQuyen);
+                return View(taiKhoan);
+
             }
-            ViewBag.MaQuyen = new SelectList(db.PhanQuyen, "MaQuyen", "TenQuyen", taiKhoan.MaQuyen);
-            return View(taiKhoan);
         }
 
         // GET: Admin/TaiKhoans/Delete/5

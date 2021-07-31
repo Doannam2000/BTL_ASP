@@ -37,11 +37,11 @@
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.AnhSP)</label>
-                                    <div class="col-sm-9">
-                                        <img id="output" class="img-rounded" alt="Ảnh" width="150" height="150"
+                                    <div class="col-sm-9 d-flex justify-content-center align-items-center">
+                                        <img id="output" class="img-rounded" alt="Ảnh" width="150" height="auto"
                                              src="~/wwwroot/images/user/user.png" />
                                         <br />
-                                        <label for="ufile" style="cursor: pointer; text-transform: none;" class="btn btn-sm btn-primary">Chọn tệp</label>
+                                        <label for="ufile" style="cursor: pointer; text-transform: none;" class="btn btn-sm btn-primary ml-2">Chọn tệp</label>
                                         <input name="ImageFile" id="ufile" type="file" style="display: none;" onchange="loadFile(event)" />
 
 
@@ -208,11 +208,11 @@
                         </div>
 
                         <div class="d-flex justify-content-center">
-                            <div class="nav-link ml-2" herf="@Url.Action("Index","SanPhams")">
-                                <input type="submit" value="Quay lại" class="btn btn-sm btn-primary normal-text" />
-                            </div>
+                            <a class="nav-link mr-2" href="@Url.Action("Index","SanPhams")">
+                                <span class="menu-title btn btn-outline-danger btn-fw">Quay lại</span>
+                            </a>
                             <div class="nav-link ml-2">
-                                <input type="submit" value="Thêm" class="btn btn-sm btn-primary normal-text" />
+                                <input type="submit" value="Thêm" class="btn btn-default menu-title btn btn-outline-success btn-fw" />
                             </div>
                         </div>
                     </form>
@@ -232,3 +232,7 @@
         image.src = URL.createObjectURL(event.target.files[0]);
     }
 </script>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
