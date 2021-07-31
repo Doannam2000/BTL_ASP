@@ -120,6 +120,14 @@ namespace MyPham.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult DeleteConfirmedCustom(int id)
+        {
+            TaiKhoan taiKhoan = db.TaiKhoan.Find(id);
+            db.TaiKhoan.Remove(taiKhoan);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -98,11 +98,9 @@
                                             <a class="nav-link" href="@Url.Action("Edit", "TaiKhoans", new { id = item.MaTK })">
                                                 <span class="menu-title btn btn-wd btn-info pl-3 pr-3 pt-2 pb-2">Cập nhật</span>
                                             </a>
-                                            <form asp-action="Delete" asp-route-id="@item.MaTK" method="post">
-                                                <a class="nav-link">
-                                                    <button type="submit" onclick="return functionConfirm(this)" class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2">Khóa</button>
-                                                </a>
-                                            </form>
+                                            <a class="nav-link" href="@Url.Action("DeleteConfirmedCustom", "TaiKhoans", new { id = item.MaTK })">
+                                                <button id="btnDelete" onclick="return confirm('Bạn chắc chắn muốn xóa tài khoản này: @item.HoTen')" class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2">Đóng tài khoản</button>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>
@@ -114,7 +112,7 @@
         </div>
     </div>
 </div>
-
+@*confirm('Bạn chắc chắn muốn xóa tài khoản này: @item.HoTen')*@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 <script type="text/javascript">
@@ -130,8 +128,7 @@
             confirmButtonText: 'Đồng ý',
             confirmButtonClass: 'btn btn-success'
         }, function (isConfirm) {
-            if (isConfirm) {
-                $('form').submit();
+                if (isConfirm) {
                 return true;
             } else {
                 return false;
