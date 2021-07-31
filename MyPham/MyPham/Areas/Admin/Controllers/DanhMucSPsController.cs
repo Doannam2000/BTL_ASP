@@ -125,7 +125,14 @@ namespace MyPham.Areas.Admin.Controllers
             }
 
         }
+        public ActionResult DeleteConfirmedCustom(int id)
+        {
 
+            DanhMucSP danhMucSP = db.DanhMucSP.Find(id);
+            db.DanhMucSP.Remove(danhMucSP);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
