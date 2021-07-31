@@ -66,20 +66,20 @@
                                         @{
                                             string ImagePath = "~/wwwroot/images/SanPham/" + item.AnhSP;
                                         }
-                                        <img src="@Url.Content(ImagePath)" width=" 100" class="" />
+                                        <img src="@Url.Content(ImagePath)" width="300px" height="auto" class="" />
                                         <br />
 
                                     </td>
                                     <td>
                                         <div class="d-flex justify-content-center">
                                             <a class="nav-link" href="@Url.Action("Edit", "SanPhams", new { id = item.MaSP })">
-                                                <span class="menu-title btn btn-wd btn-info pl-3 pr-3 pt-2 pb-2">Cập nhật</span>
+                                                <span class="menu-title btn btn-wd btn-success pl-3 pr-3 pt-2 pb-2">Cập nhật</span>
                                             </a>
                                             <a class="nav-link" href="@Url.Action("Details", "SanPhams", new { id = item.MaSP })">
                                                 <span class="menu-title btn btn-wd btn-info pl-3 pr-3 pt-2 pb-2">Xem chi tiết</span>
                                             </a>
                                             <a class="nav-link" href="@Url.Action("Delete", "SanPhams", new { id = item.MaSP })">
-                                                <span class="menu-title btn btn-wd btn-info pl-3 pr-3 pt-2 pb-2">Xóa</span>
+                                                <span class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2">Xóa</span>
                                             </a>
                                         </div>
                                     </td>

@@ -3,9 +3,10 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var ImagePath = "~/wwwroot/images/TaiKhoan/" + Model.Anh;
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "TaiKhoans", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -41,10 +42,15 @@
                                 <div class="form-group row">
 
                                     <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.Anh)</label>
-                                    <div class="col-sm-9">
-                                        @Html.EditorFor(model => model.Anh, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Anh, "", new { @class = "text-danger" })
+                                    <div class="col-sm-9 d-flex justify-content-center align-items-center">
+                                        <img id="output" class="img-rounded" alt="Ảnh" width="150" height="150"
+                                             src="@Url.Content(ImagePath)" />
+                                        <br />
+                                        <label for="ufile" style="cursor: pointer; text-transform: none;" class="btn btn-sm btn-primary  ml-2">Chọn file ảnh</label>
+                                        <input name="ImageFile" id="ufile" type="file" style="display: none;"
+                                               onchange="loadFile(event)" />
                                     </div>
+                                    @Html.HiddenFor(model => model.Anh)
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -104,8 +110,8 @@
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label">@Html.LabelFor(model => model.MatKhau)</label>
-                                    <div class="col-md-9">
-                                        @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
+                                    <div class="col-md-9 password">
+                                        @Html.TextBoxFor(model => model.MatKhau, htmlAttributes: new { type = "password" })
                                         @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -138,3 +144,19 @@
         </div>
     </div>
 }
+
+@if (ViewBag.Error != null)
+{
+    <br />
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}
+
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById("output");
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>

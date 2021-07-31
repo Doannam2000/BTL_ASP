@@ -112,10 +112,10 @@ namespace MyPham.Areas.Admin.Controllers
                         f.SaveAs(UploadPath);
                         sanPham.AnhSP = FileName;
                     }
-                    else
-                    {
-                        string UploadPath = Server.MapPath("~/wwwroot/image/" + sanPham.AnhSP);
-                    }
+                    //else
+                    //{
+                    //    string UploadPath = Server.MapPath("~/wwwroot/image/" + sanPham.AnhSP);
+                    //}
                     db.Entry(sanPham).State = EntityState.Modified;
                     db.SaveChanges();
                 }
