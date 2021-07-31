@@ -31,7 +31,7 @@
                     <table id="recent-purchases-listing" class="table table-bordered">
                         <thead>
                             <tr>
-                               
+
                                 <th>
                                     Mã danh mục
                                 </th>
@@ -46,26 +46,26 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.MaDM)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TenDM)
-                                </td>
-                                <td>
-                                    <div class="d-flex justify-content-center">
-                                        <a class="nav-link" href="@Url.Action("Edit", "DanhMucSPs", new { id = item.MaDM })">
-                                            <span class="menu-title btn btn-wd btn-info pl-3 pr-3 pt-2 pb-2">Cập nhật</span>
-                                        </a>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MaDM)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TenDM)
+                                    </td>
+                                    <td>
+                                        <div class="d-flex justify-content-center">
+                                            <a class="nav-link" href="@Url.Action("Edit", "DanhMucSPs", new { id = item.MaDM })">
+                                                <span class="menu-title btn btn-wd btn-info pl-3 pr-3 pt-2 pb-2">Cập nhật</span>
+                                            </a>
 
-                                        <a class="nav-link" href="@Url.Action("Delete", "DanhMucSPs", new { id = item.MaDM })">
-                                            <span class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2">Xóa</span>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                          
+                                            <a class="nav-link" href="@Url.Action("DeleteConfirmedCustom", "DanhMucSPs", new { id = item.MaDM })">
+                                                <button id="btnDelete" onclick="return confirm('Bạn chắc chắn muốn xóa danh mục  này: @item.TenDM')" class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2">Xóa</button>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+
                             }
                         </tbody>
                     </table>
@@ -74,3 +74,26 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script type="text/javascript">
+    function functionConfirm(event) {
+        swal({
+            title: 'Thông báo',
+            text: "Bạn chắc chắn muốn xóa tài khoản này",
+            type: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'Hủy',
+            cancelButtonClass: 'btn btn-danger',
+            showConfirmButton: true,
+            confirmButtonText: 'Đồng ý',
+            confirmButtonClass: 'btn btn-success'
+        }, function (isConfirm) {
+                if (isConfirm) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+        return false;
+    }
+</script>

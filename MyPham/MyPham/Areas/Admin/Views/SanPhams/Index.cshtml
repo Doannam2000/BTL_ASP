@@ -78,8 +78,8 @@
                                             <a class="nav-link" href="@Url.Action("Details", "SanPhams", new { id = item.MaSP })">
                                                 <span class="menu-title btn btn-wd btn-info pl-3 pr-3 pt-2 pb-2">Xem chi tiết</span>
                                             </a>
-                                            <a class="nav-link" href="@Url.Action("Delete", "SanPhams", new { id = item.MaSP })">
-                                                <span class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2">Xóa</span>
+                                            <a class="nav-link" href="@Url.Action("DeleteConfirmedCustom", "SanPhams", new { id = item.MaSP })">
+                                                <button id="btnDelete" onclick="return confirm('Bạn chắc chắn muốn xóa sản phẩm này: @item.TenSP')" class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2">Xóa</button>
                                             </a>
                                         </div>
                                     </td>
@@ -92,3 +92,26 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script type="text/javascript">
+    function functionConfirm(event) {
+        swal({
+            title: 'Thông báo',
+            text: "Bạn chắc chắn muốn xóa tài khoản này",
+            type: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'Hủy',
+            cancelButtonClass: 'btn btn-danger',
+            showConfirmButton: true,
+            confirmButtonText: 'Đồng ý',
+            confirmButtonClass: 'btn btn-success'
+        }, function (isConfirm) {
+                if (isConfirm) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+        return false;
+    }
+</script>

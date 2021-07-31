@@ -155,7 +155,13 @@ namespace MyPham.Areas.Admin.Controllers
             return RedirectToAction("Index");
 
         }
-
+        public ActionResult DeleteConfirmedCustom(int id)
+        {
+            SanPham sanPham = db.SanPham.Find(id);
+            db.SanPham.Remove(sanPham);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
