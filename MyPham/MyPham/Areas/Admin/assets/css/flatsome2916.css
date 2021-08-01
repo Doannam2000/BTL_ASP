@@ -11550,3 +11550,7 @@ li.wc-layered-nav-rating {
     .stars a.star-5:after {
         content: '\e005\e005\e005\e005\e005'
     }
+.nav-pagination .active a {
+    background-color: #4d83ff;
+    color: white;
+}

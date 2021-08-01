@@ -70,8 +70,11 @@
                             }
                         </tbody>
                     </table>
-                    Trang @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions()
+                      {
+                          LiElementClasses = new string[] { "page-number" },
+                          UlElementClasses = new string[] { "page-numbers", "nav-pagination", "links", "text-center" }
+                      })
                 </div>
             </div>
         </div>
