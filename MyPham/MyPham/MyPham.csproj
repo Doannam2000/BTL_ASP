@@ -151,6 +151,7 @@
     <Compile Include="Areas\Admin\Controllers\SanPhamsController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaiKhoansController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -202,7 +203,6 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="wwwroot\css\dashicons.min9f31.css" />
-    <Content Include="wwwroot\css\devvn-woocommerce-reviews19f6.css" />
     <Content Include="wwwroot\css\dist\block-library\style.min9f31.css" />
     <Content Include="wwwroot\css\extra.min9fd1.css" />
     <Content Include="wwwroot\css\fl-iconsae34.css" />
@@ -221,6 +221,7 @@
     <Content Include="wwwroot\css\wlwmanifest.xml" />
     <Content Include="wwwroot\css\woocommerce-blocks\build\style7e2e.css" />
     <Content Include="wwwroot\css\woocommerce-blocks\build\vendors-style7e2e.css" />
+    <Content Include="wwwroot\css\woocommerce-blocks\devvn-woocommerce-reviews19f6.css" />
     <Content Include="wwwroot\images\2021\01\giao-hang.jpg" />
     <Content Include="wwwroot\images\2021\03\cropped-logo-ico-small-1-180x180.png" />
     <Content Include="wwwroot\images\2021\03\cropped-logo-ico-small-1-192x192.png" />
@@ -404,9 +405,7 @@
     <Content Include="Views\TaiKhoan\DangNhap.cshtml" />
     <Content Include="Views\Home\GioHang.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\SanPham.cshtml" />
     <Content Include="Views\TaiKhoan\ThongTinTaiKhoan.cshtml" />
-    <Content Include="Views\Home\XemSanPhamTheoDanhMuc.cshtml" />
     <Content Include="Views\Home\_Nav.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -435,6 +434,8 @@
     <Content Include="Areas\Admin\Views\HoaDons\Details.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDons\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDons\Index.cshtml" />
+    <Content Include="Views\SanPham\XemSanPhamTheoDanhMuc.cshtml" />
+    <Content Include="Views\SanPham\SanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

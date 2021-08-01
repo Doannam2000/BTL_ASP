@@ -10,7 +10,7 @@
     <div class="page-title-inner flex-row medium-flex-wrap container">
         <div class="flex-col flex-grow medium-text-center">
             <div class="is-small">
-                <nav class="woocommerce-breadcrumb breadcrumbs uppercase"><a href="@Url.Action("Index","Home")">Trang chủ</a> <span class="divider">&#47;</span> <a href="@Url.Action("XemSanPhamTheoDanhMuc", "Home", new{ id = ViewBag.ma })">@ViewBag.TenDM</a></nav>
+                <nav class="woocommerce-breadcrumb breadcrumbs uppercase"><a href="@Url.Action("Index","Home")">Trang chủ</a> <span class="divider">&#47;</span> <a href="@Url.Action("XemSanPhamTheoDanhMuc", "SanPham", new{ id = ViewBag.ma })">@ViewBag.TenDM</a></nav>
             </div>
         </div>
 
@@ -114,7 +114,7 @@
                             @if (Model.ThanhPhan != null)
                             {<p><strong>Thành phần:</strong> @Html.DisplayFor(Model => Model.ThanhPhan)</p>}
 
-                            <p>&#8211; <strong>Tham khảo bộ</strong> 7 in 1 &#8211; <a href="@Url.Action("XemSanPhamTheoDanhMuc", "Home", new{ id = 1})" target="_blank" rel="noopener noreferrer">Mỹ phẩm hoàng cung Danxuenilan 7 in 1 tại đây.</a></p>
+                            <p>&#8211; <strong>Tham khảo bộ</strong> 7 in 1 &#8211; <a href="@Url.Action("XemSanPhamTheoDanhMuc", "SanPham", new{ id = 1})" target="_blank" rel="noopener noreferrer">Mỹ phẩm hoàng cung Danxuenilan 7 in 1 tại đây.</a></p>
                             <p>&#8211; Tham khảo về các dòng <a href="@Url.Action("Index", "Home")" target="_blank" rel="noopener noreferrer">Hoàng Cung hiện shop đang bán.</a></p>
                         </div>
 
@@ -149,7 +149,7 @@
                             <span class="sku_wrapper">Mã: <span class="sku">@Html.DisplayFor(Model => Model.MaSP)</span></span>
 
 
-                            <span class="posted_in">Danh mục: <a href="@Url.Action("XemSanPhamTheoDanhMuc", "Home", new{ id = ViewBag.ma})" rel="tag">@ViewBag.TenDM</a></span>
+                            <span class="posted_in">Danh mục: <a href="@Url.Action("XemSanPhamTheoDanhMuc", "SanPham", new{ id = ViewBag.ma})" rel="tag">@ViewBag.TenDM</a></span>
 
 
                         </div>
@@ -287,7 +287,7 @@
                                                     <div class="product-small box has-hover box-normal box-text-bottom">
                                                         <div class="box-image">
                                                             <div class="">
-                                                                <a href="chi-tiet-san-pham.html">
+                                                                <a href="@Url.Action("SanPham","SanPham",new {id = item.MaSP })">
                                                                     <img width="247" height="247" src="@Url.Content(ImagePath1)" class="lazy-load attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="" sizes="(max-width: 247px) 100vw, 247px" />
                                                                 </a>
                                                             </div>
