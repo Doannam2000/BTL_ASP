@@ -21934,4 +21934,8 @@ dl li {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.uppercase, h6, th {
+    text-transform: none !important
+}
+
 /*# sourceMappingURL=maps/style.css.map */
