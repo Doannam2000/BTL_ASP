@@ -921,3 +921,7 @@ E:\Code\APS.NET\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csproj.CoreCompileInputs.
 E:\Code\APS.NET\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csproj.CopyComplete
 E:\Code\APS.NET\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.dll
 E:\Code\APS.NET\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.pdb
+E:\ASP.NET\BTL\BTL_ASP\MyPham\MyPham\bin\PagedList.dll
+E:\ASP.NET\BTL\BTL_ASP\MyPham\MyPham\bin\PagedList.Mvc.dll
+E:\ASP.NET\BTL\BTL_ASP\MyPham\MyPham\bin\PagedList.xml
+E:\ASP.NET\BTL\BTL_ASP\MyPham\MyPham\bin\PagedList.Mvc.xml
