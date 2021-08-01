@@ -32,6 +32,7 @@ namespace MyPham.Areas.Admin.Controllers
                 {
                     Session["HoTen"] = user.FirstOrDefault().HoTen;
                     Session["Email"] = user.FirstOrDefault().Email;
+                    Session["Anh"] = user.FirstOrDefault().Anh;
                     Session["Loai"] = user.FirstOrDefault().MaQuyen;
                     if(user.FirstOrDefault().MaQuyen == 3) {
                         ModelState.AddModelError("", "Bạn Không Có Quyền Vào ADMIN!!");
@@ -46,7 +47,6 @@ namespace MyPham.Areas.Admin.Controllers
                     ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không đúng!!");
                 }
             }
-
 
             return View();
         }
