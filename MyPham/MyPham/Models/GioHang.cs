@@ -1,7 +1,8 @@
-namespace MyPham.Models
+﻿namespace MyPham.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -17,6 +18,7 @@ namespace MyPham.Models
         }
 
         [Key]
+        [DisplayName("Mã giỏ hàng ")]
         public int MaGioHang { get; set; }
 
         public int MaTK { get; set; }
