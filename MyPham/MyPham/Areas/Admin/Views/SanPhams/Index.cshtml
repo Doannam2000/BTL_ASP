@@ -1,8 +1,10 @@
-﻿@model IEnumerable<MyPham.Models.SanPham>
+﻿@model PagedList.IPagedList<MyPham.Models.SanPham>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    <link herf="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 }
 
 <div class="content-wrapper">
@@ -87,6 +89,8 @@
                             }
                         </tbody>
                     </table>
+                    Trang @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
                 </div>
             </div>
         </div>
@@ -106,7 +110,7 @@
             confirmButtonText: 'Đồng ý',
             confirmButtonClass: 'btn btn-success'
         }, function (isConfirm) {
-                if (isConfirm) {
+            if (isConfirm) {
                 return true;
             } else {
                 return false;

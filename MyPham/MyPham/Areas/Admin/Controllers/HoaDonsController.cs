@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MyPham.Models;
+using PagedList;
 
 namespace MyPham.Areas.Admin.Controllers
 {
@@ -15,10 +16,15 @@ namespace MyPham.Areas.Admin.Controllers
         private MyPhamDB db = new MyPhamDB();
 
         // GET: Admin/HoaDons
-        public ActionResult Index()
+    
+
+        public ActionResult Index(int ? page)
         {
             var hoaDon = db.HoaDon.Include(h => h.GioHang);
-            return View(hoaDon.ToList());
+            hoaDon = hoaDon.OrderBy(s => s.MaHD);
+            int pageSize = 7;
+            int pageNumber = (page ?? 1);
+            return View(hoaDon.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Admin/HoaDons/Details/5

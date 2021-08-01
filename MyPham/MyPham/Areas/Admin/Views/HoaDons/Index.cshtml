@@ -1,5 +1,5 @@
-﻿@model IEnumerable<MyPham.Models.HoaDon>
-
+﻿@model PagedList.IPagedList<MyPham.Models.HoaDon>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -69,7 +69,7 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.TinhTrang)
                                     </td>
-                                 
+
                                     <td style="display: flex; flex-direction: row;">
                                         <div class="d-flex justify-content-center">
                                             <a class="nav-link ">
@@ -81,6 +81,8 @@
                             }
                         </tbody>
                     </table>
+                    Trang @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
                 </div>
             </div>
         </div>
