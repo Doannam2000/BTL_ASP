@@ -1,0 +1,8 @@
+*.suo
+*.cache
+/MyPham/.vs/MyPham/config/applicationhost.config
+/MyPham/MyPham/bin/MyPham.dll
+/MyPham/MyPham/bin/MyPham.pdb
+/MyPham/MyPham/obj/Debug/MyPham.csproj.FileListAbsolute.txt
+/MyPham/MyPham/obj/Debug/MyPham.dll
+/MyPham/MyPham/obj/Debug/MyPham.pdb
