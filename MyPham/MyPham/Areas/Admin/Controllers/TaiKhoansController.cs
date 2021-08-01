@@ -59,7 +59,7 @@ namespace MyPham.Areas.Admin.Controllers
                     if (f != null && f.ContentLength > 0)
                     {
                         string FileName = System.IO.Path.GetFileName(f.FileName);
-                        string UploadPath = Server.MapPath("~/wwwroot/images/TaiKhoan/" + FileName);
+                        string UploadPath = Server.MapPath("~/wwwroot/images/user/" + FileName);
                         f.SaveAs(UploadPath);
                         taiKhoan.Anh = FileName;
                     }
@@ -108,13 +108,13 @@ namespace MyPham.Areas.Admin.Controllers
                     if (f != null && f.ContentLength > 0)
                     {
                         string FileName = System.IO.Path.GetFileName(f.FileName);
-                        string UploadPath = Server.MapPath("~/wwwroot/images/TaiKhoan/" + FileName);
+                        string UploadPath = Server.MapPath("~/wwwroot/images/user/" + FileName);
                         f.SaveAs(UploadPath);
                         taiKhoan.Anh = FileName;
                     }
                     else
                     {
-                        string UploadPath = Server.MapPath("~/wwwroot/image/" + taiKhoan.Anh);
+                        string UploadPath = Server.MapPath("~/wwwroot/image/user/" + taiKhoan.Anh);
                     }
                     db.Entry(taiKhoan).State = EntityState.Modified;
                     db.SaveChanges();

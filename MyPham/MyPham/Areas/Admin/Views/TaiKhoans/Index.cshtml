@@ -69,7 +69,7 @@
                                     </td>
                                     <td>
                                         @{
-                                            string ImagePath = "~/wwwroot/images/TaiKhoan/" + item.Anh;
+                                            string ImagePath = "~/wwwroot/images/user/" + item.Anh;
                                         }
                                         <img src="@Url.Content(ImagePath)" width=" 100" height="auto" />
                                     </td>
@@ -97,7 +97,7 @@
                                                 <span class="menu-title btn btn-wd btn-info pl-3 pr-3 pt-2 pb-2">Cập nhật</span>
                                             </a>
                                             <a class="nav-link" href="@Url.Action("DeleteConfirmedCustom", "TaiKhoans", new { id = item.MaTK })">
-                                                <button id="btnDelete" onclick="return confirm('Bạn chắc chắn muốn xóa tài khoản này: @item.HoTen')" class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2">Đóng tài khoản</button>
+                                                <button id="btnDelete" onclick="return confirm('Bạn chắc chắn muốn xóa tài khoản này: @item.HoTen')" class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2">Xóa tài khoản</button>
                                             </a>
                                         </div>
                                     </td>

@@ -11,10 +11,10 @@ namespace MyPham.Controllers
     public class HomeController : Controller
     {
         MyPhamDB db = new MyPhamDB();
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             List<SanPham> SpSon = new List<SanPham>();
-            SpSon = db.SanPham.Where(h=>h.MaDM == 4).OrderByDescending(h => h.GiamGia).Take(8).ToList();
+            SpSon = db.SanPham.Where(h => h.MaDM == 4).OrderByDescending(h => h.GiamGia).Take(8).ToList();
             List<SanPham> SpDuongDa = new List<SanPham>();
             SpDuongDa = db.SanPham.Where(h => h.MaDM == 1).OrderByDescending(h => h.GiamGia).Take(8).ToList();
             List<SanPham> SpTrangDiem = new List<SanPham>();
@@ -26,6 +26,7 @@ namespace MyPham.Controllers
             ViewBag.Son = SpSon;
             ViewBag.DuongDa = SpDuongDa;
 
+                
             return View();
         }
         public PartialViewResult _Nav()

@@ -784,3 +784,7 @@ E:\BTL ASP\BTL_ASP\MyPham\MyPham\bin\PagedList.dll
 E:\BTL ASP\BTL_ASP\MyPham\MyPham\bin\PagedList.Mvc.dll
 E:\BTL ASP\BTL_ASP\MyPham\MyPham\bin\PagedList.xml
 E:\BTL ASP\BTL_ASP\MyPham\MyPham\bin\PagedList.Mvc.xml
+D:\HocKy6.5\BTL\BTL_ASP\MyPham\MyPham\bin\PagedList.dll
+D:\HocKy6.5\BTL\BTL_ASP\MyPham\MyPham\bin\PagedList.Mvc.dll
+D:\HocKy6.5\BTL\BTL_ASP\MyPham\MyPham\bin\PagedList.xml
+D:\HocKy6.5\BTL\BTL_ASP\MyPham\MyPham\bin\PagedList.Mvc.xml
