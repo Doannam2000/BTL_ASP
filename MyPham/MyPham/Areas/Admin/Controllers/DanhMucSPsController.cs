@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MyPham.Models;
+using PagedList;
 
 namespace MyPham.Areas.Admin.Controllers
 {
@@ -15,9 +16,13 @@ namespace MyPham.Areas.Admin.Controllers
         private MyPhamDB db = new MyPhamDB();
 
         // GET: Admin/DanhMucSPs
-        public ActionResult Index()
+        public ActionResult Index(int ? page)
         {
-            return View(db.DanhMucSP.ToList());
+            var danhmuc = db.DanhMucSP.OrderBy(s => s.MaDM);
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(danhmuc.ToPagedList(pageNumber, pageSize));
+
         }
 
         // GET: Admin/DanhMucSPs/Details/5

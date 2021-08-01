@@ -784,4 +784,3 @@ E:\BTL ASP\BTL_ASP\MyPham\MyPham\bin\PagedList.dll
 E:\BTL ASP\BTL_ASP\MyPham\MyPham\bin\PagedList.Mvc.dll
 E:\BTL ASP\BTL_ASP\MyPham\MyPham\bin\PagedList.xml
 E:\BTL ASP\BTL_ASP\MyPham\MyPham\bin\PagedList.Mvc.xml
-E:\BTL ASP\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csproj.AssemblyReference.cache
