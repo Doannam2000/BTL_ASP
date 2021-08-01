@@ -13,6 +13,7 @@
     <!-- endinject -->
     <!-- plugin css for this page -->
     <link rel="stylesheet" href="~/Areas/Admin/assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="~/Areas/Admin/assets/css/flatsome2916.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="~/Areas/Admin/assets/css/style.css">
@@ -61,7 +62,10 @@
 
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLTV_Q9PEpanZDpvpboBdIfVWyPDBsJTn1hg&usqp=CAU"
+                            @{ 
+                                string img = "~/wwwroot/images/user/" + Session["Anh"];
+                            }
+                            <img src="@Url.Content(img)"
                                  alt="profile" />
                             <span class="nav-profile-name">@Session["HoTen"]</span>
                         </a>

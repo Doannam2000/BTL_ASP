@@ -167,6 +167,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\assets\css\flatsome2916.css" />
     <Content Include="Areas\Admin\assets\css\style.css" />
     <Content Include="Areas\Admin\assets\images\defaultImage.jpg" />
     <Content Include="Areas\Admin\assets\images\logo-full-1.png" />
