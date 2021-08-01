@@ -437,6 +437,7 @@
     <Content Include="Areas\Admin\Views\HoaDons\Index.cshtml" />
     <Content Include="Views\SanPham\XemSanPhamTheoDanhMuc.cshtml" />
     <Content Include="Views\SanPham\SanPham.cshtml" />
+    <Content Include="Views\Home\TimKiem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

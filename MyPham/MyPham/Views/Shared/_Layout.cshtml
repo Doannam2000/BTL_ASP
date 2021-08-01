@@ -449,24 +449,29 @@
                                                         </style>
                                                     </div>
 
-
                                                     <div class="searchform-wrapper ux-search-box relative is-normal">
-                                                        <form role="search" method="get" class="searchform" action="">
-                                                            <div class="flex-row relative">
-                                                                <div class="flex-col flex-grow">
-                                                                    <label class="screen-reader-text" for="woocommerce-product-search-field-0">Tìm kiếm:</label>
-                                                                    <input type="search" id="woocommerce-product-search-field-0" class="search-field mb-0" placeholder="Bạn cần tìm gì ..." value="" name="s" />
-                                                                    <input type="hidden" name="post_type" value="product" />
-                                                                </div>
-                                                                <div class="flex-col">
-                                                                    <button type="submit" value="Tìm kiếm" class="ux-search-submit submit-button secondary button icon mb-0">
-                                                                        <i class="icon-search"></i>
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                            <div class="live-search-results text-left z-top"></div>
+                                                        <form class="d-flex align-items-center" method="post" action="@Url.Action("TimKiem", "Home")">
+                                                            <input type="text" name="strSearch" placeholder="Bạn cần tìm gì ..." class="form-control" />
+                                                            <button type="submit" class="menu-title btn btn-wd btn-danger">Tìm kiếm</button>
                                                         </form>
                                                     </div>
+                                                    @*<div class="searchform-wrapper ux-search-box relative is-normal">
+                                                            <form role="search" method="get" class="searchform" action="">
+                                                                <div class="flex-row relative">
+                                                                    <div class="flex-col flex-grow">
+                                                                        <label class="screen-reader-text" for="woocommerce-product-search-field-0">Tìm kiếm:</label>
+                                                                        <input type="search" id="woocommerce-product-search-field-0" class="search-field mb-0" placeholder="Bạn cần tìm gì ..." value="" name="s" />
+                                                                        <input type="hidden" name="post_type" value="product" />
+                                                                    </div>
+                                                                    <div class="flex-col">
+                                                                        <button type="submit" value="Tìm kiếm" class="ux-search-submit submit-button secondary button icon mb-0">
+                                                                            <i class="icon-search"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="live-search-results text-left z-top"></div>
+                                                            </form>
+                                                        </div>*@
 
 
                                                 </div>
@@ -510,7 +515,7 @@
                                                                         {
                                                                             string img = "~/wwwroot/images/user/" + @Session["Anh"];
                                                                             <span class="image-icon header-cart-icon" data-icon-label="0">
-                                                                                <img class="cart-img-icon rounded-pill" style="width:40px; height:40px"  alt="Đăng nhập" src="@Url.Content(img)" />
+                                                                                <img class="cart-img-icon rounded-pill" style="width:40px; height:40px" alt="Đăng nhập" src="@Url.Content(img)" />
                                                                             </span>
                                                                         }
                                                                     </a>

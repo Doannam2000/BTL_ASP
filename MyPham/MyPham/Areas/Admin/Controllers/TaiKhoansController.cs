@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MyPham.Models;
+using PagedList;
 
 namespace MyPham.Areas.Admin.Controllers
 {
@@ -15,10 +16,12 @@ namespace MyPham.Areas.Admin.Controllers
         private MyPhamDB db = new MyPhamDB();
 
         // GET: Admin/TaiKhoans
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var taiKhoan = db.TaiKhoan.Include(t => t.PhanQuyen);
-            return View(taiKhoan.ToList());
+            var taiKhoan = db.TaiKhoan.Include(t => t.PhanQuyen).ToList();
+            int pageSize = 7;
+            int pageNumber = (page ?? 1);
+            return View(taiKhoan.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Admin/TaiKhoans/Details/5
