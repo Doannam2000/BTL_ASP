@@ -879,3 +879,4 @@ E:\ASP.NET\BaiTapLon\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csproj.CoreCompileIn
 E:\ASP.NET\BaiTapLon\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csproj.CopyComplete
 E:\ASP.NET\BaiTapLon\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.dll
 E:\ASP.NET\BaiTapLon\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.pdb
+E:\BTL ASP\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csproj.AssemblyReference.cache
