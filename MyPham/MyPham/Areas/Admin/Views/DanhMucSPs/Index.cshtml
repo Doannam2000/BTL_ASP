@@ -1,5 +1,5 @@
 ﻿@model PagedList.IPagedList<MyPham.Models.DanhMucSP>
-    @using PagedList.Mvc;
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
@@ -60,9 +60,9 @@
                                                 <span class="menu-title btn btn-wd btn-info pl-3 pr-3 pt-2 pb-2">Cập nhật</span>
                                             </a>
 
-                                            <a class="nav-link" href="@Url.Action("DeleteConfirmedCustom", "DanhMucSPs", new { id = item.MaDM })">
-                                                <button id="btnDelete" onclick="return confirm('Bạn chắc chắn muốn xóa danh mục  này: @item.TenDM')" class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2">Xóa</button>
-                                            </a>
+                                            <form class="d-flex align-items-center" method="post" action="@Url.Action("DeleteConfirmedCustom", "DanhMucSPs", new { id = item.MaDM })">
+                                                <button type="submit" class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2" onclick="return functionConfirm(this)">Xóa</button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
@@ -91,7 +91,8 @@
             confirmButtonText: 'Đồng ý',
             confirmButtonClass: 'btn btn-success'
         }, function (isConfirm) {
-                if (isConfirm) {
+            if (isConfirm) {
+                $('form').submit();
                 return true;
             } else {
                 return false;
