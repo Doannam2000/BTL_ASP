@@ -72,8 +72,11 @@
 
                                     <td style="display: flex; flex-direction: row;">
                                         <div class="d-flex justify-content-center">
-                                            <a class="nav-link ">
-                                                <span class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2">@Html.ActionLink("Delete", "Delete", new { id = item.MaHD })</span>
+                                            <a class="nav-link" href="@Url.Action("Edit", "HoaDons", new { id = item.MaHD })">
+                                                <span class="menu-title btn btn-wd btn-success pl-3 pr-3 pt-2 pb-2">Cập nhật</span>
+                                            </a>
+                                            <a class="nav-link" href="@Url.Action("Details", "HoaDons", new { id = item.MaHD })">
+                                                <span class="menu-title btn btn-wd btn-info pl-3 pr-3 pt-2 pb-2">Xem chi tiết</span>
                                             </a>
                                         </div>
                                     </td>

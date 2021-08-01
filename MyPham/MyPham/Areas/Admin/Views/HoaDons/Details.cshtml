@@ -5,63 +5,91 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>HoaDon</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.GioHang.MaGioHang)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GioHang.MaGioHang)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayTao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NgayTao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhThucVanChuyen)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HinhThucVanChuyen)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhThucThanhToan)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HinhThucThanhToan)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TongTien)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TongTien)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TinhTrang)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TinhTrang)
-        </dd>
-
-    </dl>
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12 grid-margin">
+            <div class="d-flex justify-content-between flex-wrap">
+                <div class="d-flex align-items-end flex-wrap">
+                    <div class="mr-md-3 mr-xl-5">
+                        <h2>Xin chào, Admin</h2>
+                        <div class="d-flex">
+                            <i class="mdi mdi-home text-muted hover-cursor"></i>
+                            <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Quản lý hóa đơn&nbsp;&nbsp;/&nbsp;Thông tin chi tiết hóa đơn</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Thông tin chi tiết hóa đơn</h4>
+                <form class="form-sample">
+                  
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label"> @Html.DisplayNameFor(model => model.GioHang.MaGioHang)</label>
+                                <div class="col-sm-8">
+                                    <label class="col-form-label">: @Html.DisplayFor(model => model.MaGioHang)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(model => model.NgayTao)</label>
+                                <div class="col-sm-8">
+                                    <label class="col-form-label">: @Html.DisplayFor(model => model.NgayTao)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(model => model.HinhThucVanChuyen)</label>
+                                <div class="col-sm-8">
+                                    <label class="col-form-label">: @Html.DisplayFor(model => model.HinhThucVanChuyen)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(model => model.HinhThucThanhToan)</label>
+                                <div class="col-sm-8">
+                                    <label class="col-form-label">: @Html.DisplayFor(model => model.HinhThucThanhToan)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label"> @Html.DisplayNameFor(model => model.TongTien)</label>
+                                <div class="col-sm-8">
+                                    <label class="col-form-label">: @Html.DisplayFor(model => model.TongTien)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label"> @Html.DisplayNameFor(model => model.TinhTrang)</label>
+                                <div class="col-sm-8">
+                                    <label class="col-form-label">: @Html.DisplayFor(model => model.TinhTrang)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="d-flex justify-content-center">
+                        <a class="nav-link" href="@Url.Action("Index","HoaDons")">
+                            <span class="menu-title btn btn-outline-primary btn-fw ">Quay lại</span>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaHD }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

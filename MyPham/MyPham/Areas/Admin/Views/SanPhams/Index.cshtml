@@ -68,7 +68,7 @@
                                         @{
                                             string ImagePath = "~/wwwroot/images/SanPham/" + item.AnhSP;
                                         }
-                                        <img src="@Url.Content(ImagePath)" width="300px" height="auto" class="" />
+                                        <img src="@Url.Content(ImagePath)" style="width:100px;height:auto;border-radius:0px"/>
                                         <br />
 
                                     </td>
@@ -107,7 +107,7 @@
     function functionConfirm(event) {
         swal({
             title: 'Thông báo',
-            text: "Bạn chắc chắn muốn xóa tài khoản này",
+            text: "Bạn chắc chắn muốn xóa sản phẩm này ?",
             type: 'warning',
             showCancelButton: true,
             cancelButtonText: 'Hủy',
