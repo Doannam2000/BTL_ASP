@@ -1,41 +1,20 @@
-﻿using MyPham.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using MyPham.Models;
 using PagedList;
+
 namespace MyPham.Controllers
 {
-    public class HomeController : Controller
+    public class SanPhamController : Controller
     {
         MyPhamDB db = new MyPhamDB();
-        public ActionResult Index(int? page)
-        {
-            List<SanPham> SpSon = new List<SanPham>();
-            SpSon = db.SanPham.Where(h => h.MaDM == 4).OrderByDescending(h => h.GiamGia).Take(8).ToList();
-            List<SanPham> SpDuongDa = new List<SanPham>();
-            SpDuongDa = db.SanPham.Where(h => h.MaDM == 1).OrderByDescending(h => h.GiamGia).Take(8).ToList();
-            List<SanPham> SpTrangDiem = new List<SanPham>();
-            SpTrangDiem = db.SanPham.Where(h => h.MaDM == 2).OrderByDescending(h => h.GiamGia).Take(8).ToList();
-            List<DanhMucSP> danhmucsp = new List<DanhMucSP>();
-            danhmucsp = db.DanhMucSP.ToList();
-            ViewBag.danhmuc = danhmucsp;
-            ViewBag.TrangDiem = SpTrangDiem;
-            ViewBag.Son = SpSon;
-            ViewBag.DuongDa = SpDuongDa;
-
-                
-            return View();
-        }
-        public PartialViewResult _Nav()
-        {
-            var danhmuc = db.DanhMucSP.Select(d => d);
-            return PartialView(danhmuc);
-        }
-        
-        
+        // GET: SanPham
         public ActionResult SanPham(string id)
         {
             if (id == null)
@@ -62,13 +41,14 @@ namespace MyPham.Controllers
             return View(sp);
         }
 
-        public ActionResult XemSanPhamTheoDanhMuc( string id )
+        public ActionResult XemSanPhamTheoDanhMuc(string id, int? page)
         {
             List<SanPham> sanpham = new List<SanPham>();
-            if(id == null)
+            if (id == null)
             {
-               
-            } else
+
+            }
+            else
             {
                 sanpham = db.SanPham.Where(s => s.MaDM.ToString().Equals(id)).Select(s => s).ToList();
 
@@ -78,14 +58,9 @@ namespace MyPham.Controllers
             s1 = db.DanhMucSP.Where(h => h.MaDM == madm).ToList();
             ViewBag.TenDM = s1[0].TenDM;
 
-            return View(sanpham);
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+            return View(sanpham.ToPagedList(pageNumber, pageSize));
         }
-
-        public ActionResult GioHang()
-        {
-            return View();
-        }
-        
-        
     }
 }
