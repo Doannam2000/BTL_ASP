@@ -27,7 +27,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Danh sách sản phẩm</h4>
-                <a class="nav-link " href="@Url.Action("Create","SanPhams")">
+                <a class="" href="@Url.Action("Create","SanPhams")">
                     <span class="menu-title btn btn-primary">Thêm sản phẩm</span>
                 </a>
                 <div class="table-responsive pt-3">
@@ -89,8 +89,13 @@
                             }
                         </tbody>
                     </table>
-                    Trang @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions()
+                      {
+                          LiElementClasses = new string[] { "page-number" },
+                          UlElementClasses = new string[] { "page-numbers", "nav-pagination", "links", "text-center" }
+                      })
+                    @*Trang @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
                 </div>
             </div>
         </div>
