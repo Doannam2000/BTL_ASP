@@ -29,6 +29,26 @@ namespace MyPham.Controllers
                 
             return View();
         }
+        public ActionResult TimKiem(string strSearch, int? page)
+        {
+            var sanpham = db.SanPham.ToList();
+            if (strSearch != null)
+            {
+                sanpham = db.SanPham.Where(s => s.TenSP.Contains(strSearch)).ToList();
+            }
+            ViewBag.strSearch = strSearch;
+            if (sanpham.Count > 0)
+            {
+                int pageSize = 4;
+                int pageNumber = (page ?? 1);
+                return View(sanpham.ToPagedList(pageNumber, pageSize));
+            }
+            else
+            {
+                ViewBag.Thongbao = "Không có sản phẩm nào";
+                return View();
+            }
+        }
         public PartialViewResult _Nav()
         {
             var danhmuc = db.DanhMucSP.Select(d => d);
