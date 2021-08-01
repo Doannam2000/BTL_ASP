@@ -13,54 +13,7 @@ namespace MyPham.Areas.Admin.Controllers
         {
             return View();
         }
-        public ActionResult QuanLySanPham()
-        {
-            return View();
-        }
-        public ActionResult QuanLyDanhMuc()
-        {
-            return View();
-        } public ActionResult QuanLyHoaDon()
-        {
-            return View();
-        }   
-        public ActionResult QuanLyTaiKhoan()
-        {
-            return View();
-        }  
-        public ActionResult QuanLyPhanQuyen()
-        {
-            return View();
-        }
-        public ActionResult CapNhatSanPham()
-        {
-            return View();
-        }       
-        public ActionResult ThemSanPham()
-        {
-            return View();
-        }
-        public ActionResult ChiTietSanPham()
-        {
-            return View();
-        }
-        public ActionResult ThemDanhMuc()
-        {
-            return View();
-        }
-        public ActionResult CapNhatDanhMuc()
-        {
-            return View();
-        }
-        public ActionResult ThemTaiKhoan()
-        {
-            return View();
-        }
-        public ActionResult CapNhatTaiKhoan()
-        {
-            return View();
-        }
-        public ActionResult ThemPhanQuyen()
+       public ActionResult QuanLyPhanQuyen()
         {
             return View();
         }
@@ -68,7 +21,7 @@ namespace MyPham.Areas.Admin.Controllers
         {
             return View();
         }
-        public ActionResult DangNhap()
+        public ActionResult ThemPhanQuyen()
         {
             return View();
         }

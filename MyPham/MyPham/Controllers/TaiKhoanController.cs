@@ -33,7 +33,7 @@ namespace MyPham.Controllers
                     Session["Email"] = user.FirstOrDefault().Email;
                     Session["HoTen"] = user.FirstOrDefault().HoTen;
                     Session["Anh"] = user.FirstOrDefault().Anh;
-                    
+                    Session["idUser"] = user.FirstOrDefault().MaTK;
                     return RedirectToAction("Index","Home");
                 }
                 else
