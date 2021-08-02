@@ -974,3 +974,4 @@ E:\Code\APS.NET\BTL_ASP\MyPham\MyPham\bin\roslyn\vbc.exe.config
 E:\Code\APS.NET\BTL_ASP\MyPham\MyPham\bin\roslyn\vbc.rsp
 E:\Code\APS.NET\BTL_ASP\MyPham\MyPham\bin\roslyn\VBCSCompiler.exe
 E:\Code\APS.NET\BTL_ASP\MyPham\MyPham\bin\roslyn\VBCSCompiler.exe.config
+E:\BTL ASP\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csproj.AssemblyReference.cache
