@@ -34,8 +34,13 @@ namespace MyPham.Areas.Admin.Controllers
                     Session["Email"] = user.FirstOrDefault().Email;
                     Session["Anh"] = user.FirstOrDefault().Anh;
                     Session["Loai"] = user.FirstOrDefault().MaQuyen;
-                    if(user.FirstOrDefault().MaQuyen == 3) {
+                    if (user.FirstOrDefault().MaQuyen == 3)
+                    {
                         ModelState.AddModelError("", "Bạn Không Có Quyền Vào ADMIN!!");
+                    }
+                    else if (user.FirstOrDefault().TinhTrang == false)
+                    {
+                        ModelState.AddModelError("", "Tài khoản của bạn đang bị khóa !!");
                     }
                     else
                     {
