@@ -34,7 +34,7 @@
                             {
                                 <p><img id="output" width="200" src="~/wwwroot/images/user/user.png" /></p>
                             }
-                            <p><label for="ufile" style="cursor: pointer;">Chọn file ảnh</label></p>
+                            <p><label for="ufile" style="cursor: pointer;" class="btn btn-sm btn-primary">Chọn file ảnh</label></p>
                             <p><input name="ImageFile" type="file" id="ufile" style="display: none;" onchange="loadFile(event)" /></p>
                         </form>
                         @Html.HiddenFor(model => model.Anh)
@@ -102,7 +102,7 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Lưu" class="btn btn-default" />
+                        <input type="submit" value="Lưu" class="btn btn-default col-md-4" />
                     </div>
                 </div>
             </div>
