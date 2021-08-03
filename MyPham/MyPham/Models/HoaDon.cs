@@ -34,6 +34,10 @@
         [DisplayName("Mã giỏ hàng")]
         public int MaGioHang { get; set; }
 
+        [Column(TypeName = "ntext")]
+        [DisplayName("Công dụng")]
+        public string GhiChu { get; set; }
+
         [DisplayName("Tình trạng")]
         [Required]
         [StringLength(100)]

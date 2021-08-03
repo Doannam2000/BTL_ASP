@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    double TongTien = 0;
 }
 
 @if (Model == null || Model.Count == 0)
@@ -12,6 +13,7 @@
 }
 else
 {
+    <
     <a href="@Url.Action("XoaKhoiGio","GioHang",new { MaSP = -1})" onclick="return confirm('Bạn có chắc muốn xóa toàn bộ sản phẩm không ?');" class="btn btn-danger btn-sm">Xóa giỏ hàng</a> 
     <table class="table">
         <thead>
@@ -30,6 +32,7 @@ else
             {
                 double giagiam = (Convert.ToDouble(@item.sanPham.Gia) - Convert.ToDouble(@item.sanPham.Gia) * (@item.sanPham.GiamGia.HasValue ? @item.sanPham.GiamGia.Value : 0.0));
                 String imagePath = "~/wwwroot/images/SanPham/" + item.sanPham.AnhSP;
+                TongTien += giagiam * item.soLuong;
                 <tr>
                     <td>@item.sanPham.MaSP</td>
                     <td>@item.sanPham.TenSP</td>
@@ -49,5 +52,5 @@ else
 
         </tbody>
     </table>
-
+    <span>Tổng tiền : @TongTien</span>
 }

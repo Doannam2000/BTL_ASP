@@ -1,0 +1,184 @@
+﻿
+@{
+    ViewBag.Title = "Thanh Toán";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main id="main" class="">
+    <div id="content" class="content-area page-wrapper" role="main">
+        <div class="row row-main">
+            <div class="large-12 col">
+                <div class="col-inner">
+
+
+
+                    <div class="woocommerce">
+                        <div class="woocommerce-notices-wrapper"></div><div class="woocommerce-form-login-toggle">
+
+                            <div class="woocommerce-info message-wrapper">
+                                <div class="message-container container medium-text-center">
+                                    Bạn đã có tài khoản? <a href="#" class="showlogin">Ấn vào đây để đăng nhập</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="woocommerce-notices-wrapper"></div>
+                        <form name="checkout" method="post" class="checkout woocommerce-checkout " action="https://lamdepz.com/thanh-toan/" enctype="multipart/form-data" novalidate="novalidate">
+
+                            <div class="row pt-0 ">
+                                <div class="large-7 col  ">
+
+
+                                    <div id="customer_details">
+                                        <div class="clear">
+                                            <div class="woocommerce-billing-fields">
+
+                                                <h3>Thông tin thanh toán</h3>
+                                                <div class="form-group">
+                                                    <div class="col-md-2">Tên : </div>
+                                                    <div class="col-md-10"><input type="text" class="input-text"></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-2">Họ : </div>
+                                                    <div class="col-md-10"><input type="text" class="input-text"></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-2">Địa chỉ : </div>
+                                                    <div class="col-md-10"><input type="text" class="input-text"></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-2">Số điện thoại : </div>
+                                                    <div class="col-md-10"><input type="text" class="input-text"></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-2">Email : </div>
+                                                    <div class="col-md-10"><input type="text" class="input-text"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="woocommerce-account-fields">
+
+                                                <p class="form-row form-row-wide create-account woocommerce-validated">
+                                                    <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
+                                                        <input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" type="checkbox" name="createaccount" value="1"> <span>Tạo tài khoản mới?</span>
+                                                    </label>
+                                                </p>
+
+
+
+
+                                                <div class="create-account" style="display: none;">
+                                                    <p class="form-row validate-required" id="account_password_field" data-priority=""><label for="account_password" class="">Tạo mật khẩu của tài khoản&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label><span class="woocommerce-input-wrapper password-input"><input type="password" class="input-text " name="account_password" id="account_password" placeholder="Mật khẩu" value=""><span class="show-password-input"></span></span></p>								<div class="clear"></div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="clear">
+                                            <div class="woocommerce-shipping-fields">
+                                            </div>
+                                            <div class="woocommerce-additional-fields">
+
+
+
+                                                <h3>Thông tin bổ sung</h3>
+
+
+                                                <div class="woocommerce-additional-fields__field-wrapper">
+                                                    <p class="form-row notes" id="order_comments_field" data-priority="">
+                                                        <label for="order_comments" class="">Ghi chú đơn hàng&nbsp;<span class="optional">(tuỳ chọn)</span></label>
+                                                        <input type="text" />
+                                                    </p>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="large-5 col">
+
+                                    <div class="col-inner has-border">
+                                        <div class="checkout-sidebar sm-touch-scroll">
+
+
+                                            <h3 id="order_review_heading">Đơn hàng của bạn</h3>
+
+
+                                            <div id="order_review" class="woocommerce-checkout-review-order">
+                                                <table class="shop_table woocommerce-checkout-review-order-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="product-name">Sản phẩm</th>
+                                                            <th class="product-total">Tạm tính</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="cart_item">
+                                                            <td class="product-name">
+                                                                Kem đặc trị nám và tàn nhang KpeM nga&nbsp;						 <strong class="product-quantity">×&nbsp;1</strong>
+                                                            </td>
+                                                            <td class="product-total">
+                                                                <span class="woocommerce-Price-amount amount"><bdi>280.000<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tfoot>
+
+                                                        <tr class="cart-subtotal">
+                                                            <th>Tạm tính</th>
+                                                            <td><span class="woocommerce-Price-amount amount"><bdi>280.000<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></td>
+                                                        </tr>
+                                                        <tr class="order-total">
+                                                            <th>Tổng</th>
+                                                            <td><strong><span class="woocommerce-Price-amount amount"><bdi>280.000<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></strong> </td>
+                                                        </tr>
+
+
+                                                    </tfoot>
+                                                </table>
+
+                                                <div id="payment" class="woocommerce-checkout-payment">
+                                                    <ul class="wc_payment_methods payment_methods methods">
+                                                        <li class="wc_payment_method payment_method_cod">
+                                                            <label for="payment_method_cod">
+                                                                Trả tiền mặt khi nhận hàng
+                                                            </label>
+                                                            <div class="payment_box payment_method_cod" style="display:none;">
+                                                                <p>Chúng tôi sẽ gửi hàng cho bạn. Bạn nhận được hàng và trả tiền mặt khi nhận hàng</p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="form-row place-order">
+                                                        <button type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="Đặt hàng" data-value="Đặt hàng">Đặt hàng</button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="woocommerce-privacy-policy-text">
+                                                <p>Thông tin cá nhân của bạn sẽ được sử dụng để xử lý đơn hàng, tăng trải nghiệm sử dụng website, và cho các mục đích cụ thể khác đã được mô tả trong <a href="" class="woocommerce-privacy-policy-link" target="_blank">chính sách riêng tư</a>.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</main>
+
