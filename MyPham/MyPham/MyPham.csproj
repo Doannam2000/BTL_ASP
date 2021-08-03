@@ -216,7 +216,7 @@
     <Content Include="wwwroot\css\photoswipe\default-skin\default-skin.png" />
     <Content Include="wwwroot\css\photoswipe\photoswipe.min287d.css" />
     <Content Include="wwwroot\css\select2287d.css" />
-    <Content Include="wwwroot\css\style.css" />
+    <Content Include="wwwroot\css\style1.css" />
     <Content Include="wwwroot\css\style6aec.css" />
     <Content Include="wwwroot\css\style9632.css" />
     <Content Include="wwwroot\css\styles9dff.css" />
@@ -224,7 +224,7 @@
     <Content Include="wwwroot\css\woocommerce-blocks\build\style7e2e.css" />
     <Content Include="wwwroot\css\woocommerce-blocks\build\vendors-style7e2e.css" />
     <Content Include="wwwroot\css\woocommerce-blocks\devvn-woocommerce-reviews19f6.css" />
-    <Content Include="wwwroot\css\flatsome2916.css" />
+    <Content Include="wwwroot\css\flatsome29161.css" />
     <Content Include="wwwroot\images\2021\01\giao-hang.jpg" />
     <Content Include="wwwroot\images\2021\03\cropped-logo-ico-small-1-180x180.png" />
     <Content Include="wwwroot\images\2021\03\cropped-logo-ico-small-1-192x192.png" />

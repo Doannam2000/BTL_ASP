@@ -42,7 +42,7 @@
                             <div class="is-larger absolute left top z-1">
                                 <div class="callout badge badge-circle">
                                     <div class="badge-inner secondary on-sale">
-                                        <span class="onsale">-@giam</span>
+                                        <span class="onsale">-@String.Format("{0:#,###}", @giam)</span>
                                     </div>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
                         <div class="is-divider small"></div>
                         <div class="price-wrapper">
                             <p class="price product-page-price price-on-sale">
-                                <del><span class="woocommerce-Price-amount amount"><bdi>@Html.DisplayFor(Model => Model.Gia)<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></del> <ins><span class="woocommerce-Price-amount amount"><bdi>@giagiam<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></ins>
+                                <del><span class="woocommerce-Price-amount amount"><bdi>@String.Format("{0:#,###}", Model.Gia)<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></del> <ins><span class="woocommerce-Price-amount amount"><bdi>@String.Format("{0:#,###}", @giagiam)<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></ins>
                             </p>
                         </div>
                         <div class="product-short-description">
@@ -314,9 +314,9 @@
                                                                 <span class="price">
                                                                     <del>
                                                                         <span class="woocommerce-Price-amount amount">
-                                                                            <bdi>@item.Gia<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi>
+                                                                            <bdi>@String.Format("{0:#,###}", @item.Gia)<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi>
                                                                         </span>
-                                                                    </del> <ins><span class="woocommerce-Price-amount amount"><bdi>@giagiam1<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></ins>
+                                                                    </del> <ins><span class="woocommerce-Price-amount amount"><bdi>@String.Format("{0:#,###}",@giagiam1)<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></ins>
                                                                 </span>
                                                             </div>
                                                         </div>

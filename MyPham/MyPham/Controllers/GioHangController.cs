@@ -144,7 +144,10 @@ namespace MyPham.Controllers
                     var XoaGH = db.Chi_Tiet_Gio_Hang.Where(s => s.MaGioHang == MaGH).ToList();
                     foreach (var item in XoaGH)
                     {
-                        db.Chi_Tiet_Gio_Hang.Remove(item);
+                        if(item.MaSP == MaSP)
+                        {
+                            db.Chi_Tiet_Gio_Hang.Remove(item);
+                        }
                     }
                     db.SaveChanges();
                 }
