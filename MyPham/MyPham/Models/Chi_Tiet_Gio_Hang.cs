@@ -2,6 +2,7 @@ namespace MyPham.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -19,6 +20,9 @@ namespace MyPham.Models
         public int MaSP { get; set; }
 
         public int SoLuongMua { get; set; }
+
+        [DisplayName("Giá")]
+        public decimal GiaSP { get; set; }
 
         public virtual GioHang GioHang { get; set; }
 
