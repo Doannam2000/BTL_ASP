@@ -54,7 +54,7 @@ namespace MyPham.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaHD,NgayTao,HinhThucVanChuyen,HinhThucThanhToan,TongTien,MaGioHang,TinhTrang")] HoaDon hoaDon)
+        public ActionResult Create([Bind(Include = "MaHD,NgayTao,HinhThucVanChuyen,HinhThucThanhToan,MaGioHang,TinhTrang")] HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace MyPham.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaHD,NgayTao,HinhThucVanChuyen,HinhThucThanhToan,TongTien,MaGioHang,TinhTrang")] HoaDon hoaDon)
+        public ActionResult Edit([Bind(Include = "MaHD,NgayTao,HinhThucVanChuyen,HinhThucThanhToan,MaGioHang,TinhTrang")] HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {

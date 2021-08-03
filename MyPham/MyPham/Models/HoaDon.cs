@@ -27,16 +27,24 @@
         [StringLength(100)]
         public string HinhThucThanhToan { get; set; }
 
-        [DisplayName("Tổng tiền")]
-        [Column(TypeName = "money")]
-        public decimal TongTien { get; set; }
-
         [DisplayName("Mã giỏ hàng")]
         public int MaGioHang { get; set; }
 
         [Column(TypeName = "ntext")]
         [DisplayName("Công dụng")]
         public string GhiChu { get; set; }
+
+        [StringLength(50)]
+        [DisplayName("Họ và tên")]
+        public string HoTen { get; set; }
+
+        [Column(TypeName = "ntext")]
+        [DisplayName("Địa chỉ")]
+        public string DiaChi { get; set; }
+
+        [StringLength(10)]
+        [DisplayName("Số điện thoại")]
+        public string SoDienThoai { get; set; }
 
         [DisplayName("Tình trạng")]
         [Required]
