@@ -37,9 +37,6 @@ namespace MyPham.Models
                 .WithRequired(e => e.GioHang)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<HoaDon>()
-                .Property(e => e.TongTien)
-                .HasPrecision(19, 4);
 
             modelBuilder.Entity<PhanQuyen>()
                 .HasMany(e => e.TaiKhoan)

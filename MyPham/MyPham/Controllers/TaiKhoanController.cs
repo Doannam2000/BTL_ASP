@@ -41,6 +41,9 @@ namespace MyPham.Controllers
                         gh = new GioHang();
                         gh.MaTK = MaTK;
                         db.GioHang.Add(gh);
+                        db.SaveChanges();
+                        GioHang gio = db.GioHang.Where(g => g.MaTK == MaTK).FirstOrDefault();
+                        Session["MaGH"] = gio.MaGioHang;
                     }
                     else
                     {

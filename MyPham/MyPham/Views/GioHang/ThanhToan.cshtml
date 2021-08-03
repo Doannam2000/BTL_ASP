@@ -1,31 +1,43 @@
-﻿
+﻿@model List<MyPham.Models.Gio>
 @{
     ViewBag.Title = "Thanh Toán";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    MyPham.Models.TaiKhoan taiKhoan = new MyPham.Models.TaiKhoan();
+    double Tien = 0;
 }
 
+@if (ViewBag.TaiKhoan != null)
+{
+    taiKhoan = ViewBag.TaiKhoan;
+}
 <main id="main" class="">
     <div id="content" class="content-area page-wrapper" role="main">
         <div class="row row-main">
             <div class="large-12 col">
                 <div class="col-inner">
-
-
-
                     <div class="woocommerce">
-                        <div class="woocommerce-notices-wrapper"></div><div class="woocommerce-form-login-toggle">
-
-                            <div class="woocommerce-info message-wrapper">
-                                <div class="message-container container medium-text-center">
-                                    Bạn đã có tài khoản? <a href="#" class="showlogin">Ấn vào đây để đăng nhập</a>
+                        <div class="woocommerce-notices-wrapper"></div>
+                        <div class="woocommerce-form-login-toggle">
+                            @if (ViewBag.TaiKhoan == null)
+                            {
+                                <div class="woocommerce-info message-wrapper">
+                                    <div class="message-container container medium-text-center">
+                                        Bạn chưa có tài khoản? <a href="@Url.Action("DangKy", "TaiKhoan")" class="showlogin">Tạo tài khoản mới</a>
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="woocommerce-info message-wrapper">
+                                    <div class="message-container container medium-text-center">
+                                        Bạn đã có tài khoản? <a href="@Url.Action("DangNhap", "TaiKhoan")" class="showlogin">Ấn vào đây để đăng nhập</a>
+                                    </div>
+                                </div>
+                            }
+
                         </div>
                         <div class="woocommerce-notices-wrapper"></div>
-                        <form name="checkout" method="post" class="checkout woocommerce-checkout " action="https://lamdepz.com/thanh-toan/" enctype="multipart/form-data" novalidate="novalidate">
+                        <form name="checkout" method="post" class="checkout woocommerce-checkout " enctype="multipart/form-data" novalidate="novalidate" action="@Url.Action("XacNhanThanhToan","GioHang")">
 
                             <div class="row pt-0 ">
-                                <div class="large-7 col  ">
+                                <div class="large-7 col">
 
 
                                     <div id="customer_details">
@@ -35,43 +47,31 @@
                                                 <h3>Thông tin thanh toán</h3>
                                                 <div class="form-group">
                                                     <div class="col-md-2">Tên : </div>
-                                                    <div class="col-md-10"><input type="text" class="input-text"></div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-md-2">Họ : </div>
-                                                    <div class="col-md-10"><input type="text" class="input-text"></div>
+                                                    <div class="col-md-10"><input type="text" class="input-text" name="HoTen" value="@taiKhoan.HoTen"></div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-2">Địa chỉ : </div>
-                                                    <div class="col-md-10"><input type="text" class="input-text"></div>
+                                                    <div class="col-md-10"><input type="text" class="input-text" name="diachi"  value="@taiKhoan.DiaChi"></div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-2">Số điện thoại : </div>
-                                                    <div class="col-md-10"><input type="text" class="input-text"></div>
+                                                    <div class="col-md-10"><input type="text" class="input-text" name="sodienthoai" value="@taiKhoan.SoDienThoai"></div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-2">Email : </div>
-                                                    <div class="col-md-10"><input type="text" class="input-text"></div>
+                                                    <div class="col-md-10"><input type="text" class="input-text" name="email" value="@taiKhoan.Email"></div>
                                                 </div>
+                                                @if (ViewBag.TaiKhoan == null)
+                                                {
+                                                    <div class="form-group">
+                                                        <div class="col-md-2">Mật Khẩu : </div>
+                                                        <div class="col-md-10"><input type="text" class="input-text" name="matkhau"></div>
+                                                    </div>
+                                                }
+
                                             </div>
 
-                                            <div class="woocommerce-account-fields">
 
-                                                <p class="form-row form-row-wide create-account woocommerce-validated">
-                                                    <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
-                                                        <input class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" id="createaccount" type="checkbox" name="createaccount" value="1"> <span>Tạo tài khoản mới?</span>
-                                                    </label>
-                                                </p>
-
-
-
-
-                                                <div class="create-account" style="display: none;">
-                                                    <p class="form-row validate-required" id="account_password_field" data-priority=""><label for="account_password" class="">Tạo mật khẩu của tài khoản&nbsp;<abbr class="required" title="bắt buộc">*</abbr></label><span class="woocommerce-input-wrapper password-input"><input type="password" class="input-text " name="account_password" id="account_password" placeholder="Mật khẩu" value=""><span class="show-password-input"></span></span></p>								<div class="clear"></div>
-                                                </div>
-
-
-                                            </div>
                                         </div>
 
                                         <div class="clear">
@@ -87,7 +87,7 @@
                                                 <div class="woocommerce-additional-fields__field-wrapper">
                                                     <p class="form-row notes" id="order_comments_field" data-priority="">
                                                         <label for="order_comments" class="">Ghi chú đơn hàng&nbsp;<span class="optional">(tuỳ chọn)</span></label>
-                                                        <input type="text" />
+                                                        <input type="text" name="GhiChu"/>
                                                     </p>
                                                 </div>
 
@@ -118,24 +118,26 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr class="cart_item">
-                                                            <td class="product-name">
-                                                                Kem đặc trị nám và tàn nhang KpeM nga&nbsp;						 <strong class="product-quantity">×&nbsp;1</strong>
-                                                            </td>
-                                                            <td class="product-total">
-                                                                <span class="woocommerce-Price-amount amount"><bdi>280.000<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span>
-                                                            </td>
-                                                        </tr>
+                                                        @foreach (var item in Model)
+                                                        {
+                                                            double giagiam = (Convert.ToDouble(@item.sanPham.Gia) - Convert.ToDouble(@item.sanPham.Gia) * (@item.sanPham.GiamGia.HasValue ? @item.sanPham.GiamGia.Value : 0.0));
+                                                            Tien += giagiam * item.soLuong;
+                                                            <tr class="cart_item">
+                                                                <td class="product-name">
+                                                                    @item.sanPham.TenSP<strong class="product-quantity">×&nbsp;@item.soLuong</strong>
+                                                                </td>
+                                                                <td class="product-total">
+                                                                    <span class="woocommerce-Price-amount amount"><bdi>@(item.soLuong*giagiam)<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span>
+                                                                </td>
+                                                            </tr>
+                                                        }
+
                                                     </tbody>
                                                     <tfoot>
 
-                                                        <tr class="cart-subtotal">
-                                                            <th>Tạm tính</th>
-                                                            <td><span class="woocommerce-Price-amount amount"><bdi>280.000<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></td>
-                                                        </tr>
                                                         <tr class="order-total">
                                                             <th>Tổng</th>
-                                                            <td><strong><span class="woocommerce-Price-amount amount"><bdi>280.000<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></strong> </td>
+                                                            <td><strong><span class="woocommerce-Price-amount amount"><bdi>@Tien<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></strong> </td>
                                                         </tr>
 
 
@@ -178,7 +180,6 @@
             </div>
         </div>
     </div>
-
 
 </main>
 

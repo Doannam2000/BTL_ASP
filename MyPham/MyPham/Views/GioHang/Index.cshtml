@@ -13,8 +13,7 @@
 }
 else
 {
-    <
-    <a href="@Url.Action("XoaKhoiGio","GioHang",new { MaSP = -1})" onclick="return confirm('Bạn có chắc muốn xóa toàn bộ sản phẩm không ?');" class="btn btn-danger btn-sm">Xóa giỏ hàng</a> 
+    <a href="@Url.Action("XoaKhoiGio","GioHang",new { MaSP = -1})" onclick="return confirm('Bạn có chắc muốn xóa toàn bộ sản phẩm không ?');" class="btn btn-danger btn-sm">Xóa giỏ hàng</a>
     <table class="table">
         <thead>
             <tr>
@@ -53,4 +52,6 @@ else
         </tbody>
     </table>
     <span>Tổng tiền : @TongTien</span>
+    <a href="@Url.Action("ThanhToan","GioHang")"><button>Thanh toán</button></a>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 }
