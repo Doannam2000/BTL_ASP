@@ -167,6 +167,9 @@ namespace MyPham.Controllers
             return RedirectToAction("Index");
         }
 
-     
+        public ActionResult ThanhToan()
+        {
+            return View();
+        }
     }
 }
