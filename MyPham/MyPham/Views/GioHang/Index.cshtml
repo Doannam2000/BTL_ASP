@@ -7,23 +7,27 @@
 
 @if (Model == null || Model.Count == 0)
 {
-    <p class="text-info text-center">
+    <p style="font-size: 16px; font-weight: 500" class="text-info text-center mt-5 mb-5">
         Giỏ hàng của bạn rỗng!
     </p>
 }
 else
 {
-    <a href="@Url.Action("XoaKhoiGio","GioHang",new { MaSP = -1})" onclick="return confirm('Bạn có chắc muốn xóa toàn bộ sản phẩm không ?');" class="btn btn-danger btn-sm">Xóa giỏ hàng</a>
-    <table class="table">
+<div class="container mt-5">
+    @*<a href="@Url.Action("XoaKhoiGio","GioHang",new { MaSP = -1})" onclick="return confirm('Bạn có chắc muốn xóa toàn bộ sản phẩm không ?');" class="btn btn-danger btn-sm">Xóa giỏ hàng</a>*@
+    <form id="delete-cart" style="text-align:end" method="post" action="@Url.Action("XoaKhoiGio", "GioHang", new { MaSP = -1})">
+        <button style="background: #f12323; color: #fff" type="submit" class="btn btn-sm" onclick="return functionConfirmDeleteCart(this)">Xóa giỏ hàng</button>
+    </form>
+    <table style="border-top: 1px solid #aaa" class="table table-striped mt-3">
         <thead>
             <tr>
-                <td>Mã SP</td>
-                <td>Tên SP</td>
-                <td>Ảnh SP</td>
-                <td>Số Lượng</td>
-                <td>Đơn giá</td>
-                <td>Thành tiền</td>
-                <td></td>
+                <th style="padding: 20px; text-transform: none" scope="col">Mã sản phẩm</th>
+                <th style="padding: 20px; text-transform: none" scope="col">Tên sản phẩm</th>
+                <th style="padding: 20px; text-transform: none" scope="col">Ảnh sản phẩm</th>
+                <th style="padding: 20px; text-transform: none" scope="col">Số Lượng</th>
+                <th style="padding: 20px; text-transform: none" scope="col">Đơn giá</th>
+                <th style="padding: 20px; text-transform: none" scope="col">Thành tiền</th>
+                <th style="padding: 20px; text-transform: none" scope="col">Hành động</th>
             </tr>
         </thead>
         <tbody>
@@ -33,25 +37,88 @@ else
                 String imagePath = "~/wwwroot/images/SanPham/" + item.sanPham.AnhSP;
                 TongTien += giagiam * item.soLuong;
                 <tr>
-                    <td>@item.sanPham.MaSP</td>
-                    <td>@item.sanPham.TenSP</td>
-                    <td><img src="@Url.Content(imagePath)" /></td>
-                    <form method="post" enctype='multipart/form-data' action="@Url.Action("SuaSoLuong", "GioHang", new { MaSP = item.sanPham.MaSP })">
-                        <div class="quantity buttons_added">
-                            <input type="submit" value="-" class="minus button is-form">
-                            <input type="number" id="quantity_60d19c138f0b1" class="input-text qty text" step="1" min="0" max="@item.sanPham.SoLuongTon" name="SoLuong" value="@item.soLuong" title="SL" size="4" placeholder="" inputmode="numeric" />
-                            <input type="submit" value="+" class="plus button is-form">
-                        </div>
-                    </form>
-                    <td>@giagiam.ToString("N0")</td>
-                    <td>@((giagiam*item.soLuong).ToString("N0"))</td>
-                    <td> <a href="@Url.Action("XoaKhoiGio","GioHang",new { MaSP = item.sanPham.MaSP})" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');" class="btn btn-danger btn-sm">Xóa</a> </td>
+                    <td style="padding: 20px;text-align: center">@item.sanPham.MaSP</td>
+                    <td style="padding: 20px;text-align: center">@item.sanPham.TenSP</td>
+                    <td style="padding: 20px;text-align: center">
+                        <img width="200" height="auto" src="@Url.Content(imagePath)"
+                             class="img-custom" alt="" loading="lazy" />
+                    </td>
+                    <td style="padding: 20px">
+                        <form method="post" enctype='multipart/form-data' action="@Url.Action("SuaSoLuong", "GioHang", new { MaSP = item.sanPham.MaSP })">
+                            <div class="quantity buttons_added">
+                                <input style="background: #eee" type="submit" value="-" class="minus button is-form">
+                                <input type="number" id="quantity_60d19c138f0b1" class="input-text qty text" step="1" min="0" max="@item.sanPham.SoLuongTon" name="SoLuong" value="@item.soLuong" title="SL" size="4" placeholder="" inputmode="numeric" />
+                                <input style="background: #eee" type="submit" value="+" class="plus button is-form">
+                            </div>
+                        </form>
+                    </td>
+                    <td style="padding: 20px;text-align: center">@giagiam.ToString("N0")</td>
+                    <td style="padding: 20px;text-align: center">
+                        @((giagiam*item.soLuong).ToString("N0"))
+                    </td>
+                    <td style="padding: 20px;text-align: center">
+                        <form method="post" action="@Url.Action("XoaKhoiGio", "GioHang", new { MaSP = item.sanPham.MaSP})">
+                            <button type="submit" style="background: #f12323; color: #fff; border-radius: 50%" class="btn btn-sm" onclick="return functionConfirm(this)">X</button>
+                        </form>
+
+                    </td>
                 </tr>
             }
 
         </tbody>
     </table>
-    <span>Tổng tiền : @TongTien</span>
-    <a href="@Url.Action("ThanhToan","GioHang")"><button>Thanh toán</button></a>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <div class="d-flex justify-content-end wc-proceed-to-checkout align-items-center mt-3 mb-3">
+        <span class="mr-3 font-weight-bold">Tổng tiền : @String.Format("{0:#,###}", @TongTien) VND</span>
+        <a style="margin: 0px; border-radius: 3px" class="checkout-button button alt wc-forward" href="@Url.Action("ThanhToan","GioHang")">Thanh toán</a>
+    </div>
+</div>
 }
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    function functionConfirm(event) {
+        swal({
+            title: 'Thông báo',
+            text: "Bạn chắc chắn muốn xóa tài khoản này",
+            type: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'Hủy',
+            cancelButtonClass: 'btn btn-danger',
+            showConfirmButton: true,
+            confirmButtonText: 'Đồng ý',
+            confirmButtonClass: 'btn btn-success'
+        }, function (isConfirm) {
+            if (isConfirm) {
+                $('form').submit();
+                return true;
+            } else {
+                return false;
+            }
+        });
+        return false;
+    }</script>
+
+<script type="text/javascript">
+    function functionConfirmDeleteCart(event) {
+        swal({
+            title: 'Thông báo',
+            text: "Bạn chắc chắn muốn xóa tất cả sản phẩm này khỏi giỏ hàng",
+            type: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'Hủy',
+            cancelButtonClass: 'btn btn-danger',
+            showConfirmButton: true,
+            confirmButtonText: 'Đồng ý',
+            confirmButtonClass: 'btn btn-success'
+        }, function (isConfirm) {
+            if (isConfirm) {
+                $('#delete-cart').submit();
+                return true;
+            } else {
+                return false;
+            }
+        });
+        return false;
+    }
+</script>
