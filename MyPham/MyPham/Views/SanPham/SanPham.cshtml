@@ -123,16 +123,16 @@
                             @if (Model.ThanhPhan != null)
                             {<p><strong>Thành phần:</strong> @Html.DisplayFor(Model => Model.ThanhPhan)</p>}
 
-                            <p>&#8211; <strong>Tham khảo bộ</strong> 7 in 1 &#8211; <a href="@Url.Action("XemSanPhamTheoDanhMuc", "SanPham", new{ id = 1})" target="_blank" rel="noopener noreferrer">Mỹ phẩm hoàng cung Danxuenilan 7 in 1 tại đây.</a></p>
-                            <p>&#8211; Tham khảo về các dòng <a href="@Url.Action("Index", "Home")" target="_blank" rel="noopener noreferrer">Hoàng Cung hiện shop đang bán.</a></p>
+                            @*<p>&#8211; <strong>Tham khảo bộ</strong> 7 in 1 &#8211; <a href="@Url.Action("XemSanPhamTheoDanhMuc", "SanPham", new{ id = 1})" target="_blank" rel="noopener noreferrer">Mỹ phẩm hoàng cung Danxuenilan 7 in 1 tại đây.</a></p>
+                            <p>&#8211; Tham khảo về các dòng <a href="@Url.Action("Index", "Home")" target="_blank" rel="noopener noreferrer">Hoàng Cung hiện shop đang bán.</a></p>*@
                         </div>
 
 
-                        <form class="cart" action="" method="post" enctype='multipart/form-data'>
-
+                        <form class="cart" method="post" enctype='multipart/form-data' action="@Url.Action("ThemSP", "GioHang", new { MaSP = Model.MaSP })">
+     
                             <div class="quantity buttons_added">
-                                <input type="button" value="-" class="minus button is-form"> <label class="screen-reader-text" for="quantity_60d19c138f0b1">Bộ Hoàng Cung Danxuenilan Cao Cấp (5in1) - Màu xanh số lượng</label>
-                                <input type="number" id="quantity_60d19c138f0b1" class="input-text qty text" step="1" min="1" max="" name="quantity" value="1" title="SL" size="4" placeholder="" inputmode="numeric" />
+                                <input type="button" value="-" class="minus button is-form"> 
+                                <input type="number" id="quantity_60d19c138f0b1" class="input-text qty text" step="1" min="1" max="" name="SoLuong" value="1" title="SL" size="4" placeholder="" inputmode="numeric" />
                                 <input type="button" value="+" class="plus button is-form">
                             </div>
 

@@ -1,0 +1,53 @@
+﻿@model List<MyPham.Models.Gio>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model == null || Model.Count == 0)
+{
+    <p class="text-info text-center">
+        Giỏ hàng của bạn rỗng!
+    </p>
+}
+else
+{
+    <a href="@Url.Action("XoaKhoiGio","GioHang",new { MaSP = -1})" onclick="return confirm('Bạn có chắc muốn xóa toàn bộ sản phẩm không ?');" class="btn btn-danger btn-sm">Xóa giỏ hàng</a> 
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Mã SP</td>
+                <td>Tên SP</td>
+                <td>Ảnh SP</td>
+                <td>Số Lượng</td>
+                <td>Đơn giá</td>
+                <td>Thành tiền</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                double giagiam = (Convert.ToDouble(@item.sanPham.Gia) - Convert.ToDouble(@item.sanPham.Gia) * (@item.sanPham.GiamGia.HasValue ? @item.sanPham.GiamGia.Value : 0.0));
+                String imagePath = "~/wwwroot/images/SanPham/" + item.sanPham.AnhSP;
+                <tr>
+                    <td>@item.sanPham.MaSP</td>
+                    <td>@item.sanPham.TenSP</td>
+                    <td><img src="@Url.Content(imagePath)" /></td>
+                    <form method="post" enctype='multipart/form-data' action="@Url.Action("SuaSoLuong", "GioHang", new { MaSP = item.sanPham.MaSP })">
+                        <div class="quantity buttons_added">
+                            <input type="submit" value="-" class="minus button is-form">
+                            <input type="number" id="quantity_60d19c138f0b1" class="input-text qty text" step="1" min="0" max="@item.sanPham.SoLuongTon" name="SoLuong" value="@item.soLuong" title="SL" size="4" placeholder="" inputmode="numeric" />
+                            <input type="submit" value="+" class="plus button is-form">
+                        </div>
+                    </form>
+                    <td>@giagiam.ToString("N0")</td>
+                    <td>@((giagiam*item.soLuong).ToString("N0"))</td>
+                    <td> <a href="@Url.Action("XoaKhoiGio","GioHang",new { MaSP = item.sanPham.MaSP})" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');" class="btn btn-danger btn-sm">Xóa</a> </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+}

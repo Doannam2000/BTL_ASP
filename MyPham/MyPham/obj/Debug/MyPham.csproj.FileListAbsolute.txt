@@ -916,7 +916,6 @@ E:\Code\APS.NET\BTL_ASP\MyPham\MyPham\bin\System.Web.WebPages.Razor.xml
 E:\Code\APS.NET\BTL_ASP\MyPham\MyPham\bin\Newtonsoft.Json.xml
 E:\Code\APS.NET\BTL_ASP\MyPham\MyPham\bin\Antlr3.Runtime.pdb
 E:\Code\APS.NET\BTL_ASP\MyPham\MyPham\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\Code\APS.NET\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csprojAssemblyReference.cache
 E:\Code\APS.NET\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csproj.CoreCompileInputs.cache
 E:\Code\APS.NET\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csproj.CopyComplete
 E:\Code\APS.NET\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.dll
@@ -975,3 +974,4 @@ E:\Code\APS.NET\BTL_ASP\MyPham\MyPham\bin\roslyn\vbc.rsp
 E:\Code\APS.NET\BTL_ASP\MyPham\MyPham\bin\roslyn\VBCSCompiler.exe
 E:\Code\APS.NET\BTL_ASP\MyPham\MyPham\bin\roslyn\VBCSCompiler.exe.config
 E:\BTL ASP\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csproj.AssemblyReference.cache
+E:\Code\APS.NET\BTL_ASP\MyPham\MyPham\obj\Debug\MyPham.csprojAssemblyReference.cache

@@ -34,7 +34,35 @@ namespace MyPham.Controllers
                     Session["HoTen"] = user.FirstOrDefault().HoTen;
                     Session["Anh"] = user.FirstOrDefault().Anh;
                     Session["idUser"] = user.FirstOrDefault().MaTK;
-                    return RedirectToAction("Index","Home");
+                    int MaTK = (int)Session["idUser"];
+                    GioHang gh = db.GioHang.Where(g => g.MaTK == MaTK).FirstOrDefault();
+                    if (gh == null)
+                    {
+                        gh = new GioHang();
+                        gh.MaTK = MaTK;
+                        db.GioHang.Add(gh);
+                    }
+                    else
+                    {
+                        List<Chi_Tiet_Gio_Hang> chi_Tiet_Gio_Hang = db.Chi_Tiet_Gio_Hang.Where(g => g.MaGioHang == gh.MaGioHang).ToList();
+                        if(chi_Tiet_Gio_Hang.Count >0)
+                        {
+                            List<Gio> list = new List<Gio>();
+                            foreach (var item in chi_Tiet_Gio_Hang)
+                            {
+                                SanPham x = db.SanPham.Find(item.MaSP);
+                                Gio gio = new Gio();
+                                gio.soLuong = item.SoLuongMua;
+                                gio.sanPham = x;
+                                
+                                list.Add(gio);
+                            }
+                            Session["GioHang"] = list;
+                        }
+                        Session["MaGH"] = gh.MaGioHang;
+                    }    
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {

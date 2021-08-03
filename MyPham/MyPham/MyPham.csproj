@@ -150,6 +150,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamsController.cs" />
     <Compile Include="Areas\Admin\Controllers\TaiKhoansController.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
@@ -158,6 +159,7 @@
     </Compile>
     <Compile Include="Models\Chi_Tiet_Gio_Hang.cs" />
     <Compile Include="Models\DanhMucSP.cs" />
+    <Compile Include="Models\Gio.cs" />
     <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\HoaDon.cs" />
     <Compile Include="Models\MyPhamDB.cs" />
@@ -438,6 +440,7 @@
     <Content Include="Views\SanPham\XemSanPhamTheoDanhMuc.cshtml" />
     <Content Include="Views\SanPham\SanPham.cshtml" />
     <Content Include="Views\Home\TimKiem.cshtml" />
+    <Content Include="Views\GioHang\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
