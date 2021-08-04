@@ -234,8 +234,8 @@
                                                     @foreach (var item in Son)
                                                     {
                                                         string ImagePath = "~/wwwroot/images/SanPham/" + item.AnhSP;
-                                                        int giagiam = (Convert.ToInt32(@item.Gia) - Convert.ToInt32(Convert.ToInt32(@item.Gia) * (@item.GiamGia.HasValue ? @item.GiamGia.Value : 0)));
-                                           
+                                                        double giagiam = (Convert.ToDouble(@item.Gia) - Convert.ToDouble(Convert.ToInt32(@item.Gia) * (@item.GiamGia.HasValue ? @item.GiamGia.Value : 0)));
+                                                        giagiam = Math.Round(giagiam / 1000) * 1000;
                                                         double giam = (item.GiamGia.HasValue ? item.GiamGia.Value : 0) * 100;
                                                         <div class="col">
                                                             <div class="col-inner">
@@ -346,6 +346,7 @@
 
                                                         string ImagePath = "~/wwwroot/images/SanPham/" + item.AnhSP;
                                                         double giagiam = (Convert.ToDouble(@item.Gia) - Convert.ToDouble(@item.Gia) * (@item.GiamGia.HasValue ? @item.GiamGia.Value : 0.0));
+                                                        giagiam = Math.Round(giagiam / 1000) * 1000;
                                                         double giam = (item.GiamGia.HasValue ? item.GiamGia.Value : 0) * 100;
                                                         <div class="col">
                                                             <div class="col-inner">
@@ -453,6 +454,7 @@
                                                     {
                                                         string ImagePath = "~/wwwroot/images/SanPham/" + item.AnhSP;
                                                         double giagiam = (Convert.ToDouble(@item.Gia) - Convert.ToDouble(@item.Gia) * (@item.GiamGia.HasValue ? @item.GiamGia.Value : 0.0));
+                                                        giagiam = Math.Round(giagiam / 1000) * 1000;
                                                         double giam = (item.GiamGia.HasValue ? item.GiamGia.Value : 0) * 100;
                                                         <div class="col">
                                                             <div class="col-inner">

@@ -11,15 +11,17 @@ using PagedList;
 
 namespace MyPham.Areas.Admin.Controllers
 {
-    public class HoaDonsController : Controller
+    public class HoaDonsController : BaseController
     {
         private MyPhamDB db = new MyPhamDB();
 
         // GET: Admin/HoaDons
     
 
-        public ActionResult Index(int ? page)
+        public ActionResult Index(int ? page, string error )
         {
+            if (error != null)
+                ViewBag.Error = error;
             var hoaDon = db.HoaDon.Include(h => h.GioHang);
             hoaDon = hoaDon.OrderBy(s => s.MaHD);
             int pageSize = 7;
@@ -104,10 +106,7 @@ namespace MyPham.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MaHD,NgayTao,HinhThucVanChuyen,HinhThucThanhToan,MaGioHang,GhiChu,HoTen,DiaChi,SoDienThoai,TinhTrang")] HoaDon hoaDon)
         {
-            if (Session["idAdmin"] == null)
-            {
-                return RedirectToAction("DangNhap", "DangNhap");
-            }
+   
             if (ModelState.IsValid)
             {
                 db.Entry(hoaDon).State = EntityState.Modified;
@@ -138,10 +137,19 @@ namespace MyPham.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+
             HoaDon hoaDon = db.HoaDon.Find(id);
-            db.HoaDon.Remove(hoaDon);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                db.HoaDon.Remove(hoaDon);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("Index", "HoaDons", new { error = "Không thể xóa bản ghi này !!! " });
+            }
+           
         }
 
         protected override void Dispose(bool disposing)

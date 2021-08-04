@@ -47,44 +47,45 @@ else
                                                 {
                                                     double giagiam = (Convert.ToDouble(@item.sanPham.Gia) - Convert.ToDouble(@item.sanPham.Gia) * (@item.sanPham.GiamGia.HasValue ? @item.sanPham.GiamGia.Value : 0.0));
                                                     String imagePath = "~/wwwroot/images/SanPham/" + item.sanPham.AnhSP;
+                                                    giagiam = Math.Round(giagiam / 1000) * 1000;
                                                     TongTien += giagiam * item.soLuong;
-                                                    <tr class="woocommerce-cart-form__cart-item cart_item">
-                                                        <td>
-                                                            <form method="post" action="@Url.Action("XoaKhoiGio", "GioHang", new { MaSP = item.sanPham.MaSP})">
-                                                                <button type="submit" style="background:white; color: #fff;border:1px black solid;color:black; border-radius: 50%" class="btn btn-sm" onclick="return functionConfirm(this)">X</button>
-                                                            </form>
-                                                        </td>
-                                                        <td class="product-thumbnail">
-                                                            <img width="200" height="auto" src="@Url.Content(imagePath)"
-                                                                 class="img-custom" alt="" loading="lazy" />
-                                                        </td>
-                                                        <td  class="product-name" data-title="Sản phẩm">@item.sanPham.TenSP</td>
-                                                        <td style="padding: 20px;text-align: center">
-                                                            <span class="woocommerce-Price-amount amount">
-                                                                <bdi>@giagiam.ToString("N0")<span class="woocommerce-Price-currencySymbol">₫</span></bdi>
-                                                            </span>
-                                                        </td>
-                                                        <td style="padding: 20px">
-                                                            <form method="post" enctype='multipart/form-data' action="@Url.Action("SuaSoLuong", "GioHang", new { MaSP = item.sanPham.MaSP })">
-                                                                <div class="quantity buttons_added">
-                                                                    <input style="background: #eee" type="submit" value="-" class="minus button is-form">
-                                                                    <input type="number" id="quantity_60d19c138f0b1" class="input-text qty text" step="1" min="0" max="@item.sanPham.SoLuongTon" name="SoLuong" value="@item.soLuong" title="SL" size="4" placeholder="" inputmode="numeric" />
-                                                                    <input style="background: #eee" type="submit" value="+" class="plus button is-form">
-                                                                </div>
-                                                            </form>
-                                                        </td>
-                                                        
-                                                        <td style="padding: 20px;text-align: center">
-                                                            <span class="woocommerce-Price-amount amount">
-                                                                <bdi>@((giagiam*item.soLuong).ToString("N0"))<span class="woocommerce-Price-currencySymbol">₫</span></bdi>
-                                                            </span>
-                                                            
-                                                        </td>
-                                                        <td style="padding: 20px;text-align: center">
-                                                            
+                                                <tr class="woocommerce-cart-form__cart-item cart_item">
+                                                    <td>
+                                                        <form id ="deletaSP" method="post" action="@Url.Action("XoaKhoiGio", "GioHang", new { MaSP = item.sanPham.MaSP})">
+                                                            <button type="submit" style="background: #f12323; color: #fff; border-radius: 50%" class="btn btn-sm" onclick="return functionConfirm(this)">X</button>
+                                                        </form>
+                                                    </td>
+                                                    <td class="product-thumbnail">
+                                                        <img width="200" height="auto" src="@Url.Content(imagePath)"
+                                                             class="img-custom" alt="" loading="lazy" />
+                                                    </td>
+                                                    <td class="product-name" data-title="Sản phẩm">@item.sanPham.TenSP</td>
+                                                    <td style="padding: 20px;text-align: center">
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <bdi>@String.Format("{0:#,###}", giagiam)<span> <class ="woocommerce-Price-currencySymbol">₫</span></bdi>
+                                                        </span>
+                                                    </td>
+                                                    <td style="padding: 20px">
+                                                        <form method="post" enctype='multipart/form-data' action="@Url.Action("SuaSoLuong", "GioHang", new { MaSP = item.sanPham.MaSP })">
+                                                            <div class="quantity buttons_added">
+                                                                <input style="background: #eee" type="submit" value="-" class="minus button is-form">
+                                                                <input type="number" id="quantity_60d19c138f0b1" class="input-text qty text" step="1" min="0" max="@item.sanPham.SoLuongTon" name="SoLuong" value="@item.soLuong" title="SL" size="4" placeholder="" inputmode="numeric" />
+                                                                <input style="background: #eee" type="submit" value="+" class="plus button is-form">
+                                                            </div>
+                                                        </form>
+                                                        @item.soLuong/@item.sanPham.SoLuongTon
+                                                    </td>
 
-                                                        </td>
-                                                    </tr>
+                                                    <td style="padding: 20px;text-align: center">
+                                                        <span class="woocommerce-Price-amount amount">
+                                                            <bdi>@((giagiam*item.soLuong).ToString("N0"))<span class="woocommerce-Price-currencySymbol">₫</span></bdi>
+                                                        </span>
+
+                                                    </td>
+                                                    <td style="padding: 20px;text-align: center">
+                                                    </td>
+
+                                                </tr>
                                                 }
 
                                                 <tr>
@@ -97,8 +98,8 @@ else
                                                             </a>
                                                         </div>
 
-                                                        <form id="delete-cart" style="text-align:end" method="post" action="@Url.Action("XoaKhoiGio", "GioHang", new { MaSP = -1})">
-                                                            <button style="background: #f12323; color: #fff" type="submit" class="btn btn-sm" onclick="return functionConfirmDeleteCart(this)">Xóa giỏ hàng</button>
+                                                        <form style="text-align:end" method="post" action="@Url.Action("XoaKhoiGio", "GioHang", new { MaSP = -1})">
+                                                            <button style="background: #f12323; color: #fff" type="submit" class="btn btn-sm" onclick="return functionConfirm(this)">Xóa giỏ hàng</button>
                                                         </form>
                                                     </td>
                                                 </tr>
@@ -174,7 +175,7 @@ else
     function functionConfirm(event) {
         swal({
             title: 'Thông báo',
-            text: "Bạn chắc chắn muốn xóa tài khoản này",
+            text: "Bạn chắc chắn muốn xóa chứ ?",
             type: 'warning',
             showCancelButton: true,
             cancelButtonText: 'Hủy',
@@ -184,7 +185,7 @@ else
             confirmButtonClass: 'btn btn-success'
         }, function (isConfirm) {
             if (isConfirm) {
-                $('form').submit();
+                $('#deletaSP').submit();
                 return true;
             } else {
                 return false;
@@ -193,7 +194,7 @@ else
         return false;
     }</script>
 
-<script type="text/javascript">
+@*<script type="text/javascript">
     function functionConfirmDeleteCart(event) {
         swal({
             title: 'Thông báo',
@@ -215,4 +216,4 @@ else
         });
         return false;
     }
-</script>
+</script>*@

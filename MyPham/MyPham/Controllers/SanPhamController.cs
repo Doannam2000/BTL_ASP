@@ -15,8 +15,12 @@ namespace MyPham.Controllers
     {
         MyPhamDB db = new MyPhamDB();
         // GET: SanPham
-        public ActionResult SanPham(string id)
+        public ActionResult SanPham(string id,string ThongBao)
         {
+            if(ThongBao != null)
+            {
+                ViewBag.ThongBao = ThongBao;
+            }    
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

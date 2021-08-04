@@ -6,7 +6,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     <link herf="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 }
-
+@if (ViewBag.Error != null)
+{
+    @ViewBag.Error;
+}
 <div class="content-wrapper">
     <div class="row">
         <div class="col-md-12 grid-margin">
@@ -68,7 +71,7 @@
                                         @{
                                             string ImagePath = "~/wwwroot/images/SanPham/" + item.AnhSP;
                                         }
-                                        <img src="@Url.Content(ImagePath)" style="width:100px;height:auto;border-radius:0px"/>
+                                        <img src="@Url.Content(ImagePath)" style="width:100px;height:auto;border-radius:0px" />
                                         <br />
 
                                     </td>

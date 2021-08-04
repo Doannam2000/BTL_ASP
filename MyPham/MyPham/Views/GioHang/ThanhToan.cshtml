@@ -140,8 +140,9 @@
                                                         @foreach (var item in Model)
                                                         {
                                                             double giagiam = (Convert.ToDouble(@item.sanPham.Gia) - Convert.ToDouble(@item.sanPham.Gia) * (@item.sanPham.GiamGia.HasValue ? @item.sanPham.GiamGia.Value : 0.0));
+                                                            giagiam = Math.Round(giagiam / 1000) * 1000;
                                                             Tien += giagiam * item.soLuong;
-                                                  
+
                                                             <tr class="cart_item">
                                                                 <td class="product-name">
                                                                     @item.sanPham.TenSP<strong class="product-quantity">×&nbsp;@item.soLuong</strong>

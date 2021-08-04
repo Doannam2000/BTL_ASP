@@ -23,6 +23,7 @@ else
                         {
                             string ImagePath = "~/wwwroot/images/SanPham/" + item.AnhSP;
                             double giagiam = (Convert.ToDouble(@item.Gia) - Convert.ToDouble(@item.Gia) * (@item.GiamGia.HasValue ? @item.GiamGia.Value : 0.0));
+                            giagiam = Math.Round(giagiam / 1000) * 1000;
                             double giam = (item.GiamGia.HasValue ? item.GiamGia.Value : 0) * 100;
                             <div class="product-small col has-hover product type-product post-7098 status-publish first instock product_cat-bo-duong-da product_cat-my-pham-duong-da has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
                                 <div class="col-inner">

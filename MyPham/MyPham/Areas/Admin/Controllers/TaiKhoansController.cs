@@ -11,13 +11,15 @@ using PagedList;
 
 namespace MyPham.Areas.Admin.Controllers
 {
-    public class TaiKhoansController : Controller
+    public class TaiKhoansController : BaseController
     {
         private MyPhamDB db = new MyPhamDB();
 
         // GET: Admin/TaiKhoans
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page,string error)
         {
+            if (error != null)
+                ViewBag.Error = error;
             var taiKhoan = db.TaiKhoan.Include(t => t.PhanQuyen).ToList();
             int pageSize = 7;
             int pageNumber = (page ?? 1);
@@ -194,20 +196,22 @@ namespace MyPham.Areas.Admin.Controllers
             //    db.GioHang.Remove(giohang);
             //    db.SaveChanges();
             //}
+
             TaiKhoan taiKhoan = db.TaiKhoan.Find(id);
+            if (id == (int)Session["idAdmin"])
+            {
+                return RedirectToAction("Index", "TaiKhoans", new { error = "Không  xóa  được  tài khoản đang đăng nhập !" });
+            }
             try
             {
-                
                 db.TaiKhoan.Remove(taiKhoan);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                ViewBag.Error = "Không  xóa  được  bản  ghi  này!  " + ex.Message;
-                return View("Delete", taiKhoan);
+                return RedirectToAction("Index", "TaiKhoans", new { error = "Không  xóa  được  bản  ghi  này ! " });
             }
-   
         }
 
         protected override void Dispose(bool disposing)
