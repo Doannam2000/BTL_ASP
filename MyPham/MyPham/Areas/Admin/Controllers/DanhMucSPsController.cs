@@ -11,14 +11,15 @@ using PagedList;
 
 namespace MyPham.Areas.Admin.Controllers
 {
-    public class DanhMucSPsController : Controller
+    public class DanhMucSPsController : BaseController
     {
         private MyPhamDB db = new MyPhamDB();
 
         // GET: Admin/DanhMucSPs
-        public ActionResult Index(int ? page,string x)
+        public ActionResult Index(int ? page,string error)
         {
-            ViewBag.Error = x;
+            if (error != null)
+                ViewBag.Error = error;
             var danhmuc = db.DanhMucSP.OrderBy(s => s.MaDM);
             int pageSize = 5;
             int pageNumber = (page ?? 1);
@@ -122,10 +123,9 @@ namespace MyPham.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                ViewBag.Error = "Không  xóa  được  bản  ghi  này!  " + ex.Message;
-                return View("Delete", danhMucSP);
+                return RedirectToAction("Index", "DanhMucSPs", new { error = "Không xóa được bản ghi này !!!" });
             }
         }
         public ActionResult DeleteConfirmedCustom(int id)
@@ -137,10 +137,9 @@ namespace MyPham.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                ViewBag.Error = "Không  xóa  được  bản  ghi  này!  " + ex.Message;
-                return View("Delete", danhMucSP);
+                return RedirectToAction("Index", "DanhMucSPs", new { error = "Không xóa được bản ghi này !!!" });
             }
            
         }

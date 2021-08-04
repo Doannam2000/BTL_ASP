@@ -26,6 +26,7 @@
                         @foreach (var item in Model)
                         {
                             double giagiam = (Convert.ToDouble(@item.sanPham.Gia) - Convert.ToDouble(@item.sanPham.Gia) * (@item.sanPham.GiamGia.HasValue ? @item.sanPham.GiamGia.Value : 0.0));
+                            giagiam = Math.Round(giagiam / 1000) * 1000;
                             Tien += giagiam * item.soLuong;
                             String imagePath = "~/wwwroot/images/SanPham/" + item.sanPham.AnhSP;
                             <tr>

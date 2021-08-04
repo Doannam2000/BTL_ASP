@@ -4,7 +4,10 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
+@if (ViewBag.Error != null)
+{
+    @ViewBag.Error;
+}
 <div class="content-wrapper">
     <div class="row">
         <div class="col-md-12 grid-margin">
@@ -54,35 +57,35 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.MaHD)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.HoTen)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DiaChi)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.NgayTao)
-                                </td>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MaHD)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.HoTen)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DiaChi)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NgayTao)
+                                    </td>
 
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TinhTrang)
-                                </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TinhTrang)
+                                    </td>
 
-                                <td style="display: flex; flex-direction: row;">
-                                    <div class="d-flex justify-content-center">
-                                        <a class="nav-link" href="@Url.Action("Edit", "HoaDons", new { id = item.MaHD })">
-                                            <span class="menu-title btn btn-wd btn-success pl-3 pr-3 pt-2 pb-2">Cập nhật</span>
-                                        </a>
-                                        <a class="nav-link" href="@Url.Action("Details", "HoaDons", new { id = item.MaHD })">
-                                            <span class="menu-title btn btn-wd btn-info pl-3 pr-3 pt-2 pb-2">Xem chi tiết</span>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                                    <td style="display: flex; flex-direction: row;">
+                                        <div class="d-flex justify-content-center">
+                                            <a class="nav-link" href="@Url.Action("Edit", "HoaDons", new { id = item.MaHD })">
+                                                <span class="menu-title btn btn-wd btn-success pl-3 pr-3 pt-2 pb-2">Cập nhật</span>
+                                            </a>
+                                            <a class="nav-link" href="@Url.Action("Details", "HoaDons", new { id = item.MaHD })">
+                                                <span class="menu-title btn btn-wd btn-info pl-3 pr-3 pt-2 pb-2">Xem chi tiết</span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>

@@ -11,13 +11,15 @@ using PagedList;
 
 namespace MyPham.Areas.Admin.Controllers
 {
-    public class SanPhamsController : Controller
+    public class SanPhamsController : BaseController
     {
         private MyPhamDB db = new MyPhamDB();
 
         // GET: Admin/SanPhams
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page,string error)
         {
+            if (error != null)
+                ViewBag.Error = error;
             var sanPham = db.SanPham.Include(s => s.DanhMucSP);
             sanPham = sanPham.OrderBy(s => s.MaSP);
             int pageSize = 7;
@@ -162,9 +164,18 @@ namespace MyPham.Areas.Admin.Controllers
         public ActionResult DeleteConfirmedCustom(int id)
         {
             SanPham sanPham = db.SanPham.Find(id);
-            db.SanPham.Remove(sanPham);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+      
+            try
+            {
+                db.SanPham.Remove(sanPham);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception )
+            {
+                return RedirectToAction("Index", "SanPhams", new { error = "Không  xóa  được  bản  ghi  này! " });
+            }
+           
         }
         protected override void Dispose(bool disposing)
         {

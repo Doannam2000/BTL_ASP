@@ -6,6 +6,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     @*<link herf="~/Content/PagedList.css" rel="stylesheet" type="text/css" />*@
 }
+@if(ViewBag.Error !=null)
+{
+    @ViewBag.Error;
+}
 
 <div class="content-wrapper">
     <div class="row">

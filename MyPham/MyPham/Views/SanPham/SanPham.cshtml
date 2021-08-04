@@ -19,6 +19,10 @@
     </div>
 </div>
 <div class="shop-container">
+    @if (ViewBag.ThongBao != null)
+    {
+        @ViewBag.ThongBao;
+    }
 
     <div class="container">
         <div class="woocommerce-notices-wrapper"></div>
@@ -28,8 +32,8 @@
             @{
                 string ImagePath = "~/wwwroot/images/SanPham/" + Model.AnhSP;
 
-                int giagiam = (Convert.ToInt32(Model.Gia) - Convert.ToInt32(Convert.ToInt32(Model.Gia) * (Model.GiamGia.HasValue ? Model.GiamGia.Value : 0)));
-
+                double giagiam = (Convert.ToDouble(Model.Gia) - Convert.ToDouble(Convert.ToInt32(Model.Gia) * (Model.GiamGia.HasValue ? Model.GiamGia.Value : 0)));
+                giagiam = Math.Round(giagiam / 1000) * 1000;
                 double giam = (Model.GiamGia.HasValue ? Model.GiamGia.Value : 0) * 100;
             }
             <div class="product-main">
@@ -123,15 +127,15 @@
                             @if (Model.ThanhPhan != null)
                             {<p><strong>Thành phần:</strong> @Html.DisplayFor(Model => Model.ThanhPhan)</p>}
 
-                            @*<p>&#8211; <strong>Tham khảo bộ</strong> 7 in 1 &#8211; <a href="@Url.Action("XemSanPhamTheoDanhMuc", "SanPham", new{ id = 1})" target="_blank" rel="noopener noreferrer">Mỹ phẩm hoàng cung Danxuenilan 7 in 1 tại đây.</a></p>
+                        @*<p>&#8211; <strong>Tham khảo bộ</strong> 7 in 1 &#8211; <a href="@Url.Action("XemSanPhamTheoDanhMuc", "SanPham", new{ id = 1})" target="_blank" rel="noopener noreferrer">Mỹ phẩm hoàng cung Danxuenilan 7 in 1 tại đây.</a></p>
                             <p>&#8211; Tham khảo về các dòng <a href="@Url.Action("Index", "Home")" target="_blank" rel="noopener noreferrer">Hoàng Cung hiện shop đang bán.</a></p>*@
                         </div>
 
 
                         <form class="cart" method="post" enctype='multipart/form-data' action="@Url.Action("ThemSP", "GioHang", new { MaSP = Model.MaSP })">
-     
+
                             <div class="quantity buttons_added">
-                                <input type="button" value="-" class="minus button is-form"> 
+                                <input type="button" value="-" class="minus button is-form">
                                 <input type="number" id="quantity_60d19c138f0b1" class="input-text qty text" step="1" min="1" max="" name="SoLuong" value="1" title="SL" size="4" placeholder="" inputmode="numeric" />
                                 <input type="button" value="+" class="plus button is-form">
                             </div>
@@ -282,6 +286,7 @@
 
                                         string ImagePath1 = "~/wwwroot/images/SanPham/" + item.AnhSP;
                                         double giagiam1 = (Convert.ToDouble(@item.Gia) - Convert.ToDouble(@item.Gia) * (@item.GiamGia.HasValue ? @item.GiamGia.Value : 0.0));
+                                        giagiam1 = Math.Round(giagiam1 / 1000) * 1000;
                                         double giam1 = (item.GiamGia.HasValue ? item.GiamGia.Value : 0) * 100;
                                         <div class="product-small col has-hover product type-product post-1441 status-publish instock product_cat-bo-my-pham-tri-nam-va-tan-nhang has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
 
@@ -316,7 +321,7 @@
                                                                         <span class="woocommerce-Price-amount amount">
                                                                             <bdi>@String.Format("{0:#,###}", @item.Gia)<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi>
                                                                         </span>
-                                                                    </del> <ins><span class="woocommerce-Price-amount amount"><bdi>@String.Format("{0:#,###}",@giagiam1)<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></ins>
+                                                                    </del> <ins><span class="woocommerce-Price-amount amount"><bdi>@String.Format("{0:#,###}", @giagiam1)<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></ins>
                                                                 </span>
                                                             </div>
                                                         </div>

@@ -66,7 +66,9 @@ namespace MyPham.Controllers
                         chiTiet.MaGioHang = MaGH;
                         chiTiet.MaSP = item.sanPham.MaSP;
                         chiTiet.SoLuongMua = SoLuong;
-                        chiTiet.GiaSP = (Convert.ToInt32(item.sanPham.Gia) - Convert.ToInt32(Convert.ToInt32(item.sanPham.Gia) * (item.sanPham.GiamGia.HasValue ? item.sanPham.GiamGia.Value : 0)));
+                        double gia = (Convert.ToDouble(item.sanPham.Gia) - Convert.ToDouble(Convert.ToDouble(item.sanPham.Gia) * (item.sanPham.GiamGia.HasValue ? item.sanPham.GiamGia.Value : 0)));
+                        gia = Math.Round(gia / 1000) * 1000;
+                        chiTiet.GiaSP = Convert.ToDecimal(gia);
                         db.Chi_Tiet_Gio_Hang.Add(chiTiet);
                         db.SaveChanges();
                     }
@@ -86,13 +88,17 @@ namespace MyPham.Controllers
                     chiTiet.MaGioHang = MaGH;
                     chiTiet.MaSP = item.sanPham.MaSP;
                     chiTiet.SoLuongMua = SoLuong;
-                    chiTiet.GiaSP = (Convert.ToInt32(item.sanPham.Gia) - Convert.ToInt32(Convert.ToInt32(item.sanPham.Gia) * (item.sanPham.GiamGia.HasValue ? item.sanPham.GiamGia.Value : 0)));
+                    double gia = (Convert.ToDouble(item.sanPham.Gia) - Convert.ToDouble(Convert.ToDouble(item.sanPham.Gia) * (item.sanPham.GiamGia.HasValue ? item.sanPham.GiamGia.Value : 0)));
+                    gia = Math.Round(gia / 1000) * 1000;
+                    chiTiet.GiaSP = Convert.ToDecimal(gia); 
                     db.Chi_Tiet_Gio_Hang.Add(chiTiet);
                     db.SaveChanges();
                 }
                 Session["GioHang"] = list;
             }
-            return RedirectToAction("SanPham", "SanPham", new { id = MaSP });
+            UpdateSL();
+            String thongbao = "Đã thêm " + sanpham.TenSP + " số lượng " + SoLuong + " vào giỏ hàng !";
+            return RedirectToAction("SanPham", "SanPham", new { id = MaSP , ThongBao = thongbao});
         }
 
         public RedirectToRouteResult SuaSoLuong(int MaSP, int SoLuong)
@@ -116,9 +122,12 @@ namespace MyPham.Controllers
                         db.SaveChanges();
                     }
                     giohang.Remove(itemSua);
+                    Session["GioHang"] = giohang;
+                    UpdateSL();
                     return RedirectToAction("Index");
                 }
                 itemSua.soLuong = SoLuong;
+                Session["GioHang"] = giohang;
                 if (MaGH != -1)
                 {
                     var update = db.Chi_Tiet_Gio_Hang.Where(s => s.MaGioHang == MaGH && s.MaSP == MaSP).FirstOrDefault();
@@ -126,6 +135,7 @@ namespace MyPham.Controllers
                     db.SaveChanges();
                 }
             }
+            UpdateSL(); 
             return RedirectToAction("Index");
 
         }
@@ -149,13 +159,13 @@ namespace MyPham.Controllers
                         if(item.MaSP == MaSP)
                         {
                             db.Chi_Tiet_Gio_Hang.Remove(item);
+                            db.SaveChanges();
                         }
                     }
-                    db.SaveChanges();
                 }
+                UpdateSL();
                 return RedirectToAction("Index");
             }
-
             var itemXoa = giohang.FirstOrDefault(m => m.sanPham.MaSP == MaSP);
             if (itemXoa != null)
             {
@@ -167,6 +177,7 @@ namespace MyPham.Controllers
                 }
                 giohang.Remove(itemXoa);
             }
+            UpdateSL();
             return RedirectToAction("Index");
         }
 
@@ -242,7 +253,9 @@ namespace MyPham.Controllers
                     chi.MaGioHang = gio.MaGioHang;
                     chi.MaSP = item.sanPham.MaSP;
                     chi.SoLuongMua = item.soLuong;
-                    chi.GiaSP = (Convert.ToInt32(item.sanPham.Gia) - Convert.ToInt32(Convert.ToInt32(item.sanPham.Gia) * (item.sanPham.GiamGia.HasValue ? item.sanPham.GiamGia.Value : 0)));
+                    double gia = (Convert.ToDouble(item.sanPham.Gia) - Convert.ToDouble(Convert.ToDouble(item.sanPham.Gia) * (item.sanPham.GiamGia.HasValue ? item.sanPham.GiamGia.Value : 0)));
+                    gia = Math.Round(gia / 1000) * 1000;
+                    chi.GiaSP = Convert.ToDecimal(gia);
                     db.Chi_Tiet_Gio_Hang.Add(chi);
                     db.SaveChanges();
                 }
@@ -261,6 +274,15 @@ namespace MyPham.Controllers
             db.HoaDon.Add(hoaDon);
             db.SaveChanges();
 
+
+            foreach (var item in list)
+            {
+                var sanPham = db.SanPham.Where(s => s.MaSP == item.sanPham.MaSP).FirstOrDefault();
+                sanPham.SoLuongTon = sanPham.SoLuongTon - item.soLuong;
+                db.SaveChanges();
+            }
+
+
             GioHang gioHang = new GioHang();
             gioHang.MaTK = (int)Session["idUser"];
             db.GioHang.Add(gioHang);
@@ -270,6 +292,7 @@ namespace MyPham.Controllers
             int MaGH = gio1.MaGioHang;
             Session["MaGH"] = MaGH;
             Session["GioHang"] = null;
+            Session["SoLuong"] = 0;
             ViewBag.HoaDon = hoaDon;
             return View(list);
         }
@@ -343,6 +366,18 @@ namespace MyPham.Controllers
             }
             ViewBag.SanPham = sanpham;
             return View(hoaDon);
+        }
+        private void UpdateSL()
+        {
+            var list = (List<Gio>)Session["GioHang"];
+            if (list == null)
+            {
+                Session["SoLuong"] = 0;
+            }
+            else
+            {
+                Session["SoLuong"] = list.Count();
+            }
         }
     }
 }

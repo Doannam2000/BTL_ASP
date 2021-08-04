@@ -62,6 +62,11 @@ namespace MyPham.Controllers
                                 list.Add(gio);
                             }
                             Session["GioHang"] = list;
+                            Session["SoLuong"] = list.Count;
+                        }
+                        else
+                        {
+                            Session["SoLuong"] = 0;
                         }
                         Session["MaGH"] = gh.MaGioHang;
                     }    
