@@ -12,9 +12,8 @@
 else
 {
 
-
-    <div class="content-wrapper">
-        <div class="col-lg-12 grid-margin stretch-card">
+<main id="main" class="row d-flex justify-content-center align-items-center">
+        <div class="col-lg-12 grid-margin stretch-card pt-5">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Danh sách hóa đơn</h4>
@@ -59,12 +58,12 @@ else
 
                                         <td style="display: flex; flex-direction: row;">
                                             <div class="d-flex justify-content-center">
-                                                @*@if (item.TinhTrang != "Đã nhận")
+                                                @if (item.TinhTrang != "Đã nhận")
                                                     {
                                                         <a class="nav-link" href="@Url.Action("Edit", "HoaDons", new { id = item.MaHD })">
-                                                            <span class="menu-title btn btn-wd btn-success pl-3 pr-3 pt-2 pb-2">Cập nhật</span>
+                                                            <span class="menu-title btn btn-wd btn-success pl-3 pr-3 pt-2 pb-2">Đã nhận hàng</span>
                                                         </a>
-                                                    }*@
+                                                    }
                                                 <a class="nav-link" href="@Url.Action("ChiTiet", "GioHang", new { id = item.MaHD })">
                                                     <span class="menu-title btn btn-wd btn-info pl-3 pr-3 pt-2 pb-2">Xem chi tiết</span>
                                                 </a>
@@ -82,6 +81,20 @@ else
                     </div>
                 </div>
             </div>
+            
         </div>
-    </div>
-}
+        <div>
+        @{
+            string link = "/TaiKhoan/ThongTinTaiKhoan/" + Session["idUser"];
+        }
+        <a class="nav-link" href="@Url.Content(link)">
+            <span class="menu-title btn btn-primary btn-fw ">Quay lại</span>
+        </a>
+        </div>
+</main>
+    }
+<style>
+    th{
+        text-transform:none !important;
+    }
+</style>

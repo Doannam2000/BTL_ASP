@@ -198,8 +198,11 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -265,6 +268,7 @@
     <Content Include="wwwroot\images\SanPham\SON-2-DAU-KARADIUM-SMUDGING-TINT-STICK-sl1.jpg" />
     <Content Include="wwwroot\images\SanPham\Son-3-lp-VDL-Tint-Bar-Triple-Shot-3X-–-Han-quc1.jpg" />
     <Content Include="wwwroot\images\SanPham\su-dung-serum-eldas-eg-tox-program-han-quoc1111.jpg" />
+    <Content Include="wwwroot\js\bootstrap.min.js" />
     <Content Include="wwwroot\js\comment-reply.min9f31.js" />
     <Content Include="wwwroot\js\devvn-woocommerce-reviews19f6.js" />
     <Content Include="wwwroot\js\dist\hooks.minf521.js" />
@@ -289,6 +293,7 @@
     <Content Include="wwwroot\js\frontend\single-product.min287d.js" />
     <Content Include="wwwroot\js\frontend\woocommerce.min287d.js" />
     <Content Include="wwwroot\js\hoverIntent.minc245.js" />
+    <Content Include="wwwroot\js\jquery-3.5.1.slim.min.js" />
     <Content Include="wwwroot\js\jquery-blockui\jquery.blockUI.min44fd.js" />
     <Content Include="wwwroot\js\jquery.validate.min19f6.js" />
     <Content Include="wwwroot\js\jquery\jquery-migrate.mind617.js" />
@@ -299,6 +304,7 @@
     <Content Include="wwwroot\js\password-strength-meter.min9f31.js" />
     <Content Include="wwwroot\js\photoswipe\photoswipe-ui-default.min0235.js" />
     <Content Include="wwwroot\js\photoswipe\photoswipe.min0235.js" />
+    <Content Include="wwwroot\js\popper.min.js" />
     <Content Include="wwwroot\js\scripts9dff.js" />
     <Content Include="wwwroot\js\selectWoo\selectWoo.full.min0ba6.js" />
     <Content Include="wwwroot\js\underscore.min4511.js" />
@@ -387,6 +393,11 @@
     <Content Include="Areas\Admin\Views\Home\CauHinhQuyen.cshtml" />
     <Content Include="Areas\Admin\Views\Home\QuanLyPhanQuyen.cshtml" />
     <Content Include="Areas\Admin\Views\Home\ThemPhanQuyen.cshtml" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -406,7 +417,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\TaiKhoan\DangNhap.cshtml" />
-    <Content Include="Views\Home\GioHang.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\TaiKhoan\ThongTinTaiKhoan.cshtml" />
     <Content Include="Views\Home\_Nav.cshtml" />

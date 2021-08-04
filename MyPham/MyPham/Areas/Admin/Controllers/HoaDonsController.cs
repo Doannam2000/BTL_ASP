@@ -97,13 +97,17 @@ namespace MyPham.Areas.Admin.Controllers
             return View(hoaDon);
         }
 
-        // POST: Admin/HoaDons/Edit/5
+        // POST: Admin/HoaDons1/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaHD,NgayTao,HinhThucVanChuyen,HinhThucThanhToan,MaGioHang,TinhTrang")] HoaDon hoaDon)
+        public ActionResult Edit([Bind(Include = "MaHD,NgayTao,HinhThucVanChuyen,HinhThucThanhToan,MaGioHang,GhiChu,HoTen,DiaChi,SoDienThoai,TinhTrang")] HoaDon hoaDon)
         {
+            if (Session["idAdmin"] == null)
+            {
+                return RedirectToAction("DangNhap", "DangNhap");
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(hoaDon).State = EntityState.Modified;
