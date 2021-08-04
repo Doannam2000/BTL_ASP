@@ -8,9 +8,8 @@
     var ghiChu = Model.GhiChu;
 }
 
-<div class="content-wrapper">
-
-    <div class="col-12 grid-margin">
+<main id="main" class="row d-flex justify-content-center align-items-center">
+    <div class="col-12 grid-margin pt-5">
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Thông tin chi tiết hóa đơn</h4>
@@ -144,17 +143,20 @@
                                         @String.Format("{0:#,###}", item.Gia)
                                     </td>
                                     <td>
-                                        @item.SoLuongTon;   @*Biến số lượng *@
+                                        @item.SoLuongTon   @*Biến số lượng *@
                                     </td>
                                     <td>
-                                        @String.Format("{0:#,###}", (item.Gia * item.SoLuongTon))
+                                        @String.Format("{0:#,###}", (item.Gia * item.SoLuongTon)) đ
                                     </td>
                                 </tr>
                             }
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-center">
-                        <a class="nav-link" href="@Url.Action("Index","HoaDons")">
+                        @{ 
+                            string link = "/GioHang/XemHoaDon/" + Session["idUser"];
+                        }
+                        <a class="nav-link" href="@Url.Content(link)">
                             <span class="menu-title btn btn-outline-primary btn-fw ">Quay lại</span>
                         </a>
                     </div>
@@ -162,7 +164,6 @@
             </div>
         </div>
     </div>
-</div>
-
+    </main>
 
 

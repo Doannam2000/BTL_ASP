@@ -34,7 +34,7 @@ namespace MyPham.Controllers
             var sanpham = db.SanPham.ToList();
             if (strSearch != null)
             {
-                sanpham = db.SanPham.Where(s => s.TenSP.Contains(strSearch)).ToList();
+                sanpham = db.SanPham.Where(s => s.TenSP.ToUpper().Trim().Contains(strSearch.ToUpper().Trim())).ToList();
             }
             ViewBag.strSearch = strSearch;
             if (sanpham.Count > 0)
@@ -101,7 +101,7 @@ namespace MyPham.Controllers
             return View(sanpham);
         }
 
-        public ActionResult GioHang()
+        public ActionResult View1()
         {
             return View();
         }

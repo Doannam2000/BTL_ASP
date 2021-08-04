@@ -236,6 +236,16 @@ namespace MyPham.Controllers
                 int MaTK1 = (int)Session["idUser"];
                 GioHang gio = db.GioHang.Where(g => g.MaTK == MaTK1).FirstOrDefault();
                 Session["MaGH"] = gio.MaGioHang;
+                foreach (var item in list)
+                {
+                    Chi_Tiet_Gio_Hang chi = new Chi_Tiet_Gio_Hang();
+                    chi.MaGioHang = gio.MaGioHang;
+                    chi.MaSP = item.sanPham.MaSP;
+                    chi.SoLuongMua = item.soLuong;
+                    chi.GiaSP = (Convert.ToInt32(item.sanPham.Gia) - Convert.ToInt32(Convert.ToInt32(item.sanPham.Gia) * (item.sanPham.GiamGia.HasValue ? item.sanPham.GiamGia.Value : 0)));
+                    db.Chi_Tiet_Gio_Hang.Add(chi);
+                    db.SaveChanges();
+                }
             }
             int MaTK = (int)Session["idUser"];
             HoaDon hoaDon = new HoaDon();

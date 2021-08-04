@@ -34,6 +34,7 @@ namespace MyPham.Areas.Admin.Controllers
                     Session["EmailAdmin"] = user.FirstOrDefault().Email;
                     Session["AnhAdmin"] = user.FirstOrDefault().Anh;
                     Session["LoaiAdmin"] = user.FirstOrDefault().MaQuyen;
+                    Session["idAdmin"] = user.FirstOrDefault().MaTK;
                     if (user.FirstOrDefault().MaQuyen == 3)
                     {
                         ModelState.AddModelError("", "Bạn Không Có Quyền Vào ADMIN!!");
