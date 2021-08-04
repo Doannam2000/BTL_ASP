@@ -39,6 +39,20 @@ namespace MyPham.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+            var chiTiet = db.Chi_Tiet_Gio_Hang.Where(s => s.MaGioHang == hoaDon.MaGioHang).ToList();
+            List<SanPham> sanpham = new List<SanPham>();
+            foreach (var item in chiTiet)
+            {
+                SanPham x = new SanPham();
+                x.MaSP = item.MaSP;
+                x.Gia = item.GiaSP;
+                var sp = db.SanPham.Find(item.MaSP);
+                x.AnhSP = sp.AnhSP;
+                x.TenSP = sp.TenSP;
+                x.SoLuongTon = item.SoLuongMua;
+                sanpham.Add(x);
+            }
+            ViewBag.SanPham = sanpham;
             return View(hoaDon);
         }
 

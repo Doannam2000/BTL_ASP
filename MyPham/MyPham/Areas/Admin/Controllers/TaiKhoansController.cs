@@ -121,30 +121,40 @@ namespace MyPham.Areas.Admin.Controllers
                     }
                     db.Entry(taiKhoan).State = EntityState.Modified;
                     db.SaveChanges();
+                 
                 }
                 return RedirectToAction("Index");
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 ViewBag.Error = "Lỗi nhập dữ liệu! " + ex.Message;
                 ViewBag.MaQuyen = new SelectList(db.PhanQuyen, "MaQuyen", "TenQuyen", taiKhoan.MaQuyen);
                 return View(taiKhoan);
-
             }
         }
 
         // GET: Admin/TaiKhoans/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
+            GioHang giohang = db.GioHang.Where(g => g.MaTK == id).FirstOrDefault();
+            var chiTietGioHang = db.Chi_Tiet_Gio_Hang.Where(c => c.MaGioHang == giohang.MaGioHang).ToList();
+            foreach (var item in chiTietGioHang)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                db.Chi_Tiet_Gio_Hang.Remove(item);
+                db.SaveChanges();
             }
+            var hoaDon = db.HoaDon.Where(c => c.MaGioHang == giohang.MaGioHang).ToList();
+            foreach (var item in hoaDon)
+            {
+                db.HoaDon.Remove(item);
+                db.SaveChanges();
+            }
+            db.GioHang.Remove(giohang);
+            db.SaveChanges();
             TaiKhoan taiKhoan = db.TaiKhoan.Find(id);
-            if (taiKhoan == null)
-            {
-                return HttpNotFound();
-            }
-            return View(taiKhoan);
+            db.TaiKhoan.Remove(taiKhoan);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // POST: Admin/TaiKhoans/Delete/5
@@ -160,10 +170,44 @@ namespace MyPham.Areas.Admin.Controllers
 
         public ActionResult DeleteConfirmedCustom(int id)
         {
+
+            //GioHang giohang = db.GioHang.Where(g => g.MaTK == id).FirstOrDefault();
+            //if (giohang != null)
+            //{
+            //    var chiTietGioHang = db.Chi_Tiet_Gio_Hang.Where(c => c.MaGioHang == giohang.MaGioHang);
+            //    if (chiTietGioHang != null)
+            //        foreach (var item in chiTietGioHang)
+            //        {
+            //            db.Chi_Tiet_Gio_Hang.Remove(item);
+            //            db.SaveChanges();
+            //        }
+
+
+            //    var hoaDon = db.HoaDon.Where(c => c.MaGioHang == giohang.MaGioHang);
+            //    if (hoaDon != null)
+            //        foreach (var item in hoaDon)
+            //        {
+            //            db.HoaDon.Remove(item);
+            //            db.SaveChanges();
+            //        }
+
+            //    db.GioHang.Remove(giohang);
+            //    db.SaveChanges();
+            //}
             TaiKhoan taiKhoan = db.TaiKhoan.Find(id);
-            db.TaiKhoan.Remove(taiKhoan);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                
+                db.TaiKhoan.Remove(taiKhoan);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Không  xóa  được  bản  ghi  này!  " + ex.Message;
+                return View("Delete", taiKhoan);
+            }
+   
         }
 
         protected override void Dispose(bool disposing)

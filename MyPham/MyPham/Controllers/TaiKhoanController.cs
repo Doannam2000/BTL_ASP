@@ -35,15 +35,16 @@ namespace MyPham.Controllers
                     Session["Anh"] = user.FirstOrDefault().Anh;
                     Session["idUser"] = user.FirstOrDefault().MaTK;
                     int MaTK = (int)Session["idUser"];
-                    GioHang gh = db.GioHang.Where(g => g.MaTK == MaTK).FirstOrDefault();
+                    GioHang gh = (GioHang)checkGH(MaTK);
                     if (gh == null)
                     {
                         gh = new GioHang();
                         gh.MaTK = MaTK;
                         db.GioHang.Add(gh);
                         db.SaveChanges();
-                        GioHang gio = db.GioHang.Where(g => g.MaTK == MaTK).FirstOrDefault();
-                        Session["MaGH"] = gio.MaGioHang;
+                        GioHang gio = (GioHang)checkGH(MaTK);
+                        int MaGH = gio.MaGioHang;
+                        Session["MaGH"] = MaGH;
                     }
                     else
                     {
@@ -175,6 +176,19 @@ namespace MyPham.Controllers
             }
             ViewBag.MaQuyen = new SelectList(db.PhanQuyen, "MaQuyen", "TenQuyen", taiKhoan.MaQuyen);
             return View(taiKhoan);
+        }
+        private GioHang checkGH(int MaTK)
+        {
+            var GH = db.GioHang.Where(s => s.MaTK == MaTK);
+            foreach (var item in GH)
+            {
+                var listDH = db.HoaDon.Where(h => h.MaGioHang == item.MaGioHang).FirstOrDefault();
+                if (listDH == null)
+                {
+                    return item;
+                }
+            }
+            return null;
         }
     }
 }

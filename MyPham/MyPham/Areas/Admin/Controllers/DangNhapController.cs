@@ -30,10 +30,10 @@ namespace MyPham.Areas.Admin.Controllers
                 u.MatKhau.Equals(matkhau)).ToList();
                 if (user.Count() > 0)
                 {
-                    Session["HoTen"] = user.FirstOrDefault().HoTen;
-                    Session["Email"] = user.FirstOrDefault().Email;
-                    Session["Anh"] = user.FirstOrDefault().Anh;
-                    Session["Loai"] = user.FirstOrDefault().MaQuyen;
+                    Session["HoTenAdmin"] = user.FirstOrDefault().HoTen;
+                    Session["EmailAdmin"] = user.FirstOrDefault().Email;
+                    Session["AnhAdmin"] = user.FirstOrDefault().Anh;
+                    Session["LoaiAdmin"] = user.FirstOrDefault().MaQuyen;
                     if (user.FirstOrDefault().MaQuyen == 3)
                     {
                         ModelState.AddModelError("", "Bạn Không Có Quyền Vào ADMIN!!");

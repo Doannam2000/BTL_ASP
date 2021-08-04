@@ -1,28 +1,15 @@
-﻿@model MyPham.Models.HoaDon
+﻿
+@model MyPham.Models.HoaDon
 
 @{
-    ViewBag.Title = "Details";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "ChiTiet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
     List<MyPham.Models.SanPham> sp = (List<MyPham.Models.SanPham>)ViewBag.SanPham;
     var ghiChu = Model.GhiChu;
 }
 
 <div class="content-wrapper">
-    <div class="row">
-        <div class="col-md-12 grid-margin">
-            <div class="d-flex justify-content-between flex-wrap">
-                <div class="d-flex align-items-end flex-wrap">
-                    <div class="mr-md-3 mr-xl-5">
-                        <h2>Xin chào, Admin</h2>
-                        <div class="d-flex">
-                            <i class="mdi mdi-home text-muted hover-cursor"></i>
-                            <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Quản lý hóa đơn&nbsp;&nbsp;/&nbsp;Thông tin chi tiết hóa đơn</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="col-12 grid-margin">
         <div class="card">
             <div class="card-body">
@@ -160,7 +147,7 @@
                                         @item.SoLuongTon;   @*Biến số lượng *@
                                     </td>
                                     <td>
-                                        @String.Format("{0:#,###}", (item.Gia*item.SoLuongTon))
+                                        @String.Format("{0:#,###}", (item.Gia * item.SoLuongTon))
                                     </td>
                                 </tr>
                             }
@@ -176,4 +163,6 @@
         </div>
     </div>
 </div>
+
+
 

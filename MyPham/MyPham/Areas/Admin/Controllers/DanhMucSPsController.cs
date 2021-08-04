@@ -16,13 +16,13 @@ namespace MyPham.Areas.Admin.Controllers
         private MyPhamDB db = new MyPhamDB();
 
         // GET: Admin/DanhMucSPs
-        public ActionResult Index(int ? page)
+        public ActionResult Index(int ? page,string x)
         {
+            ViewBag.Error = x;
             var danhmuc = db.DanhMucSP.OrderBy(s => s.MaDM);
             int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(danhmuc.ToPagedList(pageNumber, pageSize));
-
         }
 
         // GET: Admin/DanhMucSPs/Details/5
@@ -126,17 +126,23 @@ namespace MyPham.Areas.Admin.Controllers
             {
                 ViewBag.Error = "Không  xóa  được  bản  ghi  này!  " + ex.Message;
                 return View("Delete", danhMucSP);
-
             }
-
         }
         public ActionResult DeleteConfirmedCustom(int id)
         {
-
             DanhMucSP danhMucSP = db.DanhMucSP.Find(id);
-            db.DanhMucSP.Remove(danhMucSP);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                db.DanhMucSP.Remove(danhMucSP);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Không  xóa  được  bản  ghi  này!  " + ex.Message;
+                return View("Delete", danhMucSP);
+            }
+           
         }
         protected override void Dispose(bool disposing)
         {

@@ -31,7 +31,7 @@
         public int MaGioHang { get; set; }
 
         [Column(TypeName = "ntext")]
-        [DisplayName("Công dụng")]
+        [DisplayName("Ghi chú")]
         public string GhiChu { get; set; }
 
         [StringLength(50)]

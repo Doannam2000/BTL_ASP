@@ -47,26 +47,45 @@
                                                 <h3>Thông tin thanh toán</h3>
                                                 <div class="form-group">
                                                     <div class="col-md-2">Tên : </div>
-                                                    <div class="col-md-10"><input type="text" class="input-text" name="HoTen" value="@taiKhoan.HoTen"></div>
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="input-text" name="HoTen" value="@taiKhoan.HoTen" required>
+                                                        <span class="field-validation-error text-danger"
+                                                              data-valmsg-for="StudentName"
+                                                              data-valmsg-replace="true">Bạn chưa nhập họ tên.</span>
+                                                    </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-2">Địa chỉ : </div>
-                                                    <div class="col-md-10"><input type="text" class="input-text" name="diachi"  value="@taiKhoan.DiaChi"></div>
+                                                    <div class="col-md-10"><input type="text" class="input-text" name="diachi" value="@taiKhoan.DiaChi" required></div>
+                                                    <span class="field-validation-error text-danger"
+                                                          data-valmsg-for="diachi"
+                                                          data-valmsg-replace="true">Bạn chưa nhập địa chỉ.</span>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-2">Số điện thoại : </div>
-                                                    <div class="col-md-10"><input type="text" class="input-text" name="sodienthoai" value="@taiKhoan.SoDienThoai"></div>
+                                                    <div class="col-md-10"><input type="number" class="input-text" name="sodienthoai" value="@taiKhoan.SoDienThoai" required></div>
+                                                    <span class="field-validation-error text-danger"
+                                                          data-valmsg-for="sodienthoai"
+                                                          data-valmsg-replace="true">Bạn chưa nhập số điện thoại.</span>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-2">Email : </div>
-                                                    <div class="col-md-10"><input type="text" class="input-text" name="email" value="@taiKhoan.Email"></div>
+                                                    <div class="col-md-10"><input type="email" class="input-text" name="email" value="@taiKhoan.Email" required></div>
+                                                    <span class="field-validation-error text-danger"
+                                                          data-valmsg-for="email"
+                                                          data-valmsg-replace="true">Bạn chưa địa chỉ email.</span>
                                                 </div>
                                                 @if (ViewBag.TaiKhoan == null)
                                                 {
+                                                    if (ViewBag.error != null)
+                                                    {
+                                                        @ViewBag.error;
+                                                    }
                                                     <div class="form-group">
                                                         <div class="col-md-2">Mật Khẩu : </div>
-                                                        <div class="col-md-10"><input type="text" class="input-text" name="matkhau"></div>
+                                                        <div class="col-md-10"><input type="password" class="input-text" name="matkhau" required minlength="6"></div>
                                                     </div>
+
                                                 }
 
                                             </div>
@@ -87,7 +106,7 @@
                                                 <div class="woocommerce-additional-fields__field-wrapper">
                                                     <p class="form-row notes" id="order_comments_field" data-priority="">
                                                         <label for="order_comments" class="">Ghi chú đơn hàng&nbsp;<span class="optional">(tuỳ chọn)</span></label>
-                                                        <input type="text" name="GhiChu"/>
+                                                        <input type="text" name="GhiChu" />
                                                     </p>
                                                 </div>
 
@@ -122,12 +141,13 @@
                                                         {
                                                             double giagiam = (Convert.ToDouble(@item.sanPham.Gia) - Convert.ToDouble(@item.sanPham.Gia) * (@item.sanPham.GiamGia.HasValue ? @item.sanPham.GiamGia.Value : 0.0));
                                                             Tien += giagiam * item.soLuong;
+                                                  
                                                             <tr class="cart_item">
                                                                 <td class="product-name">
                                                                     @item.sanPham.TenSP<strong class="product-quantity">×&nbsp;@item.soLuong</strong>
                                                                 </td>
                                                                 <td class="product-total">
-                                                                    <span class="woocommerce-Price-amount amount"><bdi>@String.Format("{0:#,###}", @item.soLuong*giagiam)<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span>
+                                                                    <span class="woocommerce-Price-amount amount"><bdi>@String.Format("{0:#,###}", @item.soLuong * giagiam)<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span>
                                                                 </td>
                                                             </tr>
                                                         }
