@@ -1,9 +1,11 @@
 ﻿using MyPham.Models;
 using Newtonsoft.Json;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -45,7 +47,7 @@ namespace MyPham.Controllers
                             item.soLuong += SoLuong;
                             if (MaGH != -1)
                             {
-                                var update = db.Chi_Tiet_Gio_Hang.Find(MaGH);
+                                var update = db.Chi_Tiet_Gio_Hang.Where(s=>s.MaGioHang==MaGH).FirstOrDefault();
                                 update.SoLuongMua = item.soLuong;
                                 db.SaveChanges();
                             }
@@ -172,7 +174,7 @@ namespace MyPham.Controllers
         {
             var list = new List<Gio>();
             var gioHang = Session["GioHang"];
-            if (list != null)
+            if (gioHang != null)
             {
                 list = (List<Gio>)gioHang;
             }
@@ -187,11 +189,17 @@ namespace MyPham.Controllers
 
         public ActionResult XacNhanThanhToan(string email, string HoTen, string diachi, string sodienthoai, string GhiChu, string matkhau)
         {
-            if (Session["idUser"] == null)
+            var list = new List<Gio>();
+            var gioH= Session["GioHang"];
+            if (gioH != null)
             {
-                if (checkEmail(email))
+                list = (List<Gio>)gioH;
+            }
+            if (Session["idUser"] == null) // check đăng nhập
+            {
+                if (checkEmail(email)) // check mail đã tồn tại trong hệ thống chưa
                 {
-                    var user = db.TaiKhoan.Where(u => u.Email.Equals(email) && u.MatKhau.Equals(matkhau)).ToList();
+                    var user = db.TaiKhoan.Where(u => u.Email.Equals(email) && u.MatKhau.Equals(matkhau)).ToList(); // check mật khẩu
                     if (user.Count() > 0)
                     {
                         Session["Email"] = user.FirstOrDefault().Email;
@@ -199,8 +207,13 @@ namespace MyPham.Controllers
                         Session["Anh"] = user.FirstOrDefault().Anh;
                         Session["idUser"] = user.FirstOrDefault().MaTK;
                     }
-                }
-                else
+                    else
+                    {
+                        ViewBag.error = "Email đã tồn tại trong tài khoản của hệ thống !!!\nMật khẩu không đúng";
+                        return View("ThanhToan");
+                    }
+                } 
+                else // tạo mới
                 {
                     TaiKhoan tk = new TaiKhoan();
                     tk.HoTen = HoTen;
@@ -236,18 +249,90 @@ namespace MyPham.Controllers
             hoaDon.SoDienThoai = sodienthoai;
             hoaDon.TinhTrang = "Đang chờ";
             db.HoaDon.Add(hoaDon);
-            var XoaGH = db.Chi_Tiet_Gio_Hang.Where(s => s.MaGioHang == hoaDon.MaGioHang).ToList();
-            foreach (var item in XoaGH)
-            {
-                db.Chi_Tiet_Gio_Hang.Remove(item);
-            }
             db.SaveChanges();
-            return View("Index");
+
+            GioHang gioHang = new GioHang();
+            gioHang.MaTK = (int)Session["idUser"];
+            db.GioHang.Add(gioHang);
+            db.SaveChanges();
+
+            GioHang gio1 = (GioHang)checkGH(gioHang.MaTK);
+            int MaGH = gio1.MaGioHang;
+            Session["MaGH"] = MaGH;
+            Session["GioHang"] = null;
+            ViewBag.HoaDon = hoaDon;
+            return View(list);
         }
 
+        private GioHang checkGH(int MaTK)
+        {
+            var GH = db.GioHang.Where(s => s.MaTK == MaTK);
+            foreach (var item in GH)
+            {
+                var listDH = db.HoaDon.Where(h => h.MaGioHang == item.MaGioHang).FirstOrDefault();
+                if(listDH==null)
+                {
+                    return item;
+                }    
+            }
+            return null;
+        }
         private bool checkEmail(string email)
         {
             return db.TaiKhoan.Count(t => t.Email == email) > 0;
+        }
+
+        public ActionResult XemHoaDon(int id,int? page)
+        {
+            List<HoaDon> hd = new List<HoaDon>();
+            var giohang = db.GioHang.Where(g => g.MaTK == id);
+            if(giohang!=null)
+            {
+                foreach (var item in giohang)
+                {
+                    var hoaDon = db.HoaDon.Where(h => h.MaGioHang == item.MaGioHang).FirstOrDefault();
+                    if(hoaDon!=null)
+                    {
+                        hd.Add(hoaDon);
+                    }    
+                }
+            }
+            if(hd.Count>0)
+            {
+                int pageSize = 7;
+                int pageNumber = (page ?? 1);
+                return View(hd.ToPagedList(pageNumber, pageSize));
+            }
+            ViewBag.ThongBao = "Bạn chưa mua hàng lần nào !!!";
+            return View();
+        }
+
+        public ActionResult ChiTiet(int id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            HoaDon hoaDon = db.HoaDon.Find(id);
+            if (hoaDon == null)
+            {
+                return HttpNotFound();
+            }
+            var chiTiet = db.Chi_Tiet_Gio_Hang.Where(s => s.MaGioHang == hoaDon.MaGioHang).ToList();
+            List<SanPham> sanpham = new List<SanPham>();
+            foreach (var item in chiTiet)
+            {
+                SanPham x = new SanPham();
+                x.MaSP = item.MaSP;
+                x.Gia = item.GiaSP;
+                var sp = db.SanPham.Find(item.MaSP);
+                x.AnhSP = sp.AnhSP;
+                x.TenSP = sp.TenSP;
+                x.SoLuongTon = item.SoLuongMua;
+                sanpham.Add(x);
+            }
+            ViewBag.SanPham = sanpham;
+            return View(hoaDon);
         }
     }
 }

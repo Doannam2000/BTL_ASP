@@ -432,8 +432,6 @@
     <Content Include="Areas\Admin\Views\DanhMucSPs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucSPs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucSPs\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\HoaDons\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\HoaDons\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDons\Details.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDons\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDons\Index.cshtml" />
@@ -443,6 +441,8 @@
     <Content Include="Views\GioHang\Index.cshtml" />
     <Content Include="Views\GioHang\ThanhToan.cshtml" />
     <Content Include="Views\GioHang\XacNhanThanhToan.cshtml" />
+    <Content Include="Views\GioHang\XemHoaDon.cshtml" />
+    <Content Include="Views\GioHang\ChiTiet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
