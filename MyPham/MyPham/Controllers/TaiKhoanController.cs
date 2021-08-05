@@ -66,7 +66,7 @@ namespace MyPham.Controllers
                         }
                         else
                         {
-                            Session["SoLuong"] = 0;
+                            Session["SoLuong"] = null;
                         }
                         Session["MaGH"] = gh.MaGioHang;
                     }    

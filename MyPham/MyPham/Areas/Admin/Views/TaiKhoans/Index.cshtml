@@ -6,10 +6,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     @*<link herf="~/Content/PagedList.css" rel="stylesheet" type="text/css" />*@
 }
-@if(ViewBag.Error !=null)
-{
-    @ViewBag.Error;
-}
+
 
 <div class="content-wrapper">
     <div class="row">
@@ -34,6 +31,12 @@
                 <a class="nav-link " href="@Url.Action("Create","TaiKhoans")">
                     <span class="menu-title btn btn-primary">Thêm tài khoản</span>
                 </a>
+                @if (ViewBag.Error != null)
+                {
+
+                    <div class="alert alert-danger" >@ViewBag.Error</div>
+                    
+                }
                 <div class="table-responsive pt-3">
                     <table id="recent-purchases-listing" class="table text-center">
                         <thead>

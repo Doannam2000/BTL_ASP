@@ -294,7 +294,9 @@ namespace MyPham.Controllers
             Session["GioHang"] = null;
             Session["SoLuong"] = 0;
             ViewBag.HoaDon = hoaDon;
-            return View(list);
+            var HoaDon = db.HoaDon.Where(s => s.MaGioHang == hoaDon.MaGioHang).FirstOrDefault();
+            int mahd = HoaDon.MaHD;
+            return RedirectToAction("ChiTiet",new { id = mahd });
         }
 
         private GioHang checkGH(int MaTK)
@@ -372,12 +374,28 @@ namespace MyPham.Controllers
             var list = (List<Gio>)Session["GioHang"];
             if (list == null)
             {
-                Session["SoLuong"] = 0;
+                Session["SoLuong"] = null;
             }
             else
             {
                 Session["SoLuong"] = list.Count();
             }
+        }
+        public ActionResult XacNhanHang(int id)
+        {
+            var hoaDon = db.HoaDon.Find(id);
+            hoaDon.TinhTrang = "Đã nhận";
+            db.SaveChanges();
+            int matk = (int)Session["idUser"];
+            return RedirectToAction("XemHoaDon", new { id = matk });
+        }
+        public ActionResult HuyDonHang(int id)
+        {
+            var hoaDon = db.HoaDon.Find(id);
+            hoaDon.TinhTrang = "Đơn hàng đã hủy";
+            db.SaveChanges();
+            int matk = (int)Session["idUser"];
+            return RedirectToAction("XemHoaDon", new { id = matk });
         }
     }
 }

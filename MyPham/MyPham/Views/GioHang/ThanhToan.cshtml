@@ -49,31 +49,19 @@
                                                     <div class="col-md-2">Tên : </div>
                                                     <div class="col-md-10">
                                                         <input type="text" class="input-text" name="HoTen" value="@taiKhoan.HoTen" required>
-                                                        <span class="field-validation-error text-danger"
-                                                              data-valmsg-for="StudentName"
-                                                              data-valmsg-replace="true">Bạn chưa nhập họ tên.</span>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-2">Địa chỉ : </div>
                                                     <div class="col-md-10"><input type="text" class="input-text" name="diachi" value="@taiKhoan.DiaChi" required></div>
-                                                    <span class="field-validation-error text-danger"
-                                                          data-valmsg-for="diachi"
-                                                          data-valmsg-replace="true">Bạn chưa nhập địa chỉ.</span>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-2">Số điện thoại : </div>
                                                     <div class="col-md-10"><input type="text" class="input-text" name="sodienthoai" value="@taiKhoan.SoDienThoai" required></div>
-                                                    <span class="field-validation-error text-danger"
-                                                          data-valmsg-for="sodienthoai"
-                                                          data-valmsg-replace="true">Bạn chưa nhập số điện thoại.</span>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-2">Email : </div>
                                                     <div class="col-md-10"><input type="email" class="input-text" name="email" value="@taiKhoan.Email" required></div>
-                                                    <span class="field-validation-error text-danger"
-                                                          data-valmsg-for="email"
-                                                          data-valmsg-replace="true">Bạn chưa địa chỉ email.</span>
                                                 </div>
                                                 @if (ViewBag.TaiKhoan == null)
                                                 {
@@ -96,7 +84,7 @@
                                         <div class="clear">
                                             <div class="woocommerce-shipping-fields">
                                             </div>
-                                            <div class="woocommerce-additional-fields">
+                                            <div class="ml-3 woocommerce-additional-fields">
 
 
 
@@ -106,7 +94,7 @@
                                                 <div class="woocommerce-additional-fields__field-wrapper">
                                                     <p class="form-row notes" id="order_comments_field" data-priority="">
                                                         <label for="order_comments" class="">Ghi chú đơn hàng&nbsp;<span class="optional">(tuỳ chọn)</span></label>
-                                                        <input type="text" name="GhiChu" />
+                                                        <textarea type="text" name="GhiChu" ></textarea>
                                                     </p>
                                                 </div>
 

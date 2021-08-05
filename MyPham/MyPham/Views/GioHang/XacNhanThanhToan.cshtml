@@ -55,7 +55,7 @@
                     <a href="#" class="list-group-item list-group-item-action">Tổng cộng: @String.Format("{0:#,###}", Tien) ₫</a>
                     <a href="#" class="list-group-item list-group-item-action disabled">Phương thức thanh toán: @hoaDon.HinhThucThanhToan</a>
                 </div>
-                <div class="form-row place-order">
+                <div class="form-row place-order mt-3 ml-1">
                     <a href="@Url.Action("index","Home")"><button type="submit" class="button alt" name="woocommerce_checkout_place_order">Tiếp tục mua hàng</button></a>
                 </div>
             </div>
@@ -63,3 +63,8 @@
     </div>
     
 </body>
+<style>
+    th{
+        text-transform:none;
+    }
+</style>

@@ -210,7 +210,7 @@ namespace MyPham.Areas.Admin.Controllers
             }
             catch (Exception )
             {
-                return RedirectToAction("Index", "TaiKhoans", new { error = "Không  xóa  được  bản  ghi  này ! " });
+                return RedirectToAction("Index", "TaiKhoans", new { error = "Không  được  Xóa  tài  khoản  này ! " });
             }
         }
 

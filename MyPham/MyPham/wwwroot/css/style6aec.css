@@ -1179,7 +1179,6 @@ a.devvn_buy_now_style {
 .widget .tieu-chi-sidebar a {
 	display: block;
 	width: 100%;
-	text-align: cn;
 	text-align: center;
 	font-size: 13px;
 	background: #f1f1f1;
@@ -1283,7 +1282,7 @@ a.bntclick:hover {
     border-radius: 4px;
     margin-bottom: 5px;
     margin-top: 0px;
-    padding: 2px 10px;
+    padding: 10px 10px;
 }
 #shop-sidebar .widget, .post-sidebar #secondary .widget, .widget-area .widget, #product-sidebar .widget {
 margin-bottom: 40px;
@@ -1416,6 +1415,7 @@ margin-bottom: 40px;
 }
 .product-short-description p{
 	margin-bottom: 0px;
+	padding:5px;
 }
 .nav-dropdown-default {
 padding: 10px;

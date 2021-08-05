@@ -19,14 +19,18 @@
     </div>
 </div>
 <div class="shop-container">
-    @if (ViewBag.ThongBao != null)
-    {
-        @ViewBag.ThongBao;
-    }
 
+    
     <div class="container">
-        <div class="woocommerce-notices-wrapper"></div>
-    </div>
+        @if (ViewBag.ThongBao != null)
+        {
+            <div class="woocommerce-message message-wrapper">
+                <div class="message-container container success-color medium-text-center">
+                    <i class="icon-checkmark"></i>@ViewBag.ThongBao
+                </div>
+            </div>
+        }
+        </div>
     <div id="product-6932" class="product type-product post-6932 status-publish first instock product_cat-bo-my-pham-tri-nam-va-tan-nhang has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
         <div class="product-container">
             @{
@@ -43,13 +47,6 @@
 
                         <div class="product-images relative mb-half has-hover woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images" data-columns="4">
 
-                            <div class="is-larger absolute left top z-1">
-                                <div class="callout badge badge-circle">
-                                    <div class="badge-inner secondary on-sale">
-                                        <span class="onsale">-@String.Format("{0:#,###}", @giam)</span>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="image-tools absolute top show-on-hover right z-3">
                             </div>
 
@@ -72,12 +69,6 @@
                                     </a>
                                 </div>
                             </figure>
-
-                            <div class="image-tools absolute bottom left z-3">
-                                <a href="#product-zoom" class="zoom-button button is-outline circle icon tooltip hide-for-small" title="Zoom">
-                                    <i class="icon-expand"></i>
-                                </a>
-                            </div>
                         </div>
 
                     </div>
@@ -90,7 +81,9 @@
                         <div class="is-divider small"></div>
                         <div class="price-wrapper">
                             <p class="price product-page-price price-on-sale">
-                                <del><span class="woocommerce-Price-amount amount"><bdi>@String.Format("{0:#,###}", Model.Gia)<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></del> <ins><span class="woocommerce-Price-amount amount"><bdi>@String.Format("{0:#,###}", @giagiam)<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></ins>
+                                <del><span class="woocommerce-Price-amount amount"><bdi>@String.Format("{0:#,###}", Model.Gia)<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></del>
+                                <ins><span class="woocommerce-Price-amount amount"><bdi style="font-size:35px">@String.Format("{0:#,###}", @giagiam)<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></ins>
+                                <span class="onsale" style="margin-left: 15px; font-size: .75rem; color: #fff !important; background: #ee4d2d; border-radius: 2px; padding: 5px 10px; font-weight: 600; line-height: 1; white-space: nowrap;">Giảm @String.Format("{0:#,###}", @giam)%</span>
                             </p>
                         </div>
                         <div class="product-short-description">
@@ -115,31 +108,18 @@
                             @if (Model.HangSX != null)
                             {<p><strong>Hãng sản xuất:</strong> @Html.DisplayFor(Model => Model.HangSX)</p>}
 
-                            @if (Model.TrongLuong != null)
-                            {<p><strong>Trọng lượng:</strong> @Html.DisplayFor(Model => Model.TrongLuong)</p>}
-
-                            @if (Model.ChatLieu != null)
-                            {<p><strong>Chất liệt:</strong> @Html.DisplayFor(Model => Model.ChatLieu)</p>}
-
-                            @if (Model.CongDung != null)
-                            {<p><strong>Công dụng:</strong> @Html.DisplayFor(Model => Model.CongDung)</p>}
-
-                            @if (Model.ThanhPhan != null)
-                            {<p><strong>Thành phần:</strong> @Html.DisplayFor(Model => Model.ThanhPhan)</p>}
-
-                        @*<p>&#8211; <strong>Tham khảo bộ</strong> 7 in 1 &#8211; <a href="@Url.Action("XemSanPhamTheoDanhMuc", "SanPham", new{ id = 1})" target="_blank" rel="noopener noreferrer">Mỹ phẩm hoàng cung Danxuenilan 7 in 1 tại đây.</a></p>
-                            <p>&#8211; Tham khảo về các dòng <a href="@Url.Action("Index", "Home")" target="_blank" rel="noopener noreferrer">Hoàng Cung hiện shop đang bán.</a></p>*@
                         </div>
 
 
-                        <form class="cart" method="post" enctype='multipart/form-data' action="@Url.Action("ThemSP", "GioHang", new { MaSP = Model.MaSP })">
-
-                            <div class="quantity buttons_added">
-                                <input type="button" value="-" class="minus button is-form">
-                                <input type="number" id="quantity_60d19c138f0b1" class="input-text qty text" step="1" min="1" max="" name="SoLuong" value="1" title="SL" size="4" placeholder="" inputmode="numeric" />
-                                <input type="button" value="+" class="plus button is-form">
+                        <form class="cart mb-2" method="post" enctype='multipart/form-data' action="@Url.Action("ThemSP", "GioHang", new { MaSP = Model.MaSP })">
+                            <div class="row pb-2">
+                                <div class="col-md-3 pt-3 ml-2">Số lượng</div>
+                                <div class="col-md-5 quantity buttons_added">
+                                    <input type="button" value="-" class="minus button is-form">
+                                    <input type="number" id="quantity_60d19c138f0b1" class="input-text qty text" step="1" min="1" max="" name="SoLuong" value="1" title="SL" size="4" placeholder="" inputmode="numeric" />
+                                    <input type="button" value="+" class="plus button is-form">
+                                </div>
                             </div>
-
                             <button type="submit" name="add-to-cart" value="6932" class="single_add_to_cart_button button alt">Thêm vào giỏ hàng</button>
 
                         </form>
@@ -147,11 +127,11 @@
 
                         <aside class="promo-online">
                             <span class="" data-id="365501">
-                                <i class="fa fa-check-square-o" aria-hidden="true"></i> Cam kết không bán hàng không rõ nguồn gốc, xuất xứ
+                                <i class="far fa-check-square"></i> Cam kết không bán hàng không rõ nguồn gốc, xuất xứ
                             </span>
                             <br>
                             <span class="" data-id="365501">
-                                <i class="fa fa-check-square-o" aria-hidden="true"></i> Cam kết: Hình ảnh sản phẩm được chụp từ mẫu thực.
+                                <i class="far fa-check-square"></i> Cam kết: Hình ảnh sản phẩm được chụp từ mẫu thực.
                             </span>
                         </aside>
 
@@ -239,7 +219,19 @@
                                             {<p><strong>Trọng lượng:</strong> @Html.DisplayFor(Model => Model.TrongLuong)</p>}
 
                                             @if (Model.ChatLieu != null)
-                                            {<p><strong>Chất liệt:</strong> @Html.DisplayFor(Model => Model.ChatLieu)</p>}
+                                            {
+                                                <h3>Chất liệu</h3>
+                                                String[] slipt = Model.ChatLieu.Split(new Char[] { '–' });
+                                                foreach (var item in slipt)
+                                                {
+
+                                                    if (item.Trim() != "")
+                                                    {
+                                                        <p>-@item</p>
+                                                    }
+                                                }
+                                            }
+
                                             <p>
                                                 <a href="@Url.Content(ImagePath)">
                                                     <img width="510" height="510" src="@Url.Content(ImagePath)" class="lazy-load wp-post-image skip-lazy"
@@ -249,16 +241,47 @@
                                             </p>
 
                                             @if (Model.ThanhPhan != null)
-                                            {<p><strong>Thành phần:</strong> @Html.DisplayFor(Model => Model.ThanhPhan)</p>}
+                                            {
+                                                <h3>Thành phần</h3>
+                                                String[] slipt = Model.ThanhPhan.Split(new Char[] { '–' });
+                                                foreach (var item in slipt)
+                                                {
+                                                    if (item.Trim() != "")
+                                                    {
+                                                        <p>-@item</p>
+                                                    }
+                                                }
+                                            }
 
-                                            <h3>Công dụng Bộ mỹ phẩm hoàng cung Danxuenilan :</h3>
+
                                             @if (Model.CongDung != null)
-                                            {<p>@Html.DisplayFor(Model => Model.CongDung)</p>}
+                                            {
+                                                <h3>Công dụng :</h3>
+                                                String[] slipt = Model.CongDung.Split(new Char[] { '–' });
+                                                foreach (var item in slipt)
+                                                {
+
+                                                    if (item.Trim() != "")
+                                                    {
+                                                        <p>-@item</p>
+                                                    }
+                                                }
+                                            }
 
                                             @if (Model.HuongDanSD != null)
                                             {
                                                 <h3>Hướng dẫn sử dụng</h3>
-                                                <p> @Html.DisplayFor(Model => Model.HuongDanSD)</p>}
+                                                String[] slipt = Model.HuongDanSD.Split(new Char[] { '–' });
+                                                foreach (var item in slipt)
+                                                {
+
+                                                    if (item.Trim() != "")
+                                                    {
+                                                        <p>-@item</p>
+                                                    }
+                                                }
+                                            }
+
 
                                         </div>
                                     </div>
@@ -302,7 +325,7 @@
                                                         <div class="box-image">
                                                             <div class="">
                                                                 <a href="@Url.Action("SanPham","SanPham",new {id = item.MaSP })">
-                                                                    <img width="247" height="247" src="@Url.Content(ImagePath1)" class="lazy-load attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="" sizes="(max-width: 247px) 100vw, 247px" />
+                                                                    <img width="247" height="247" style="max-height:247px"  src="@Url.Content(ImagePath1)" class="lazy-load attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="" sizes="(max-width: 247px) 100vw, 247px" />
                                                                 </a>
                                                             </div>
                                                             <div class="image-tools top right show-on-hover">

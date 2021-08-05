@@ -411,7 +411,7 @@
                         <!-- Logo -->
                         <div id="logo" class="flex-col logo">
                             <!-- Header logo -->
-                            <a href="@Url.Action("Index","Home")" title="Mỹ phẩm chính hãng Hàn Quốc &#8211; LamdepZ.com" rel="home">
+                            <a href="@Url.Action("Index", "Home")" title="Mỹ phẩm chính hãng Hàn Quốc &#8211; LamdepZ.com" rel="home">
                                 <img width="200" height="100" src="~/wwwroot/images/2021/03/logo-full-1.png" class="header_logo header-logo" alt="Mỹ phẩm chính hãng Hàn Quốc &#8211; LamdepZ.com" /><img width="200" height="100" src="images/2021/03/logo-full-1.png"
                                                                                                                                                                                                           class="header-logo-dark" alt="Mỹ phẩm chính hãng Hàn Quốc &#8211; LamdepZ.com" />
                             </a>
@@ -505,7 +505,7 @@
                                                         {
                                                             <ul class="header-nav header-nav-main nav nav-left  nav-uppercase">
                                                                 <li class="cart-item has-icon has-dropdown">
-                                                                    <a href="@Url.Action("ThongTinTaiKhoan", "TaiKhoan", new { id = Session["idUser"] } )" title="Giỏ hàng" class="header-cart-link is-small">
+                                                                    <a href="@Url.Action("ThongTinTaiKhoan", "TaiKhoan", new { id = Session["idUser"] })" class="header-cart-link is-small">
                                                                         @if (Session["HoTen"] != null)
                                                                         {
                                                                             <span class="header-cart-title">@Session["HoTen"]</span>
@@ -525,9 +525,9 @@
                                                                     </a>
                                                                     <ul class="nav-dropdown nav-dropdown-default">
                                                                         <div class="widget_shopping_cart_content">
-                                                                            <div><a href="@Url.Action("ThongTinTaiKhoan","TaiKhoan", new { id = Session["idUser"] } )" class="dropdown-item" title="Thông tin tài khoản">Thông tin tài khoản</a><br></div>
+                                                                            <div><a href="@Url.Action("ThongTinTaiKhoan", "TaiKhoan", new { id = Session["idUser"] })" class="dropdown-item" title="Thông tin tài khoản">Thông tin tài khoản</a><br></div>
                                                                             <div>
-                                                                                <a href="@Url.Action("DangXuat","TaiKhoan")" class="dropdown-item" title="Đăng xuất">Đăng xuất</a>
+                                                                                <a href="@Url.Action("DangXuat", "TaiKhoan")" class="dropdown-item" title="Đăng xuất">Đăng xuất</a>
                                                                                 @*@Html.ActionLink("DangXuat", "DangXuat", "Home", htmlAttributes: new { @style = "font-size:small;color:black" })*@
                                                                             </div>
                                                                         </div>
@@ -539,12 +539,12 @@
                                                         {
                                                             <ul class="nav navbar-nav navbar-right ">
                                                                 <li class="nav-item">
-                                                                    <a class="navbar-link header-cart-link" href="@Url.Action("DangKy","TaiKhoan")">
+                                                                    <a class="navbar-link header-cart-link" href="@Url.Action("DangKy", "TaiKhoan")">
                                                                         <span class="glyphicon glyphicon-user"></span> <span class="header-cart-title">Đăng ký</span>
                                                                     </a>
                                                                 </li>
                                                                 <li class="nav-item">
-                                                                    <a class="navbar-link header-cart-link" href="@Url.Action("DangNhap","TaiKhoan")">
+                                                                    <a class="navbar-link header-cart-link" href="@Url.Action("DangNhap", "TaiKhoan")">
                                                                         <span class="glyphicon glyphicon-log-in"></span> <span class="header-cart-title">Đăng nhập</span>
                                                                     </a>
                                                                 </li>
@@ -562,19 +562,49 @@
                         <!-- Right Elements -->
                         <div class="flex-col hide-for-medium flex-right" style="padding: 15px 15px 25px;">
                             <ul class="header-nav header-nav-main nav nav-right  nav-uppercase">
-                                <li class="cart-item has-icon">
+                                <li class="cart-item has-icon has-dropdown">
 
-                                    <a href="@Url.Action("Index","GioHang")" title="Giỏ hàng" class="header-cart-link is-small">
-
-                                        <span class="image-icon header-cart-icon" data-icon-label="0">
+                                    <a href="@Url.Action("Index", "GioHang")" title="Giỏ hàng" class="header-cart-link is-small">
+                                        @{ int SL = 0;
+                                            if (Session["SoLuong"] != null)
+                                            {
+                                                SL = (int)Session["SoLuong"];
+                                            } }
+                                        <span class="image-icon header-cart-icon" data-icon-label="@SL" >
                                             <img class="cart-img-icon" alt="Giỏ hàng" src="~/wwwroot/images/icon_01.png" />
                                         </span>
                                     </a>
-                                    @*<ul class="nav-dropdown nav-dropdown-default">
-                                        <div class="widget_shopping_cart_content">
-                                            Chưa có sản phẩm trong giỏ hàng
-                                        </div>
-                                    </ul>*@
+                                    <ul class="nav-dropdown nav-dropdown-default" style="">
+                                        @if (Session["SoLuong"] != null)
+                                        {
+                                        <li class="html widget_shopping_cart">
+                                            <div class="widget_shopping_cart_content">
+
+                                                <ul class="woocommerce-mini-cart cart_list product_list_widget ">
+                                                    <li class="woocommerce-mini-cart-item mini_cart_item">
+                                                        <a href="https://lamdepz.com/gio-hang/?remove_item=0394ea68951e3299bcdfa75a097d7c11&amp;_wpnonce=7c0f2849d4" class="remove remove_from_cart_button" aria-label="Xóa sản phẩm này" data-product_id="6991" data-cart_item_key="0394ea68951e3299bcdfa75a097d7c11" data-product_sku="9677548ee4ee">×</a>											<a href="https://lamdepz.com/sp/bo-my-pham-hoang-cung-danxuenilan-tri-nam-tan-nhang-duong-trang-da-7in1/">
+                                                            <img width="247" height="247" src="https://lamdepz.com/wp-content/uploads/2020/12/B-m-phm-hoang-cung-Danxuenilan-tr-nom-tan-nhan-dung-trng-da-7in1-51-247x247.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="https://lamdepz.com/wp-content/uploads/2020/12/B-m-phm-hoang-cung-Danxuenilan-tr-nom-tan-nhan-dung-trng-da-7in1-51-247x247.jpg 247w, https://lamdepz.com/wp-content/uploads/2020/12/B-m-phm-hoang-cung-Danxuenilan-tr-nom-tan-nhan-dung-trng-da-7in1-51-100x100.jpg 100w, https://lamdepz.com/wp-content/uploads/2020/12/B-m-phm-hoang-cung-Danxuenilan-tr-nom-tan-nhan-dung-trng-da-7in1-51-510x510.jpg 510w, https://lamdepz.com/wp-content/uploads/2020/12/B-m-phm-hoang-cung-Danxuenilan-tr-nom-tan-nhan-dung-trng-da-7in1-51-300x300.jpg 300w, https://lamdepz.com/wp-content/uploads/2020/12/B-m-phm-hoang-cung-Danxuenilan-tr-nom-tan-nhan-dung-trng-da-7in1-51-150x150.jpg 150w, https://lamdepz.com/wp-content/uploads/2020/12/B-m-phm-hoang-cung-Danxuenilan-tr-nom-tan-nhan-dung-trng-da-7in1-51.jpg 550w" sizes="(max-width: 247px) 100vw, 247px">Bộ mỹ phẩm hoàng cung Danxuenilan, trị nám, tàn nhang, dưỡng trắng da (7in1)
+                                                        </a>
+                                                        <span class="quantity">1 × <span class="woocommerce-Price-amount amount"><bdi>800.000<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
+                                                    </li>
+                                                </ul>
+
+                                                <p class="woocommerce-mini-cart__total total">
+                                                    <strong>Tổng số phụ:</strong> <span class="woocommerce-Price-amount amount"><bdi>800.000<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span>
+                                                </p>
+
+
+                                                <p class="woocommerce-mini-cart__buttons buttons"><a href="@Url.Action("Index", "GioHang")" class="button wc-forward">Xem giỏ hàng</a><a href="@Url.Action("ThanhToan","GioHang")" class="button checkout wc-forward">Thanh toán</a></p>
+
+
+
+                                            </div>
+                                        </li>}
+                                        else
+                                        {
+                                            <p>Chưa có sản phẩm nào trong giỏ hàng</p>
+                                        }
+                                    </ul>
                                 </li>
                             </ul>
                         </div>
