@@ -579,18 +579,28 @@
                                         {
                                         <li class="html widget_shopping_cart">
                                             <div class="widget_shopping_cart_content">
+                                                @{ 
+                                                    List<MyPham.Models.Gio> hang = (List<MyPham.Models.Gio>)Session["GioHang"];
+                                                    double TongTien = 0;
+                                                }
 
+                                                @foreach (var item in hang) {
+                                                    double giagiam = (Convert.ToDouble(@item.sanPham.Gia) - Convert.ToDouble(@item.sanPham.Gia) * (@item.sanPham.GiamGia.HasValue ? @item.sanPham.GiamGia.Value : 0.0));
+                                                    String imagePath = "~/wwwroot/images/SanPham/" + item.sanPham.AnhSP;
+                                                    giagiam = Math.Round(giagiam / 1000) * 1000;
+                                                    TongTien += giagiam * item.soLuong;
                                                 <ul class="woocommerce-mini-cart cart_list product_list_widget ">
                                                     <li class="woocommerce-mini-cart-item mini_cart_item">
-                                                        <a href="https://lamdepz.com/gio-hang/?remove_item=0394ea68951e3299bcdfa75a097d7c11&amp;_wpnonce=7c0f2849d4" class="remove remove_from_cart_button" aria-label="Xóa sản phẩm này" data-product_id="6991" data-cart_item_key="0394ea68951e3299bcdfa75a097d7c11" data-product_sku="9677548ee4ee">×</a>											<a href="https://lamdepz.com/sp/bo-my-pham-hoang-cung-danxuenilan-tri-nam-tan-nhang-duong-trang-da-7in1/">
-                                                            <img width="247" height="247" src="https://lamdepz.com/wp-content/uploads/2020/12/B-m-phm-hoang-cung-Danxuenilan-tr-nom-tan-nhan-dung-trng-da-7in1-51-247x247.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="https://lamdepz.com/wp-content/uploads/2020/12/B-m-phm-hoang-cung-Danxuenilan-tr-nom-tan-nhan-dung-trng-da-7in1-51-247x247.jpg 247w, https://lamdepz.com/wp-content/uploads/2020/12/B-m-phm-hoang-cung-Danxuenilan-tr-nom-tan-nhan-dung-trng-da-7in1-51-100x100.jpg 100w, https://lamdepz.com/wp-content/uploads/2020/12/B-m-phm-hoang-cung-Danxuenilan-tr-nom-tan-nhan-dung-trng-da-7in1-51-510x510.jpg 510w, https://lamdepz.com/wp-content/uploads/2020/12/B-m-phm-hoang-cung-Danxuenilan-tr-nom-tan-nhan-dung-trng-da-7in1-51-300x300.jpg 300w, https://lamdepz.com/wp-content/uploads/2020/12/B-m-phm-hoang-cung-Danxuenilan-tr-nom-tan-nhan-dung-trng-da-7in1-51-150x150.jpg 150w, https://lamdepz.com/wp-content/uploads/2020/12/B-m-phm-hoang-cung-Danxuenilan-tr-nom-tan-nhan-dung-trng-da-7in1-51.jpg 550w" sizes="(max-width: 247px) 100vw, 247px">Bộ mỹ phẩm hoàng cung Danxuenilan, trị nám, tàn nhang, dưỡng trắng da (7in1)
+                                                        @*<a href="" class="remove remove_from_cart_button" aria-label="Xóa sản phẩm này" data-product_id="6991" data-cart_item_key="0394ea68951e3299bcdfa75a097d7c11" data-product_sku="9677548ee4ee">×</a>*@											
+                                                        <a href="@Url.Action("SanPham","SanPham", new { id = item.sanPham.MaSP })">
+                                                            <img width="247" height="247" src="@Url.Content(imagePath)" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" sizes="(max-width: 247px) 100vw, 247px">@item.sanPham.TenSP
                                                         </a>
-                                                        <span class="quantity">1 × <span class="woocommerce-Price-amount amount"><bdi>800.000<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
+                                                        <span class="quantity">@item.soLuong × <span class="woocommerce-Price-amount amount"><bdi>@String.Format("{0:#,###}", giagiam)<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span></span>
                                                     </li>
                                                 </ul>
-
+                                                                }
                                                 <p class="woocommerce-mini-cart__total total">
-                                                    <strong>Tổng số phụ:</strong> <span class="woocommerce-Price-amount amount"><bdi>800.000<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span>
+                                                    <strong>Tổng số phụ:</strong> <span class="woocommerce-Price-amount amount"><bdi>@String.Format("{0:#,###}", TongTien)<span class="woocommerce-Price-currencySymbol">₫</span></bdi></span>
                                                 </p>
 
 
