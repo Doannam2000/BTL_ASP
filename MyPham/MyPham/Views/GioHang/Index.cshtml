@@ -53,8 +53,8 @@ else
                                                 TongTien += giagiam * item.soLuong;
                                                 <tr class="woocommerce-cart-form__cart-item cart_item">
                                                     <td style="padding: 20px;text-align: center">
-                                                        <form id="deleteSP" method="post" action="@Url.Action("XoaKhoiGio", "GioHang", new { MaSP = item.sanPham.MaSP})">
-                                                            <button type="submit" style="background: #f12323; color: #fff; border-radius: 50%" class="btn btn-sm" onclick="functionConfirm(this)">X</button>
+                                                        <form id="deleteSP-@item.sanPham.MaSP" method="post" action="@Url.Action("XoaKhoiGio", "GioHang", new { MaSP = item.sanPham.MaSP})">
+                                                            <button type="submit" style="background: #f12323; color: #fff; border-radius: 50%" class="btn btn-sm" onclick="return functionConfirm(this, @item.sanPham.MaSP)">X</button>
                                                         </form>
                                                     </td>
                                                     <td class="product-thumbnail">
@@ -169,7 +169,7 @@ else
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-    function functionConfirm(event) {
+    function functionConfirm(event, id) {
         swal({
             title: 'Thông báo',
             text: "Bạn chắc chắn muốn xóa sản phẩm này",
@@ -182,7 +182,8 @@ else
             confirmButtonClass: 'btn btn-success'
         }, function (isConfirm) {
             if (isConfirm) {
-                $('#deleteSP').submit();
+                $("#deleteSP-" + id).submit();
+
                 return true;
             } else {
                 return false;
@@ -213,5 +214,28 @@ else
             }
         });
         return false;
+    }
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log("Hello");
+
+        loadData();
+    });
+
+    const loadData = async () => {
+        console.log("Hello1");
+        try {
+            const res = await fetch(
+                "/GioHang/Index"
+            );
+            const data = await res.json();
+            console.log(data);
+
+        } catch (error) {
+            console.log(error);
+        }
+
     }
 </script>
