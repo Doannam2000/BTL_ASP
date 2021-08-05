@@ -62,7 +62,7 @@ namespace MyPham.Controllers
             s1 = db.DanhMucSP.Where(h => h.MaDM == madm).ToList();
             ViewBag.TenDM = s1[0].TenDM;
 
-            int pageSize = 4;
+            int pageSize = 12;
             int pageNumber = (page ?? 1);
             return View(sanpham.ToPagedList(pageNumber, pageSize));
         }
