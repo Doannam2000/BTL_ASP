@@ -11,7 +11,7 @@ namespace MyPham.Controllers
     public class HomeController : Controller
     {
         MyPhamDB db = new MyPhamDB();
-        public ActionResult Index(int? page)
+        public ActionResult Index()
         {
             List<SanPham> SpSon = new List<SanPham>();
             SpSon = db.SanPham.Where(h => h.MaDM == 4).OrderByDescending(h => h.GiamGia).Take(8).ToList();
@@ -39,7 +39,7 @@ namespace MyPham.Controllers
             ViewBag.strSearch = strSearch;
             if (sanpham.Count > 0)
             {
-                int pageSize = 4;
+                int pageSize = 12;
                 int pageNumber = (page ?? 1);
                 return View(sanpham.ToPagedList(pageNumber, pageSize));
             }
