@@ -13,6 +13,7 @@ namespace MyPham.Areas.Admin.Controllers
         private MyPhamDB db = new MyPhamDB();
         public ActionResult Index()
         {
+           
             return View();
         }
         [HttpGet]

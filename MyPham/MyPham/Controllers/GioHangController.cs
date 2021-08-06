@@ -181,8 +181,10 @@ namespace MyPham.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult ThanhToan()
+        public ActionResult ThanhToan(string error)
         {
+            if (error != null)
+                ViewBag.Error = error;
             var list = new List<Gio>();
             var gioHang = Session["GioHang"];
             if (gioHang != null)
@@ -220,8 +222,7 @@ namespace MyPham.Controllers
                     }
                     else
                     {
-                        ViewBag.error = "Email đã tồn tại trong tài khoản của hệ thống !!!\nMật khẩu không đúng";
-                        return View("ThanhToan");
+                        return RedirectToAction("ThanhToan",new { error = "Email đã tồn tại trong tài khoản của hệ thống !!! Mật khẩu không đúng" });
                     }
                 } 
                 else // tạo mới
