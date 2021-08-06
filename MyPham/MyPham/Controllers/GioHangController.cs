@@ -292,7 +292,7 @@ namespace MyPham.Controllers
             int MaGH = gio1.MaGioHang;
             Session["MaGH"] = MaGH;
             Session["GioHang"] = null;
-            Session["SoLuong"] = 0;
+            Session["SoLuong"] = null;
             ViewBag.HoaDon = hoaDon;
             var HoaDon = db.HoaDon.Where(s => s.MaGioHang == hoaDon.MaGioHang).FirstOrDefault();
             int mahd = HoaDon.MaHD;
