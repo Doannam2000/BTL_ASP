@@ -270,6 +270,7 @@
     <Content Include="wwwroot\images\SanPham\Son-3-lp-VDL-Tint-Bar-Triple-Shot-3X-–-Han-quc1.jpg" />
     <Content Include="wwwroot\images\SanPham\su-dung-serum-eldas-eg-tox-program-han-quoc1111.jpg" />
     <Content Include="wwwroot\js\bootstrap.min.js" />
+    <Content Include="wwwroot\js\checkthanhtoan.js" />
     <Content Include="wwwroot\js\comment-reply.min9f31.js" />
     <Content Include="wwwroot\js\devvn-woocommerce-reviews19f6.js" />
     <Content Include="wwwroot\js\dist\hooks.minf521.js" />

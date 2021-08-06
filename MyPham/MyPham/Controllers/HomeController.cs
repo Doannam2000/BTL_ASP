@@ -101,11 +101,6 @@ namespace MyPham.Controllers
             return View(sanpham);
         }
 
-        public ActionResult View1()
-        {
-            return View();
-        }
-        
-        
+
     }
 }
