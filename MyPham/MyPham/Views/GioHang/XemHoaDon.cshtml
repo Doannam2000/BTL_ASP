@@ -58,7 +58,7 @@ else
 
                                         <td style="display: flex; flex-direction: row;">
                                             <div class="d-flex justify-content-center">
-                                                @if (item.TinhTrang == "Đang giao hàng")
+                                                @if (item.TinhTrang == "Đang giao")
                                                 {
                                                     <a class="nav-link" href="@Url.Action("XacNhanHang", "GioHang", new { id = item.MaHD })">
                                                         <span class="menu-title btn btn-wd btn-success pl-3 pr-3 pt-2 pb-2">Đã nhận hàng</span>

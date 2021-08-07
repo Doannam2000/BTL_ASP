@@ -120,9 +120,10 @@
                                     <div class="col-md-10">
                                         @*@Html.EditorFor(model => model.TinhTrang, new { htmlAttributes = new { @class = "form-control" } })*@
                                         <select class="form-control" id="TinhTrang" name="TinhTrang">
-                                            <option selected="selected" value="Đang Chờ">Đang Chờ</option>
-                                            <option value="Đang Giao">Đang Giao</option>
-                                            <option value="Đã Hủy">Đã Hủy</option>
+                                            <option selected="selected" value="Đang chờ">Đang chờ</option>
+                                            <option value="Đang giao">Đang giao</option>
+                                            <option value="Đã hủy">Đã hủy</option>
+                                            <option value="Đã nhận">Đã nhận</option>
                                         </select>
                                         @Html.ValidationMessageFor(model => model.TinhTrang, "", new { @class = "text-danger" })
                                     </div>

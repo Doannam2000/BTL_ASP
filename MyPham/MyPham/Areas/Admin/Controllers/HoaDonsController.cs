@@ -16,14 +16,42 @@ namespace MyPham.Areas.Admin.Controllers
         private MyPhamDB db = new MyPhamDB();
 
         // GET: Admin/HoaDons
-    
 
-        public ActionResult Index(int ? page, string error )
+
+        public ActionResult Index(int? page, string error, string tinhtrang)
         {
+
             if (error != null)
                 ViewBag.Error = error;
-            var hoaDon = db.HoaDon.Include(h => h.GioHang);
-            hoaDon = hoaDon.OrderBy(s => s.MaHD);
+            List<HoaDon> hoaDon= new List<HoaDon>();
+            hoaDon  = db.HoaDon.Include(h => h.GioHang).ToList();
+            if (tinhtrang != null)
+            {
+                if(tinhtrang.Equals("Đang chờ"))
+                {
+                    hoaDon = hoaDon.Where(h => h.TinhTrang == tinhtrang).ToList();
+                    ViewBag.tinhtrang = "Đang chờ";
+                }
+
+                if (tinhtrang.Equals("Đang giao"))
+                {     
+                    hoaDon = hoaDon.Where(h => h.TinhTrang == tinhtrang).ToList();
+                    ViewBag.tinhtrang = "Đang giao";
+                }
+
+                if (tinhtrang.Equals("Đã nhận"))
+                {
+                    hoaDon = hoaDon.Where(h => h.TinhTrang == tinhtrang).ToList();
+                    ViewBag.tinhtrang = "Đã nhận";
+                }
+
+                if (tinhtrang.Equals("Đã hủy"))
+                {
+                    hoaDon = hoaDon.Where(h => h.TinhTrang == tinhtrang).ToList();
+                    ViewBag.rinhtrang = "Đã hủy";
+                }
+            }   
+            hoaDon = hoaDon.OrderBy(s => s.MaHD).ToList();
             int pageSize = 7;
             int pageNumber = (page ?? 1);
             return View(hoaDon.ToPagedList(pageNumber, pageSize));

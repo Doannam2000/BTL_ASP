@@ -37,19 +37,19 @@
                         <p class="woocommerce-result-count hide-for-medium">
                             Lọc theo
                         </p>
-                        <form class="woocommerce-ordering" method="get">
-                            <select name="orderby" class="orderby" aria-label="Đơn hàng của cửa hàng">
-                                <option value="menu_order" selected="selected">Thứ tự mặc định</option>
-                                <option value="popularity">Thứ tự theo mức độ phổ biến</option>
-                                <option value="rating">Thứ tự theo điểm đánh giá</option>
-                                <option value="date">Mới nhất</option>
-                                <option value="price">Thứ tự theo giá: thấp đến cao</option>
-                                <option value="price-desc">Thứ tự theo giá: cao xuống thấp</option>
-                            </select>
-                            <input type="hidden" name="paged" value="1">
-                        </form>
-                    </div>
 
+
+                    </div>
+                    <form class="woocommerce-ordering" method="post" enctype='multipart/form-data' action="@Url.Action("Index","HoaDons")">
+                        <select name="tinhtrang" class="orderby" aria-label="Đơn hàng của cửa hàng">
+                            <option name="tinhtrang" value="macdinh" selected="selected">Thứ tự mặc định</option>
+                            <option name="tinhtrang" value="Đang chờ">Đang chờ</option>
+                            <option name="tinhtrang" value="Đang giao">Đang giao</option>
+                            <option name="tinhtrang" value="Đã nhận">Đã nhận</option>
+                            <option name="tinhtrang" value="Đã hủy">Đã hủy</option>
+                        </select>
+                        <button style="background: #eee" type="submit" value="Lọc">
+                    </form>
                 </div>
                 <div class="table-responsive pt-3">
                     <table id="recent-purchases-listing" class="table table-bordered">
@@ -112,11 +112,11 @@
                             }
                         </tbody>
                     </table>
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions()
-                      {
-                          LiElementClasses = new string[] { "page-number" },
-                          UlElementClasses = new string[] { "page-numbers", "nav-pagination", "links", "text-center" }
-                      })
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page , tinhtrang = ViewBag.tinhtrang }), new PagedListRenderOptions()
+               {
+                   LiElementClasses = new string[] { "page-number" },
+                   UlElementClasses = new string[] { "page-numbers", "nav-pagination", "links", "text-center" }
+               })
                 </div>
             </div>
         </div>
