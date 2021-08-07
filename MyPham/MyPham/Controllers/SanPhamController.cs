@@ -15,12 +15,12 @@ namespace MyPham.Controllers
     {
         MyPhamDB db = new MyPhamDB();
         // GET: SanPham
-        public ActionResult SanPham(string id,string ThongBao)
+        public ActionResult SanPham(string id, string ThongBao)
         {
-            if(ThongBao != null)
+            if (ThongBao != null)
             {
                 ViewBag.ThongBao = ThongBao;
-            }    
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -45,17 +45,23 @@ namespace MyPham.Controllers
             return View(sp);
         }
 
-        public ActionResult XemSanPhamTheoDanhMuc(string id, int? page)
+        public ActionResult XemSanPhamTheoDanhMuc(string id, int? page, string loc)
         {
-            List<SanPham> sanpham = new List<SanPham>();
-            if (id == null)
-            {
 
-            }
-            else
-            {
-                sanpham = db.SanPham.Where(s => s.MaDM.ToString().Equals(id)).Select(s => s).ToList();
+            var sanpham = db.SanPham.Where(s => s.MaDM.ToString().Equals(id)).Select(s => s);
 
+            if (loc != null)
+            {
+                if (loc.Equals("tang"))
+                {
+                    sanpham = sanpham.OrderBy(s => s.Gia);
+                    ViewBag.Loc = loc;
+                }
+                else if (loc.Equals("giam"))
+                {
+                    sanpham = sanpham.OrderByDescending(h => h.Gia);
+                    ViewBag.Loc = loc;
+                }
             }
             int madm = int.Parse(id);
             List<DanhMucSP> s1 = new List<DanhMucSP>();
@@ -64,7 +70,7 @@ namespace MyPham.Controllers
 
             int pageSize = 12;
             int pageNumber = (page ?? 1);
-            return View(sanpham.ToPagedList(pageNumber, pageSize));
+            return View(sanpham.ToList().ToPagedList(pageNumber, pageSize));
         }
     }
 }
