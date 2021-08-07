@@ -17,7 +17,6 @@ namespace MyPham.Areas.Admin.Controllers
 
         // GET: Admin/HoaDons
 
-
         public ActionResult Index(int? page, string error, string tinhtrang)
         {
 
@@ -27,30 +26,9 @@ namespace MyPham.Areas.Admin.Controllers
             hoaDon  = db.HoaDon.Include(h => h.GioHang).ToList();
             if (tinhtrang != null)
             {
-                if(tinhtrang.Equals("Đang chờ"))
-                {
-                    hoaDon = hoaDon.Where(h => h.TinhTrang == tinhtrang).ToList();
-                    ViewBag.tinhtrang = "Đang chờ";
-                }
-
-                if (tinhtrang.Equals("Đang giao"))
-                {     
-                    hoaDon = hoaDon.Where(h => h.TinhTrang == tinhtrang).ToList();
-                    ViewBag.tinhtrang = "Đang giao";
-                }
-
-                if (tinhtrang.Equals("Đã nhận"))
-                {
-                    hoaDon = hoaDon.Where(h => h.TinhTrang == tinhtrang).ToList();
-                    ViewBag.tinhtrang = "Đã nhận";
-                }
-
-                if (tinhtrang.Equals("Đã hủy"))
-                {
-                    hoaDon = hoaDon.Where(h => h.TinhTrang == tinhtrang).ToList();
-                    ViewBag.rinhtrang = "Đã hủy";
-                }
-            }   
+                hoaDon = hoaDon.Where(h => h.TinhTrang == tinhtrang).ToList();
+                ViewBag.tinhtrang = tinhtrang;
+            }
             hoaDon = hoaDon.OrderBy(s => s.MaHD).ToList();
             int pageSize = 7;
             int pageNumber = (page ?? 1);
@@ -124,6 +102,7 @@ namespace MyPham.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             ViewBag.MaGioHang = new SelectList(db.GioHang, "MaGioHang", "MaGioHang", hoaDon.MaGioHang);
+            ViewBag.TinhTrang = hoaDon.TinhTrang;
             return View(hoaDon);
         }
 

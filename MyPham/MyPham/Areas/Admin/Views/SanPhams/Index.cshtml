@@ -5,6 +5,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     <link herf="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+    List<MyPham.Models.DanhMucSP> dm = (List<MyPham.Models.DanhMucSP>)ViewBag.DanhMuc;
 }
 @if (ViewBag.Error != null)
 {
@@ -29,7 +30,38 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Danh sách sản phẩm</h4>
+                <div class="page-title-inner flex-row  medium-flex-wrap container">
+                    <div class="flex-col flex-grow medium-text-center">
+                        <h4 class="card-title">
+                            Danh sách sản phẩm
+                        </h4>
+                    </div>
+                    <div class="flex-col medium-text-center">
+                        <p class="woocommerce-result-count hide-for-medium">
+                            Lọc theo
+                        </p>
+
+                        <form class="woocommerce-ordering" method="post" enctype='multipart/form-data' action="@Url.Action("Index","SanPhams")">
+                            <select name="maDM" class="orderby" aria-label="Đơn hàng của cửa hàng">
+                                <option name="maDM" value="macdinh" selected="selected">Thứ tự mặc định</option>
+                                @foreach (var item in dm)
+                                {
+                                    if (item.MaDM.ToString().Equals(ViewBag.MaDM))
+                                    {
+                                        <option name="maDM" value="@item.MaDM" selected="selected">@item.TenDM</option>
+                                    }
+                                    else
+                                    {
+                                        <option name="maDM" value="@item.MaDM" a>@item.TenDM</option>
+                                    }
+                                }
+                            </select>
+                            <button style="background: #eee" type="submit" value="Lọc">
+                        </form>
+                    </div>
+
+                </div>
+
                 <a class="" href="@Url.Action("Create","SanPhams")">
                     <span class="menu-title btn btn-primary">Thêm sản phẩm</span>
                 </a>
@@ -92,7 +124,7 @@
                             }
                         </tbody>
                     </table>
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions()
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, maDM = ViewBag.MaDM }), new PagedListRenderOptions()
                       {
                           LiElementClasses = new string[] { "page-number" },
                           UlElementClasses = new string[] { "page-numbers", "nav-pagination", "links", "text-center" }

@@ -16,11 +16,18 @@ namespace MyPham.Areas.Admin.Controllers
         private MyPhamDB db = new MyPhamDB();
 
         // GET: Admin/SanPhams
-        public ActionResult Index(int? page,string error)
+        public ActionResult Index(int? page,string error,string maDM)
         {
+
             if (error != null)
                 ViewBag.Error = error;
             var sanPham = db.SanPham.Include(s => s.DanhMucSP);
+            ViewBag.DanhMuc = db.DanhMucSP.ToList();
+            if(maDM != null && maDM!= "macdinh")
+            {
+                sanPham = sanPham.Where(s=>s.MaDM.ToString().Equals(maDM));
+                ViewBag.MaDM = maDM;
+            }
             sanPham = sanPham.OrderBy(s => s.MaSP);
             int pageSize = 7;
             int pageNumber = (page ?? 1);

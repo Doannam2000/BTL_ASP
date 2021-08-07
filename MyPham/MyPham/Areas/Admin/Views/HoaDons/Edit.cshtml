@@ -120,10 +120,41 @@
                                     <div class="col-md-10">
                                         @*@Html.EditorFor(model => model.TinhTrang, new { htmlAttributes = new { @class = "form-control" } })*@
                                         <select class="form-control" id="TinhTrang" name="TinhTrang">
-                                            <option selected="selected" value="Đang chờ">Đang chờ</option>
-                                            <option value="Đang giao">Đang giao</option>
-                                            <option value="Đã hủy">Đã hủy</option>
-                                            <option value="Đã nhận">Đã nhận</option>
+                                            @if (ViewBag.TinhTrang == "Đang chờ")
+                                            {
+                                                <option name="tinhtrang" value="Đang chờ" selected="selected">Đang chờ</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option name="tinhtrang" value="Đang chờ">Đang chờ</option>
+                                            }
+                                            @if (ViewBag.TinhTrang == "Đang giao")
+                                            {
+                                                <option name="tinhtrang" value="Đang giao" selected="selected">Đang giao</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option name="tinhtrang" value="Đang giao">Đang giao</option>
+                                            }
+                                            @if (ViewBag.TinhTrang == "Đã nhận")
+                                            {
+                                                <option name="tinhtrang" value="Đã nhận" selected="selected">Đã nhận</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option name="tinhtrang" value="Đã nhận">Đã nhận</option>
+                                            }
+                                            @if (ViewBag.TinhTrang == "Đã hủy")
+                                            {
+                                                <option name="tinhtrang" value="Đã hủy" selected="selected">Đã hủy</option>
+                                            }
+                                            else
+                                            {
+                                                <option name="tinhtrang" value="Đã hủy">Đã hủy</option>
+                                            }
                                         </select>
                                         @Html.ValidationMessageFor(model => model.TinhTrang, "", new { @class = "text-danger" })
                                     </div>

@@ -266,7 +266,7 @@ namespace MyPham.Controllers
             hoaDon.DiaChi = diachi;
             hoaDon.GhiChu = GhiChu;
             hoaDon.HinhThucThanhToan = "Thanh toán khi nhận hàng";
-            hoaDon.HinhThucVanChuyen = "Mặc định";
+            hoaDon.HinhThucVanChuyen = "Giao hàng tiết kiệm";
             hoaDon.HoTen = HoTen;
             hoaDon.MaGioHang = (int)Session["MaGH"];
             hoaDon.NgayTao = DateTime.Now;

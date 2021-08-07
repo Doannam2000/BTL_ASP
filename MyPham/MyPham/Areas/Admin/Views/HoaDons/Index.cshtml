@@ -38,18 +38,46 @@
                             Lọc theo
                         </p>
 
+                        <form class="woocommerce-ordering" method="post" enctype='multipart/form-data' action="@Url.Action("Index","HoaDons")">
+                            <select name="tinhtrang" class="orderby" aria-label="Đơn hàng của cửa hàng">
+                                <option name="tinhtrang" value="macdinh" selected="selected">Thứ tự mặc định</option>
+                                @if (ViewBag.tinhtrang == "Đang chờ")
+                                {
+                                    <option name="tinhtrang" value="Đang chờ" selected="selected">Đang chờ</option>
+                                }
+                                else
+                                {
+                                    <option name="tinhtrang" value="Đang chờ">Đang chờ</option>
+                                }
+                                @if (ViewBag.tinhtrang == "Đang giao")
+                                {
+                                    <option name="tinhtrang" value="Đang giao" selected="selected">Đang giao</option>
+                                }
+                                else
+                                {
+                                    <option name="tinhtrang" value="Đang giao">Đang giao</option>
+                                }
+                                @if (ViewBag.tinhtrang == "Đã nhận")
+                                {
+                                    <option name="tinhtrang" value="Đã nhận" selected="selected">Đã nhận</option>
 
+                                }
+                                else
+                                {
+                                    <option name="tinhtrang" value="Đã nhận">Đã nhận</option>
+                                }
+                                @if (ViewBag.tinhtrang == "Đã hủy")
+                                {
+                                    <option name="tinhtrang" value="Đã hủy" selected="selected">Đã hủy</option>
+                                }
+                                else
+                                {
+                                    <option name="tinhtrang" value="Đã hủy">Đã hủy</option>
+                                }
+                            </select>
+                            <button style="background: #eee" type="submit" value="Lọc">
+                        </form>
                     </div>
-                    <form class="woocommerce-ordering" method="post" enctype='multipart/form-data' action="@Url.Action("Index","HoaDons")">
-                        <select name="tinhtrang" class="orderby" aria-label="Đơn hàng của cửa hàng">
-                            <option name="tinhtrang" value="macdinh" selected="selected">Thứ tự mặc định</option>
-                            <option name="tinhtrang" value="Đang chờ">Đang chờ</option>
-                            <option name="tinhtrang" value="Đang giao">Đang giao</option>
-                            <option name="tinhtrang" value="Đã nhận">Đã nhận</option>
-                            <option name="tinhtrang" value="Đã hủy">Đã hủy</option>
-                        </select>
-                        <button style="background: #eee" type="submit" value="Lọc">
-                    </form>
                 </div>
                 <div class="table-responsive pt-3">
                     <table id="recent-purchases-listing" class="table table-bordered">
@@ -112,7 +140,7 @@
                             }
                         </tbody>
                     </table>
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page , tinhtrang = ViewBag.tinhtrang }), new PagedListRenderOptions()
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, tinhtrang = ViewBag.tinhtrang }), new PagedListRenderOptions()
                {
                    LiElementClasses = new string[] { "page-number" },
                    UlElementClasses = new string[] { "page-numbers", "nav-pagination", "links", "text-center" }

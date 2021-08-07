@@ -39,9 +39,7 @@
                     <a class="navbar-brand brand-logo-mini" href="@Url.Action("Index","Home")">
                         <img src="https://lamdepz.com/wp-content/uploads/2021/03/logo-full-1.png" alt="logo" />
                     </a>
-                    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-                        <span class="mdi mdi-sort-variant"></span>
-                    </button>
+                  
                 </div>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -81,31 +79,32 @@
             <!-- partial:partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index","Home")">
+
+                    <li class="@(HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()=="Home" ? "nav-item":"")" >
+                        <a class="nav-link" href="@Url.Action("Index","Home")" >
                             <i class="mdi mdi-view-dashboard mr-2"></i>
                             <span class="menu-title">Bảng Điều Khiển</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="@(HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()=="SanPhams" ? "nav-item":"")">
                         <a class="nav-link" href="@Url.Action("Index","SanPhams")">
                             <i class="mdi mdi-cube mr-2"></i>
                             <span class="menu-title">Quản Lý Sản Phẩm</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="@(HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()=="DanhMucSPs" ? "nav-item":"")">
                         <a class="nav-link" href="@Url.Action("Index","DanhMucSPs")">
                             <i class="mdi mdi-file-document-box  mr-2"></i>
                             <span class="menu-title">Quản Lý Danh Mục</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="@(HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()=="HoaDons" ? "nav-item":"")">
                         <a class="nav-link" href="@Url.Action("Index","HoaDons")">
                             <i class="mdi mdi-file-document  mr-2"></i>
                             <span class="menu-title">Quản Lý Hóa Đơn</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="@(HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()=="TaiKhoans" ? "nav-item":"")">
                         <a class="nav-link" href="@Url.Action("Index","TaiKhoans")">
                             <i class="mdi mdi-account  mr-2"></i>
                             <span class="menu-title">Quản Lý Tài Khoản</span>
