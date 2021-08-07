@@ -123,7 +123,12 @@ namespace MyPham.Areas.Admin.Controllers
                     }
                     db.Entry(taiKhoan).State = EntityState.Modified;
                     db.SaveChanges();
-                 
+                    if ((int)Session["idAdmin"] == taiKhoan.MaTK)
+                    {
+                        Session["AnhAdmin"] = taiKhoan.Anh;
+                        Session["HoTenAdmin"] = taiKhoan.HoTen;
+                    }
+
                 }
                 return RedirectToAction("Index");
             }

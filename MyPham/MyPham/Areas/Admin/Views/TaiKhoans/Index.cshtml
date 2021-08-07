@@ -28,7 +28,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Danh sách tài khoản</h4>
-                <a class="nav-link " href="@Url.Action("Create","TaiKhoans")">
+                <a class="" href="@Url.Action("Create","TaiKhoans")">
                     <span class="menu-title btn btn-primary">Thêm tài khoản</span>
                 </a>
                 @if (ViewBag.Error != null)
@@ -79,9 +79,15 @@
                                     </td>
                                     <td>
                                         @{
-                                            string ImagePath = "~/wwwroot/images/user/" + item.Anh;
+                                            string ImagePath = "~/wwwroot/images/user/user.png";
+
+                                            if (item.Anh != null)
+                                            {
+                                                ImagePath = "~/wwwroot/images/user/" + item.Anh;
+                                            }
+
                                         }
-                                        <img src="@Url.Content(ImagePath)" width=" 100" height="auto" />
+                                        <img src="@Url.Content(ImagePath)" width=" 100" height="100" />
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.HoTen)

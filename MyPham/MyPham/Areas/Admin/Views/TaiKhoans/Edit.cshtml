@@ -3,7 +3,13 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-    var ImagePath = "~/wwwroot/images/user/" + Model.Anh;
+    var ImagePath = "~/wwwroot/images/user/user.png";
+            if (Model.Anh != null)
+            {
+                ImagePath = "~/wwwroot/images/user/" + Model.Anh;
+            }
+    string abc = "readonly";
+    string bca = "hidden";
 }
 
 @using (Html.BeginForm("Edit", "TaiKhoans", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -12,7 +18,11 @@
 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.MaTK)
-
+    if( (int)Session["idAdmin"] == Model.MaTK)
+    {
+        abc = " ";
+        bca = " ";
+    }
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-12 grid-margin">
@@ -34,9 +44,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Cập nhật thông tin tài khoản</h4>
                     <form class="form-sample">
-                        <p class="card-description">
-                            Nhập thông tin tài khoản
-                        </p>
+                        
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group row">
@@ -46,7 +54,7 @@
                                         <img id="output" class="img-rounded" alt="Ảnh" width="150" height="150"
                                              src="@Url.Content(ImagePath)" />
                                         <br />
-                                        <label for="ufile" style="cursor: pointer; text-transform: none;" class="btn btn-sm btn-primary  ml-2">Chọn file ảnh</label>
+                                        <label for="ufile" style="cursor: pointer; text-transform: none;" class="btn btn-sm btn-primary ml-2 @Url.Content(bca)">Chọn file ảnh</label>
                                         <input name="ImageFile" id="ufile" type="file" style="display: none;"
                                                onchange="loadFile(event)" />
                                     </div>
@@ -57,7 +65,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.HoTen)</label>
                                     <div class="col-md-9">
-                                        @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                                        <input class="form-control text-box" name="HoTen" type="text" @Url.Content(abc) id="HoTen" value="@Model.HoTen" data-val="true" data-val-required="Bạn chưa nhập họ tên">
                                         @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -68,7 +76,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.Email)</label>
                                     <div class="col-md-9">
-                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                        <input class="form-control text-box single-line" @Url.Content(abc) data-val="true" data-val-length="Độ dài email tối đa 50 ký tự" data-val-length-max="50" data-val-required="Bạn chưa nhập Email" id="Email" name="Email" type="text" value="@Model.Email" >
                                         @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -78,8 +86,8 @@
                                     <label class="col-sm-3 col-form-label">
                                         @Html.LabelFor(model => model.SoDienThoai)
                                     </label>
-                                    <div class="col-md-9">
-                                        @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control" } })
+                                    <div class="col-md-9"> 
+                                        <input class="form-control text-box single-line" @Url.Content(abc) data-val="true" data-val-length="SỐ điện thoại có từ 10-12 ký tự" data-val-length-max="12" data-val-length-min="10" id="SoDienThoai" name="SoDienThoai" type="text" value="@Model.SoDienThoai">
                                         @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -91,14 +99,14 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label">@Html.LabelFor(model => model.DiaChi)</label>
                                     <div class="col-md-9">
-                                        @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                                        <input class="form-control text-box single-line" @Url.Content(abc) id="DiaChi" name="DiaChi" type="text" value="@Model.DiaChi">
                                         @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group row">
-                                    <label class="col-md-3 col-form-label">@Html.LabelFor(model => model.MaQuyen, "MaQuyen")</label>
+                                    <label class="col-md-3 col-form-label">@Html.LabelFor(model => model.MaQuyen, "Tên Quyền")</label>
                                     <div class="col-md-9">
                                         @Html.DropDownList("MaQuyen", null, htmlAttributes: new { @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.MaQuyen, "", new { @class = "text-danger" })
@@ -111,7 +119,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 col-form-label">@Html.LabelFor(model => model.MatKhau)</label>
                                     <div class="col-md-9 password">
-                                        @Html.TextBoxFor(model => model.MatKhau, htmlAttributes: new { type = "password" })
+                                        <input class="form-control text-box single-line" data-val="true" @Url.Content(abc) data-val-length="Độ dài mật khẩu ít nhất 6 ký tự" data-val-length-max="20" data-val-length-min="6" data-val-required="Bạn chưa nhập Mật Khẩu" id="MatKhau" name="MatKhau" type="password" value="@Model.MatKhau">
                                         @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
