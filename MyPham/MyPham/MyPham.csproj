@@ -187,6 +187,7 @@
     <Content Include="Areas\Admin\assets\js\off-canvas.js" />
     <Content Include="Areas\Admin\assets\js\tabs.js" />
     <Content Include="Areas\Admin\assets\js\template.js" />
+    <Content Include="Areas\Admin\assets\js\woocommerce.min287d.js" />
     <Content Include="Areas\Admin\assets\vendors\base\vendor.bundle.base.css" />
     <Content Include="Areas\Admin\assets\vendors\base\vendor.bundle.base.js" />
     <Content Include="Areas\Admin\assets\vendors\chart.js\Chart.min.js" />

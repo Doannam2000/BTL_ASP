@@ -34,7 +34,7 @@
                 @if (ViewBag.Error != null)
                 {
 
-                    <div class="alert alert-danger" >@ViewBag.Error</div>
+                    <div class="alert alert-danger mt-2" >@ViewBag.Error</div>
                     
                 }
                 <div class="table-responsive pt-3">
@@ -112,9 +112,11 @@
                                             <a class="nav-link" href="@Url.Action("Edit", "TaiKhoans", new { id = item.MaTK })">
                                                 <span class="menu-title btn btn-wd btn-info pl-3 pr-3 pt-2 pb-2">Cập nhật</span>
                                             </a>
+                                            @if ((int)Session["idAdmin"] != item.MaTK)
+                                            {
                                             <form class="d-flex align-items-center" method="post" action="@Url.Action("DeleteConfirmedCustom", "TaiKhoans", new { id = item.MaTK })">
                                                 <button type="submit" class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2" onclick="return functionConfirm(this)">Xóa</button>
-                                            </form>
+                                            </form>}
                                         </div>
                                     </td>
                                 </tr>

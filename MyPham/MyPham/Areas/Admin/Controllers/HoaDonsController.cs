@@ -24,7 +24,7 @@ namespace MyPham.Areas.Admin.Controllers
                 ViewBag.Error = error;
             List<HoaDon> hoaDon= new List<HoaDon>();
             hoaDon  = db.HoaDon.Include(h => h.GioHang).ToList();
-            if (tinhtrang != null)
+            if (tinhtrang != null && tinhtrang != "macdinh")
             {
                 hoaDon = hoaDon.Where(h => h.TinhTrang == tinhtrang).ToList();
                 ViewBag.tinhtrang = tinhtrang;
