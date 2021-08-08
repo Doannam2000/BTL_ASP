@@ -6542,7 +6542,7 @@ th,
 span.widget-title {
     line-height: 1.05;
     letter-spacing: .05em;
-    text-transform: uppercase
+  /*  text-transform: uppercase*/
 }
 
 .lowercase {

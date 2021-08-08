@@ -10,9 +10,9 @@
 <div class="shop-page-title category-page-title page-title ">
     <div class="page-title-inner flex-row  medium-flex-wrap container">
         <div class="flex-col flex-grow medium-text-center">
-            <h1 class="shop-page-title is-xlarge">@ViewBag.TenDM</h1>
+            <h1 class="shop-page-title is-xlarge categorycustom">@ViewBag.TenDM</h1>
             <div class="is-small">
-                <nav class="woocommerce-breadcrumb breadcrumbs uppercase"><a href="@Url.Action("Index", "Home")">Trang chủ</a> <span class="divider">&#47;</span>@ViewBag.TenDM</nav>
+                <nav class="woocommerce-breadcrumb breadcrumbs "><a href="@Url.Action("Index", "Home")">Trang chủ</a> <span class="divider">&#47;</span><span class="categorycustom"><firstletter>@ViewBag.TenDM</firstletter></span></nav>
             </div>
             <div class="category-filtering category-filter-row show-for-medium">
                 <a href="#" data-open="#shop-sidebar" data-visible-after="true" data-pos="left" class="filter-button uppercase plain">

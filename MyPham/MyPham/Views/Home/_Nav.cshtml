@@ -11,7 +11,7 @@
                 @foreach (var item in Model)
                 {
                     <li id="menu-item-12690" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-12690">
-                        <a href="@Url.Action("XemSanPhamTheoDanhMuc", "SanPham", new { id = item.MaDM })">@item.TenDM</a>
+                        <a class="categorycustom" href="@Url.Action("XemSanPhamTheoDanhMuc", "SanPham", new { id = item.MaDM })">@item.TenDM</a>
                     </li>
                 }
             </ul>
