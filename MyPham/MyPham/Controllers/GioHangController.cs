@@ -318,7 +318,7 @@ namespace MyPham.Controllers
             return db.TaiKhoan.Count(t => t.Email == email) > 0;
         }
 
-        public ActionResult XemHoaDon(int id,int? page)
+        public ActionResult XemHoaDon(int id,int? page,string tinhtrang)
         {
             List<HoaDon> hd = new List<HoaDon>();
             var giohang = db.GioHang.Where(g => g.MaTK == id);
@@ -335,6 +335,11 @@ namespace MyPham.Controllers
             }
             if(hd.Count>0)
             {
+                if(tinhtrang!=null && tinhtrang!="macdinh")
+                {
+                    hd = hd.Where(h => h.TinhTrang == tinhtrang).ToList();
+                    ViewBag.tinhtrang = tinhtrang;
+                }    
                 int pageSize = 7;
                 int pageNumber = (page ?? 1);
                 return View(hd.ToPagedList(pageNumber, pageSize));

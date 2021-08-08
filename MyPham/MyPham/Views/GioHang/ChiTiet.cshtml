@@ -6,6 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     List<MyPham.Models.SanPham> sp = (List<MyPham.Models.SanPham>)ViewBag.SanPham;
     var ghiChu = Model.GhiChu;
+    double tong = 0;
 }
 
 <main id="main" class="row d-flex justify-content-center align-items-center">
@@ -129,6 +130,7 @@
                         <tbody>
                             @foreach (var item in sp)
                             {
+                                tong += Convert.ToDouble(item.Gia * item.SoLuongTon);
                                 <tr>
                                     <td>
                                         @item.TenSP
@@ -141,20 +143,21 @@
                                         <img src="@Url.Content(ImagePath)" style="width:100px;height:auto;border-radius:0px" />
                                     </td>
                                     <td>
-                                        <ins><span class="woocommerce-Price-amount amount"><bdi >@String.Format("{0:#,###}", item.Gia)<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></ins>
+                                        <ins><span class="woocommerce-Price-amount amount"><bdi>@String.Format("{0:#,###}", item.Gia) <span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></ins>
                                     </td>
                                     <td>
                                         @item.SoLuongTon   @*Biến số lượng *@
                                     </td>
                                     <td>
-                                        <ins><span class="woocommerce-Price-amount amount"><bdi>@String.Format("{0:#,###}", (item.Gia * item.SoLuongTon))<span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></ins>
+                                        <ins><span class="woocommerce-Price-amount amount"><bdi>@String.Format("{0:#,###}", (item.Gia * item.SoLuongTon)) <span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></ins>
                                     </td>
                                 </tr>
                             }
                         </tbody>
                     </table>
+                    Tổng : @String.Format("{0:#,###}", tong) đ
                     <div class="d-flex justify-content-center">
-                        @{ 
+                        @{
                             string link = "/GioHang/XemHoaDon/" + Session["idUser"];
                         }
                         <a class="nav-link" href="@Url.Content(link)">

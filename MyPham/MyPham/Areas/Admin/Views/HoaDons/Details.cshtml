@@ -5,6 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     List<MyPham.Models.SanPham> sp = (List<MyPham.Models.SanPham>)ViewBag.SanPham;
     var ghiChu = Model.GhiChu;
+    double tong = 0;
 }
 
 <div class="content-wrapper">
@@ -142,6 +143,7 @@
                         <tbody>
                             @foreach (var item in sp)
                             {
+                                tong += Convert.ToDouble(item.Gia * item.SoLuongTon);
                                 <tr>
                                     <td>
                                         @item.TenSP
@@ -154,18 +156,19 @@
                                         <img src="@Url.Content(ImagePath)" style="width:100px;height:auto;border-radius:0px" />
                                     </td>
                                     <td>
-                                        @String.Format("{0:#,###}", item.Gia)
+                                        @String.Format("{0:#,###}", item.Gia) đ
                                     </td>
                                     <td>
                                         @item.SoLuongTon   @*Biến số lượng *@
                                     </td>
                                     <td>
-                                        @String.Format("{0:#,###}", (item.Gia*item.SoLuongTon))
+                                        @String.Format("{0:#,###}", (item.Gia * item.SoLuongTon)) đ
                                     </td>
                                 </tr>
                             }
                         </tbody>
                     </table>
+                    Tổng : @String.Format("{0:#,###}", tong) đ
                     <div class="d-flex justify-content-center">
                         <a class="nav-link" href="@Url.Action("Index","HoaDons")">
                             <span class="menu-title btn btn-outline-primary btn-fw ">Quay lại</span>
