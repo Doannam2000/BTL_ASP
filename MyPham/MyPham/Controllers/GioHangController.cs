@@ -228,6 +228,7 @@ namespace MyPham.Controllers
                 else // tạo mới
                 {
                     TaiKhoan tk = new TaiKhoan();
+                    tk.SoDienThoai = sodienthoai;
                     tk.HoTen = HoTen;
                     tk.Email = email;
                     tk.DiaChi = diachi;
@@ -246,7 +247,7 @@ namespace MyPham.Controllers
                 db.GioHang.Add(gh);
                 db.SaveChanges();
                 int MaTK1 = (int)Session["idUser"];
-                GioHang gio = db.GioHang.Where(g => g.MaTK == MaTK1).FirstOrDefault();
+                GioHang gio = (GioHang)checkGH(MaTK1);
                 Session["MaGH"] = gio.MaGioHang;
                 foreach (var item in list)
                 {

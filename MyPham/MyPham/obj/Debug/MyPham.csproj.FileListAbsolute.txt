@@ -1157,3 +1157,7 @@ D:\HocKy6.5\BTL_ASP\MyPham\MyPham\bin\roslyn\vbc.exe.config
 D:\HocKy6.5\BTL_ASP\MyPham\MyPham\bin\roslyn\vbc.rsp
 D:\HocKy6.5\BTL_ASP\MyPham\MyPham\bin\roslyn\VBCSCompiler.exe
 D:\HocKy6.5\BTL_ASP\MyPham\MyPham\bin\roslyn\VBCSCompiler.exe.config
+D:\HocOnline_2021\ASP.NET\BTL_ASP\BTL_ASP\MyPham\MyPham\bin\PagedList.dll
+D:\HocOnline_2021\ASP.NET\BTL_ASP\BTL_ASP\MyPham\MyPham\bin\PagedList.Mvc.dll
+D:\HocOnline_2021\ASP.NET\BTL_ASP\BTL_ASP\MyPham\MyPham\bin\PagedList.xml
+D:\HocOnline_2021\ASP.NET\BTL_ASP\BTL_ASP\MyPham\MyPham\bin\PagedList.Mvc.xml

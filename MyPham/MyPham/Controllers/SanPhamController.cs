@@ -54,12 +54,12 @@ namespace MyPham.Controllers
             {
                 if (loc.Equals("tang"))
                 {
-                    sanpham = sanpham.OrderBy(s => s.Gia);
+                    sanpham = sanpham.OrderBy(s =>s.GiamGia);
                     ViewBag.Loc = loc;
                 }
                 else if (loc.Equals("giam"))
                 {
-                    sanpham = sanpham.OrderByDescending(h => h.Gia);
+                    sanpham = sanpham.OrderByDescending(s =>s.GiamGia);
                     ViewBag.Loc = loc;
                 }
             }
