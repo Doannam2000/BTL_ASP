@@ -129,9 +129,16 @@ namespace MyPham.Controllers
 
         public ActionResult ThongTinTaiKhoan(int? id)
         {
-            if (id == null)
+            
+            if (id == null || Session["idUser"] == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+                return RedirectToAction("Index", "Home");
+
+            }
+            if((int)Session["idUser"] != id)
+            {
+                return RedirectToAction("Index", "Home");
             }
             TaiKhoan nguoidung = db.TaiKhoan.Find(id);
             Session["Anh"] = nguoidung.Anh;
@@ -144,9 +151,10 @@ namespace MyPham.Controllers
 
         public ActionResult SuaTaiKhoan(int? id)
         {
-            if (id == null)
+            if (id == null || Session["idUser"] == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index", "Home");
             }
             TaiKhoan taiKhoan = db.TaiKhoan.Find(id);
             if (taiKhoan == null)

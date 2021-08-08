@@ -318,8 +318,13 @@ namespace MyPham.Controllers
             return db.TaiKhoan.Count(t => t.Email == email) > 0;
         }
 
-        public ActionResult XemHoaDon(int id,int? page,string tinhtrang)
+        public ActionResult XemHoaDon(int? id,int? page,string tinhtrang)
         {
+            if ( id == null || Session["idUser"] == null)
+            {
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index", "Home");
+            }
             List<HoaDon> hd = new List<HoaDon>();
             var giohang = db.GioHang.Where(g => g.MaTK == id);
             if(giohang!=null)
@@ -348,11 +353,12 @@ namespace MyPham.Controllers
             return View();
         }
 
-        public ActionResult ChiTiet(int id)
+        public ActionResult ChiTiet(int? id)
         {
-            if (id == null)
+            if (id == null || Session["idUser"] == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index", "Home");
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             HoaDon hoaDon = db.HoaDon.Find(id);
             if (hoaDon == null)

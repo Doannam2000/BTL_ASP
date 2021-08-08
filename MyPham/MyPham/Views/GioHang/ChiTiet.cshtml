@@ -152,10 +152,15 @@
                                         <ins><span class="woocommerce-Price-amount amount"><bdi>@String.Format("{0:#,###}", (item.Gia * item.SoLuongTon)) <span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></ins>
                                     </td>
                                 </tr>
+                                
                             }
                         </tbody>
                     </table>
-                    Tổng : @String.Format("{0:#,###}", tong) đ
+                    <div class="row justify-end mt-3">
+                        <div class="col-md-3">Tổng tiền : 
+                            <ins><span class="woocommerce-Price-amount amount" style="font-size:25px"><bdi>@String.Format("{0:#,###}", tong) <span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></ins>
+                        </div>
+                    </div>
                     <div class="d-flex justify-content-center">
                         @{
                             string link = "/GioHang/XemHoaDon/" + Session["idUser"];
