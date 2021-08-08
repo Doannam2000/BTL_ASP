@@ -108,9 +108,9 @@ function checksdt(){
 		validsdt = false;
 		message = "Số điện thoại không được để trông.";
 	}else{
-		if(sdt.length < 9 || sdt.length > 12){
+		if(sdt.length != 10){
 			validsdt = false;
-			message = "Số điện thoại có độ dài [9->12] ký tự.";
+			message = "Số điện thoại có độ dài [10] ký tự.";
 		}else{
 
 			}

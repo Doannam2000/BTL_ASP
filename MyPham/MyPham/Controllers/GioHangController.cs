@@ -273,9 +273,9 @@ namespace MyPham.Controllers
             hoaDon.NgayTao = DateTime.Now;
             hoaDon.SoDienThoai = sodienthoai;
             hoaDon.TinhTrang = "Đang chờ";
+
             db.HoaDon.Add(hoaDon);
             db.SaveChanges();
-
 
             foreach (var item in list)
             {
@@ -307,7 +307,7 @@ namespace MyPham.Controllers
             foreach (var item in GH)
             {
                 var listDH = db.HoaDon.Where(h => h.MaGioHang == item.MaGioHang).FirstOrDefault();
-                if(listDH==null)
+                if(listDH == null)
                 {
                     return item;
                 }    
