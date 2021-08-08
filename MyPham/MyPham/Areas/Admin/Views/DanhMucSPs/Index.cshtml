@@ -65,8 +65,8 @@
                                                 <span class="menu-title btn btn-wd btn-info pl-3 pr-3 pt-2 pb-2">Cập nhật</span>
                                             </a>
 
-                                            <form class="d-flex align-items-center" method="post" action="@Url.Action("DeleteConfirmedCustom", "DanhMucSPs", new { id = item.MaDM })">
-                                                <button type="submit" class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2" onclick="return functionConfirm(this)">Xóa</button>
+                                            <form class="d-flex align-items-center" id="category-@item.MaDM" method="post" action="@Url.Action("DeleteConfirmedCustom", "DanhMucSPs", new { id = item.MaDM })">
+                                                <button type="submit" class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2" onclick="return functionConfirm(this,@item.MaDM)">Xóa</button>
                                             </form>
                                         </div>
                                     </td>
@@ -87,7 +87,7 @@
 </div>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 <script type="text/javascript">
-    function functionConfirm(event) {
+    function functionConfirm(event,id) {
         swal({
             title: 'Thông báo',
             text: "Bạn chắc chắn muốn xóa danh mục này ?",
@@ -100,7 +100,7 @@
             confirmButtonClass: 'btn btn-success'
         }, function (isConfirm) {
             if (isConfirm) {
-                $('form').submit();
+                $('#category-'+id).submit();
                 return true;
             } else {
                 return false;
